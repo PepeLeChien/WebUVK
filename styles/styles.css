@@ -15,7 +15,7 @@
 * {
     padding: 0;
     margin: 0;
-
+    box-sizing: border-box;
 }
 
 body {
@@ -97,11 +97,11 @@ main {
 footer {
     display: flex;
     flex-direction: row;
-    width: 100%;
-    height: 200px;
+    height: auto;
     background-color: var(--black-style);
     color: var(--white-style);
     font-family: 'Baloo', Helvetica, sans-serif;
+    padding: 50px 0 50px 60px;
 }
 
 footer > div {
@@ -109,3 +109,36 @@ footer > div {
 
 }
 
+footer ul {
+    list-style: none;
+}
+
+footer a {
+    font-weight: 200;
+    font-size: 14px;
+    color: var(--white-style);
+    height: 35px;
+
+}
+
+.redes-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.redes-container > img {
+    width: 80px;
+}
+
+.redes-container div {
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.img-libro {
+    margin-top: 10px;
+    width: 150px;
+}
