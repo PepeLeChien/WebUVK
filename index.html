@@ -11,90 +11,81 @@
 </head>
 <body>
     <header class="header">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Cartelera</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Cines</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Dulcería</a>
-                        </li>
-                    </ul>
-                </div>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <div class="login-container2">
+                    <img src="./assets/IconUser.png" alt="">
+              </div>
+              <a class="navbar-brand" href="#">
+                <img src="./assets/Logo.png" alt="LOGO UVK" width="80px" height="60px">
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Cartelera</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Cines</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Dulcería</a>
+                  </li>
+                </ul>
+                <form class="d-flex search-container" role="search">
+                  <img src="./assets/IconSearch.png" alt="">
+                  <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
+                </form>
+              </div>
+              <div class="login-container1">
+                <img src="./assets/IconUser.png" alt="">
+              </div>
             </div>
-        </nav>
+          </nav>
     </header>
 
     <main>
-        <div id="slider-container" class="slider-container">
-            <div class="slider" id="slider">
-                <div class="slider__element slider__element--first">
-                    <section class="section--slider">
-                        <span>Pre-Venta</span>
-                        <h3>DeadPool</h3>
-                        <div>
-                            <p></p>
-                            <a href="">
-                                <img src="" alt="">
-                                <p>COMPRAR</p>
-                            </a>
-                        </div>
-                    </section>
-                </div>
-                <div class="slider__element slider__element--seconds">
-                    <section class="section--slider">
-                        <span>Pre-Venta</span>
-                        <h3>DeadPool</h3>
-                        <div>
-                            <p></p>
-                            <a href="">
-                                <img src="" alt="">
-                                <p>COMPRAR</p>
-                            </a>
-                        </div>
-                    </section>
-                </div>
-                <div class="slider__element slider__element--third">
-                    <section class="section--slider">
-                        <span>Pre-Venta</span>
-                        <h3>DeadPool</h3>
-                        <div>
-                            <p></p>
-                            <a href="">
-                                <img src="" alt="">
-                                <p>COMPRAR</p>
-                            </a>
-                        </div>
-                    </section>
-                </div>
-                <div class="slider__element slider__element--fourth">
-                    <section class="section--slider">
-                        <span>Pre-Venta</span>
-                        <h3>DeadPool</h3>
-                        <div>
-                            <p></p>
-                            <a href="">
-                                <img src="" alt="">
-                                <p>COMPRAR</p>
-                            </a>
-                        </div>
-                    </section>
-                </div>
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="4" aria-label="Slide 5"></button>
             </div>
-        </div>
-        <div class="slider-buttons">
-            <button id="button-left" class="button">&lt;</button>
-            <button id="button-right" class="button">&gt;</button>
-        </div>
-        <section></section>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="https://fastly.picsum.photos/id/862/1500/600.jpg?hmac=oKqTPaADPf31oorI4xub_oOL--_pCHOn4ISvyEACdGU" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item" style="position: absolute;">
+                  <img src="https://fastly.picsum.photos/id/547/1500/600.jpg?hmac=BBoXNK1UiWhbpiSaslbFzL8CxqthxjOQgHR8SmEwjaU" class="d-block w-100" alt="...">
+                  
+              </div>
+              <div class="carousel-item">
+                <img src="https://fastly.picsum.photos/id/95/1500/600.jpg?hmac=EkZhCfRZxCGCyL6Y0FtwIT3ghWPWq2lhDrYQ78fZFNU" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="https://fastly.picsum.photos/id/116/1500/600.jpg?hmac=y0O43C2lt6NawMn0-lmPSnRCnTM8E8ALFVocrS3FUyo" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="https://fastly.picsum.photos/id/392/1500/600.jpg?hmac=huImLqxpXBHzc8iGWLfbDHXphBvmKQdVtURInpi0z18" class="d-block w-100" alt="...">
+                <div class="" style="background-color: aqua;"></div>
+              </div>
+            </div>      
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
     </main>
 
     <footer>
