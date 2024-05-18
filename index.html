@@ -4,32 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UVK Cines</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./styles/styles.css">
+
 </head>
 <body>
     <header class="header">
-        <div class="logo-container">
-            <img src="./assets/Logo.png" alt="Logo UVK">
-        </div>
-        <nav class="navbar">
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Cartelera</a></li>
-                <li><a href="#">Cines</a></li>
-                <li><a href="#">Dulcería</a></li>
-            </ul>
-        </nav>
-        <div class="options-container">
-            <div>
-                <img src="./assets/IconSearch.png" alt="">
-                <input type="text" placeholder="Buscar...">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Cartelera</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Cines</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Dulcería</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <img src="./assets/IconUser.png" alt="">
-        </div>
+        </nav>
     </header>
 
     <main>
-        <div></div>
+        <div id="slider-container" class="slider-container">
+            <div class="slider" id="slider">
+                <div class="slider__element slider__element--first">
+                    <section class="section--slider">
+                        <span>Pre-Venta</span>
+                        <h3>DeadPool</h3>
+                        <div>
+                            <p></p>
+                            <a href="">
+                                <img src="" alt="">
+                                <p>COMPRAR</p>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+                <div class="slider__element slider__element--seconds">
+                    <section class="section--slider">
+                        <span>Pre-Venta</span>
+                        <h3>DeadPool</h3>
+                        <div>
+                            <p></p>
+                            <a href="">
+                                <img src="" alt="">
+                                <p>COMPRAR</p>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+                <div class="slider__element slider__element--third">
+                    <section class="section--slider">
+                        <span>Pre-Venta</span>
+                        <h3>DeadPool</h3>
+                        <div>
+                            <p></p>
+                            <a href="">
+                                <img src="" alt="">
+                                <p>COMPRAR</p>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+                <div class="slider__element slider__element--fourth">
+                    <section class="section--slider">
+                        <span>Pre-Venta</span>
+                        <h3>DeadPool</h3>
+                        <div>
+                            <p></p>
+                            <a href="">
+                                <img src="" alt="">
+                                <p>COMPRAR</p>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="slider-buttons">
+            <button id="button-left" class="button">&lt;</button>
+            <button id="button-right" class="button">&gt;</button>
+        </div>
         <section></section>
     </main>
 
@@ -66,5 +130,6 @@
         </div>
         
     </footer>
+
 </body>
 </html>

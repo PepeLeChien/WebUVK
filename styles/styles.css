@@ -22,70 +22,7 @@ body {
     width: 100%;
 }
 
-.header {
-    background-color: rgb(71, 67, 67);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Baloo', Helvetica, sans-serif;
-    height: 80px;
-}
 
-.navbar, .options-container, .logo-container{
-    width: 30%;
-    display: flex;
-    justify-content: center;
-}
-
-.logo-container img {
-    height: 70px;
-}
-
-
-.navbar ul{
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    gap: 30px;
-}
-
-
-.navbar a{
-    text-decoration: none;
-    color: var(--white-style);
-    font-size: 20px;
-    
-}
-
-.options-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: end;
-    padding-right: 40px;
-
-}
-
-.options-container div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-right: 50px;
-    gap: 10px;
-}
-
-.options-container input {
-    background: none;
-    border: none;
-    color: #141414;
-    font-size: 18px;
-    width: 150px;
-}
-
-.options-container input:focus {
-    outline: none;
-
-}
 
 main {
     background-color: var(--primary-orange);
