@@ -33,68 +33,8 @@ body {
 }
 
 .header {
-    background-color: rgb(71, 67, 67);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     font-family: 'Baloo', Helvetica, sans-serif;
-    height: 80px;
-}
-
-.navbar, .options-container, .logo-container{
-    width: 30%;
-    display: flex;
-    justify-content: center;
-}
-
-.logo-container img {
-    height: 70px;
-}
-
-
-.navbar ul{
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    gap: 30px;
-}
-
-
-.navbar a{
-    text-decoration: none;
-    color: var(--white-style);
     font-size: 20px;
-    
-}
-
-.options-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: end;
-    padding-right: 40px;
-
-}
-
-.options-container div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-right: 50px;
-    gap: 10px;
-}
-
-.options-container input {
-    background: none;
-    border: none;
-    color: #141414;
-    font-size: 18px;
-    width: 150px;
-}
-
-.options-container input:focus {
-    outline: none;
-
 }
 
 main {
@@ -190,6 +130,49 @@ main {
 
 
 
+.search-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 50px;
+    gap: 10px;
+}
+
+.login-container2{
+    display: none;
+}
+
+.login-container1{
+    margin-right: 40px;
+}
+.login-container1 img{
+    width: 30px;
+}
+
+.navbar-brand{
+    padding-left: 100px;
+}
+
+
+.navbar-nav{
+    margin: 0 auto;
+    display: flex;
+    gap: 14px;
+}
+
+.d-flex input{
+    background: none;
+    border: none;
+    color: #141414;
+    font-size: 18px;
+    width: 150px;
+}
+
+.d-flex input:focus {
+    outline: none;
+    border: none;
+    background: none;
+}
 
 footer {
     display: flex;
@@ -238,4 +221,25 @@ footer a {
 .img-libro {
     margin-top: 10px;
     width: 150px;
+}
+
+
+@media (max-width: 991.98px) { 
+
+    .login-container2{
+        display: block;
+    }
+
+    .login-container1{
+        display: none;
+    }
+
+    .navbar-nav{
+        gap: 0px;
+    }
+
+    .navbar-brand{
+        margin-right: 0px;
+        padding-left: 0px;
+    }
 }
