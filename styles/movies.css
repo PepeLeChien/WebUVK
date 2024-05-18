@@ -1,1 +1,125 @@
+/* Guardar fuente */
+@font-face {
+    font-family: 'Baloo';
+    src: url(../fonts/Baloo2-Regular.ttf);
+}
 
+/* Guardar variables */
+:root {
+    --primary-red: #E20917;
+    --black-style: #141414;
+    --primary-yellow: #F4B401;
+    --white-style: #FDFDFB;
+    --primary-orange: #FD7E00;
+
+    --primary-border-radius:1.7rem;
+
+}
+
+/* Quitar padding y margin, autoajuste de cajas */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+    
+}
+
+.header {
+    font-family: 'Baloo', Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+main {
+    /* background-color: var(--primary-orange); */
+    height: 1000px;
+
+}
+/* Buttons */
+.button-red,
+.button-yellow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    border-radius: var(--primary-border-radius);
+    gap: 0.5rem; /* Gap separar objetos */ 
+}
+.button-red span,
+.button-yellow span{
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white-style);
+    transition: all 0.4s ease; /* transicion para el crecimiento de letra */
+}
+.button-red{
+    background-color: var(--primary-red);
+    border-color: var(--primary-red);
+}
+.button-red:hover span,
+.button-yellow:hover span {
+    color: var(--white-style);
+    font-size: 1.6rem;
+    
+}
+.button-yellow{
+    background-color: var(--primary-yellow);
+    border-color: var(--primary-yellow);
+}
+
+.button-icon {
+    max-width: 2.5rem;
+}
+/* Fin Buttons */
+/* badge */
+.badge {
+    border-radius: 3rem;
+    padding: 0.5rem 1rem;
+}
+/* fin badge */
+/* Movies */
+.movie{
+    position: relative;
+    border-radius: var(--primary-border-radius);
+    transition: all 0.4s;
+
+}
+.movie img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--primary-border-radius);
+}
+
+.movie .badge {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+}
+.movie .movie-buttons{
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0,0.5);
+    width: 100%;
+    height: 100%;
+    border-radius: 1.7rem;
+    transition: all 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.3rem;
+    opacity: 0;
+}
+.movie:hover .movie-buttons{
+    opacity: 1;
+
+}
+.movie:hover {
+    transform: scale(1.09); /* Crecer*/
+    z-index: 1;
+}
+/* END movies */
