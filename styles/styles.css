@@ -81,22 +81,18 @@ body {
 }
 
 footer {
-    display: flex;
-    flex-direction: row;
     height: auto;
     background-color: var(--black-style);
     color: var(--white-style);
     font-family: 'Baloo', Helvetica, sans-serif;
-    padding: 50px 0 50px 60px;
+    padding: 50px 50px 50px 60px;
 }
 
-footer > div {
-    width: 25%;
 
-}
 
 footer ul {
     list-style: none;
+    padding-left: 0;
 }
 
 footer a {
@@ -147,5 +143,13 @@ footer a {
     .navbar-brand{
         margin-right: 0px;
         padding-left: 0px;
+    }
+
+    h3 {
+        margin-bottom: 1rem !important;
+    }
+
+    footer > div{
+        margin-bottom: 6rem;
     }
 }
