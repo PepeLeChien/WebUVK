@@ -30,7 +30,7 @@ html{
 }
 
 body {
-    width: 100%;
+    width: 100%;   
     font-size: 16px;
     font-family: 'Baloo', Helvetica, sans-serif;
 }
@@ -80,7 +80,9 @@ body {
     background: none;
 }
 
-footer {
+
+footer{
+    width: 100%;
     height: auto;
     background-color: var(--black-style);
     color: var(--white-style);
@@ -90,12 +92,12 @@ footer {
 
 
 
-footer ul {
+.footer-container ul {
     list-style: none;
     padding-left: 0;
 }
 
-footer a {
+.footer-container a {
     font-weight: 200;
     font-size: 14px;
     color: var(--white-style);
@@ -149,7 +151,7 @@ footer a {
         margin-bottom: 1rem !important;
     }
 
-    footer > div{
+    .footer-container > div{
         margin-bottom: 6rem;
     }
 }
