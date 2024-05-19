@@ -34,6 +34,50 @@ body {
     font-size: 16px;
     font-family: 'Baloo', Helvetica, sans-serif;
 }
+/* Buttons */
+.button-red,
+.button-yellow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    border-radius: var(--primary-border-radius);
+    gap: 0.5rem; /* Gap separar objetos */ 
+}
+.button-red span,
+.button-yellow span{
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white-style);
+    transition: all 0.4s ease; /* transicion para el crecimiento de letra */
+}
+.button-red{
+    background-color: var(--primary-red) !important;
+    border-color: var(--primary-red) !important;
+}
+
+.button-yellow{
+    background-color: var(--primary-yellow) !important;
+    border-color: var(--primary-yellow) !important;
+}
+
+.button-icon {
+    max-width: 2.5rem;
+}
+/* hoverButtons */
+.button-red:hover span,
+.button-yellow:hover span {
+    color: var(--white-style);
+    font-size: 1.6rem;
+}
+/* Fin Buttons */
+
+/* badge */
+.badge {
+    border-radius: 3rem;
+    padding: 0.5rem 1rem;
+}
+/* fin badge */
 
 
 .search-container{

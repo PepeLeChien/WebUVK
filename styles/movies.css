@@ -38,48 +38,7 @@ main {
     height: 1000px;
 
 }
-/* Buttons */
-.button-red,
-.button-yellow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-    border-radius: var(--primary-border-radius);
-    gap: 0.5rem; /* Gap separar objetos */ 
-}
-.button-red span,
-.button-yellow span{
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--white-style);
-    transition: all 0.4s ease; /* transicion para el crecimiento de letra */
-}
-.button-red{
-    background-color: var(--primary-red);
-    border-color: var(--primary-red);
-}
-.button-red:hover span,
-.button-yellow:hover span {
-    color: var(--white-style);
-    font-size: 1.6rem;
-    
-}
-.button-yellow{
-    background-color: var(--primary-yellow);
-    border-color: var(--primary-yellow);
-}
 
-.button-icon {
-    max-width: 2.5rem;
-}
-/* Fin Buttons */
-/* badge */
-.badge {
-    border-radius: 3rem;
-    padding: 0.5rem 1rem;
-}
-/* fin badge */
 /* Movies */
 .movie{
     position: relative;

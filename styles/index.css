@@ -106,37 +106,3 @@ h3 > span {
     transform: scale(1.24); /* Crecer*/
     z-index: 1;
 }
-
-/* Buttons */
-.button-red,
-.button-yellow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-    border-radius: var(--primary-border-radius);
-    gap: 0.5rem; /* Gap separar objetos */ 
-}
-.button-red span,
-.button-yellow span{
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--white-style);
-}
-.button-red{
-    background-color: var(--primary-red);
-    border-color: var(--primary-red);
-}
-.button-red:hover span,
-.button-yellow:hover span {
-    color: var(--white-style);
-    
-}
-.button-yellow{
-    background-color: var(--primary-yellow);
-    border-color: var(--primary-yellow);
-}
-
-.button-icon {
-    max-width: 2.5rem;
-}
