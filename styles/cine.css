@@ -1,0 +1,118 @@
+/* Cines */
+
+body{
+    background: linear-gradient(0deg, rgba(9,9,9,1) 0%, rgba(42,42,50,1) 78%);
+}
+
+:root {
+    --white-style: #FDFDFB;
+}
+
+.cine{
+    position: relative;
+    border-radius: var(--primary-border-radius);
+    transition: all 0.4s;
+    color: var(--white-style)
+
+}
+
+.cine .cine-buttons{
+    position: absolute;
+    top: 0;
+    background-color:#333 ;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.7rem;
+    transition: all 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.3rem;
+    opacity: 0;
+
+}
+.cine:hover .cine-buttons{
+    opacity: 1;
+    transform: scale(1.09); /* Crecer*/
+    z-index: 1;
+
+}
+.container-cine{
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: linear-gradient(to bottom, #FF1D24, #E4131A, #8A1216);
+    color: var(--white-style);
+}
+
+/* END cines */
+
+/*header*/
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo-container img {
+    width: 80px;
+    height: 60px;
+}
+
+.navbar {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.navbar-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-item {
+    margin: 0 15px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--white-style);
+    font-size: 18px;
+}
+
+.nav-link:hover {
+    color: #FF1D24; /* Ajusta el color del hover según sea necesario */
+}
+
+.search-login-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.search-container img {
+    margin-right: 10px;
+}
+
+.search-container input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.login-container img {
+    width: 30px;
+    height: 30px;
+}
+ /* Ends header*/
