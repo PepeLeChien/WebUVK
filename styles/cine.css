@@ -71,11 +71,13 @@ body{
     align-items: center;
 }
 
+
+/* OMITO ESTA PARTE PARA QUE NO CHOQUE CON LOS ESTILOS GENERALES *Styles.css */
 /* END cines */
 
 /*header*/
 
-.header {
+/* .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -111,7 +113,7 @@ body{
 }
 
 .nav-link:hover {
-    color: #FF1D24; /* Ajusta el color del hover según sea necesario */
+    color: #FF1D24; Ajusta el color del hover según sea necesario 
 }
 
 .search-login-container {
@@ -138,5 +140,5 @@ body{
 .login-container img {
     width: 30px;
     height: 30px;
-}
+} */
  /* Ends header*/

@@ -278,9 +278,9 @@ footer{
 
 /* Estilos para tabletas (ancho máximo de 768px) */
 @media (max-width: 768px) {
-    .redes-container img-redes{
+    /* .redes-container img-redes{
 
-    }
+    } */
 }
 
 /* Estilos para celulares (ancho máximo de 480px) */
