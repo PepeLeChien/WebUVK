@@ -47,6 +47,8 @@ body{
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     background: linear-gradient(to bottom, #FF1D24, #E4131A, #8A1216);
     color: var(--white-style);
+    top: 461px;
+    left: 308px;
 }
 
 .container-cine img {
