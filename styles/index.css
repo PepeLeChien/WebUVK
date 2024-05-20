@@ -25,3 +25,10 @@
 .sub-title{
     margin-bottom: 40px;
 }
+
+/* Estilos para celulares (ancho máximo de 480px) */
+@media (max-width: 480px) {
+    .main-container{
+        padding: 20px 10px;  
+    }
+}
