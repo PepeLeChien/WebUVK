@@ -39,12 +39,34 @@ body{
 
 }
 .container-cine{
+    width: 80%; 
+    max-width: 1368px;
+    margin: 0 auto 40px;
     padding: 20px;
-    margin-bottom: 20px;
     border-radius: 30px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     background: linear-gradient(to bottom, #FF1D24, #E4131A, #8A1216);
     color: var(--white-style);
+}
+
+.container-cine img {
+    max-width: 100%; 
+    height: auto;
+    align-items: center;
+}
+
+.container-cine .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.container-cine .col-md-6 {
+    flex: 0 0 50%; /* Divide la fila en dos columnas */
+    max-width: 50%; /* Asegura que cada columna tome la mitad del ancho */
+    padding: 10px; /* Ajusta el espaciado entre las columnas */
+    box-sizing: border-box; /* Incluye el padding en el ancho de la columna */
+    align-items: center;
 }
 
 /* END cines */
