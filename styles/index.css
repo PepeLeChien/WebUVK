@@ -26,9 +26,14 @@
     margin-bottom: 40px;
 }
 
-/* Estilos para celulares (ancho máximo de 480px) */
-@media (max-width: 480px) {
-    .main-container{
-        padding: 20px 10px;  
+@media (max-width: 991.98px) {
+    .movies {
+        margin-bottom: 50px;
     }
+    .main-container {
+        padding: 5rem 2rem 2rem;
+    }
+    
 }
+
+

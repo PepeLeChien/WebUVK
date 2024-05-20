@@ -196,6 +196,10 @@ footer{
     padding: 50px 50px 50px 60px;
 }
 
+.footer-container {
+    padding-left: 4rem;
+}
+
 .footer-container h3{
     font-size: 2.5rem;
     font-weight: 900;
@@ -261,6 +265,10 @@ footer{
 
     h3 {
         margin-bottom: 1rem !important;
+    }
+
+    .footer-container {
+        padding-left: 0;
     }
 
     .footer-container > div{
