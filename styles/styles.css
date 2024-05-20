@@ -192,6 +192,11 @@ footer{
     padding: 50px 50px 50px 60px;
 }
 
+.footer-container h3{
+    font-size: 2.5rem;
+    font-weight: 900;
+
+}
 
 
 .footer-container ul {
@@ -204,6 +209,7 @@ footer{
     font-size: 14px;
     color: var(--white-style);
     height: 35px;
+
 
 }
 
@@ -256,4 +262,40 @@ footer{
     .footer-container > div{
         margin-bottom: 6rem;
     }
+}
+
+/* Estilos para tabletas (ancho máximo de 768px) */
+@media (max-width: 768px) {
+    .redes-container img-redes{
+
+    }
+}
+
+/* Estilos para celulares (ancho máximo de 480px) */
+@media (max-width: 480px) {
+    .badge {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.3rem;
+    }
+    .movie .badge{
+        left: 5% !important;
+        top: 6%;
+    }
+
+    .button-red span,
+    .button-yellow span{
+        font-size: 1rem;   
+    }
+
+    .button-icon {
+        max-width: 1rem;
+    }
+    .movie .button-red,
+    .movie .button-yellow {
+        width: 70%;
+}
+    .redes-container .img-redes{
+        max-width: 2rem;
+    }
+
 }
