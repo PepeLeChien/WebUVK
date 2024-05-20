@@ -192,6 +192,10 @@ footer{
     padding: 50px 50px 50px 60px;
 }
 
+.footer-container {
+    padding-left: 4rem;
+}
+
 .footer-container h3{
     font-size: 2.5rem;
     font-weight: 900;
@@ -259,6 +263,10 @@ footer{
         margin-bottom: 1rem !important;
     }
 
+    .footer-container {
+        padding-left: 0;
+    }
+
     .footer-container > div{
         margin-bottom: 6rem;
     }
@@ -266,9 +274,9 @@ footer{
 
 /* Estilos para tabletas (ancho máximo de 768px) */
 @media (max-width: 768px) {
-    .redes-container img-redes{
+    /* .redes-container img-redes{
 
-    }
+    } */
 }
 
 /* Estilos para celulares (ancho máximo de 480px) */
