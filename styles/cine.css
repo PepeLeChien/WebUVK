@@ -21,22 +21,7 @@ body{
     font-weight: 700;
     padding-left: 20px; 
 }
-.cine .cine-buttons{
-    position: absolute;
-    top: 0;
-    background-color:#333 ;
-    width: 100%;
-    height: 100%;
-    border-radius: 1.7rem;
-    transition: all 0.5s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.3rem;
-    opacity: 0;
 
-}
 .cine:hover .cine-buttons{
     opacity: 1;
     transform: scale(1.09); /* Crecer*/
@@ -60,6 +45,7 @@ body{
     max-width: 100%; 
     height: auto;
     align-items: center;
+    border-radius: 30px;
 }
 
 .container-cine .row {
@@ -68,7 +54,7 @@ body{
     align-items: center;
 }
 
-.container-cine .col-md-6 {
+.container-cine .direccion-cine {
     flex: 0 0 50%; /* Divide la fila en dos columnas */
     max-width: 50%; /* Asegura que cada columna tome la mitad del ancho */
     padding: 10px; /* Ajusta el espaciado entre las columnas */
