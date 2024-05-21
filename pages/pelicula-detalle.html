@@ -13,13 +13,13 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="stylesheet" href="../styles/cartelera.css">
+    <link rel="stylesheet" href="../styles/pelicula-detalle.css">
 
 
 </head>
 
 <body>
-    <header class="header">
+    <header class="header fixed-top">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <div class="login-container2">
@@ -62,110 +62,116 @@
 
     <main>
         <!-- trailer video -->
-        <section>
-            <div> <!-- agregar función js -->
-                <img src="../assets/img_portadas/portada1.png" alt="Tráiler">
-                <h1>Deapool</h1>
-                <div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, quis voluptatibus minima qui illum incidunt voluptatem.</p>
-                    <div>
-                        <button class="btn button-red" href=""> <!-- comprar html -->
-                            <img class="button-icon" src="../assets/svg/comprar.svg" alt="">
-                            <span>Comprar</span>
-                        </button>
-                        <button class="btn button-red" href=""> <!-- comprar html -->
-                            <img class="button-icon" src="../assets/svg/VerTrailer.svg" alt="">
-                            <span>Ver trailer</span>
-                        </button>
-                    </div>                  
+        <section class="detail-movie">
+            <div class="detail-movie-cover"> <!-- agregar función js -->
+                <img class="cover" src="../assets/img_portadas/portada3.jpg" alt="Tráiler">
+                <div class="detail-movie-container">
+                    <h1 class="cover-title">Deapool</h1>
+                    <div class="detail-movie-content">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, quis voluptatibus minima qui
+                            illum incidunt voluptatem.</p>
+                        <div class="d-flex gap-5">
+                            <button class="btn button-red" href=""> <!-- comprar html -->
+                                <img class="button-icon" src="../assets/svg/comprar.svg" alt="">
+                                <span>Comprar</span>
+                            </button>
+                            <button class="btn button-red" href=""> <!-- comprar html -->
+                                <img class="button-icon" src="../assets/svg/VerTrailer.svg" alt="">
+                                <span>Ver trailer</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="video-container" id="videoContainer">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/UzFZR2dRsSY?si=hwNv_3d07IPlz5kg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="video-container d-none" id="videoContainer">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/UzFZR2dRsSY?si=hwNv_3d07IPlz5kg"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
             <!-- fin trailer video -->
         </section>
-            <div class="container">
-                <div class="row" style="background-color: bisque;">
-                    <div>
-                        <h3>Elige una fecha</h3>
-                        <p>Mayo</p>
-                        <ul>
-                            <li>
-                                <p>07</p>
-                                <span>Martes</span>
-                            </li>
-                            <li>
-                                <p>07</p>
-                                <span>Martes</span>
-                            </li>
-                            <li>
-                                <p>07</p>
-                                <span>Martes</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3"> 
-                        <!-- Agregar filtros -->
-                    </div>
-
-                    <!-- ticket -->
-                    <div class="col-lg-9 d-flex" style="background-color: beige;">
-                        <div>
-                            <div>
-                                <div>
-                                    <h3>Deadpool3</h3>
-                                    <p>Hoy 08 de Mayo</p>
-                                </div>
-                                <div>
-                                    <div>
-                                        <h5>Sala</h5>
-                                        <p>Sala 1</p>
-                                    </div>
-                                    <div>
-                                        <h5>Sala</h5>
-                                        <p>Sala 1</p>
-                                    </div>
-                                    <div>
-                                        <h5>Sala</h5>
-                                        <p>Sala 1</p>
-                                    </div>
-                                    <div>
-                                        <h5>Sala</h5>
-                                        <p>Sala 1</p>
-                                    </div>
-                                    <div>
-                                        <h5>Sala</h5>
-                                        <p>Sala 1</p>
-                                    </div>
-                                    <div>
-                                        <h5>Sala</h5>
-                                        <p>Sala 1</p>
-                                    </div>
-                                </div>
-                                <img src="../assets/svg/comprar.svg" alt="">
-                            </div>
-                            <div>
-                                <div>
-                                    <h3>Total: </h3>
-                                    <p>----</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <button class="btn button-red" href=""> <!-- comprar html -->
-                                <img class="button-icon" src="../assets/svg/comprar.svg" alt="">
-                                <span>Siguiente</span>
-                            </button>
-                        </div>
-                        <!-- END ticket -->
-                    </div>
+        <div class="container">
+            <div class="row" style="background-color: bisque;">
+                <div>
+                    <h3>Elige una fecha</h3>
+                    <p>Mayo</p>
+                    <ul>
+                        <li>
+                            <p>07</p>
+                            <span>Martes</span>
+                        </li>
+                        <li>
+                            <p>07</p>
+                            <span>Martes</span>
+                        </li>
+                        <li>
+                            <p>07</p>
+                            <span>Martes</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <!-- Agregar filtros -->
+                </div>
+
+                <!-- ticket -->
+                <div class="col-lg-9 d-flex" style="background-color: beige;">
+                    <div>
+                        <div>
+                            <div>
+                                <h3>Deadpool3</h3>
+                                <p>Hoy 08 de Mayo</p>
+                            </div>
+                            <div>
+                                <div>
+                                    <h5>Sala</h5>
+                                    <p>Sala 1</p>
+                                </div>
+                                <div>
+                                    <h5>Sala</h5>
+                                    <p>Sala 1</p>
+                                </div>
+                                <div>
+                                    <h5>Sala</h5>
+                                    <p>Sala 1</p>
+                                </div>
+                                <div>
+                                    <h5>Sala</h5>
+                                    <p>Sala 1</p>
+                                </div>
+                                <div>
+                                    <h5>Sala</h5>
+                                    <p>Sala 1</p>
+                                </div>
+                                <div>
+                                    <h5>Sala</h5>
+                                    <p>Sala 1</p>
+                                </div>
+                            </div>
+                            <img src="../assets/svg/comprar.svg" alt="">
+                        </div>
+                        <div>
+                            <div>
+                                <h3>Total: </h3>
+                                <p>----</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn button-red" href=""> <!-- comprar html -->
+                            <img class="button-icon" src="../assets/svg/comprar.svg" alt="">
+                            <span>Siguiente</span>
+                        </button>
+                    </div>
+                    <!-- END ticket -->
+                </div>
+            </div>
+        </div>
         <section>
-            
+
         </section>
     </main>
     <footer>
@@ -197,11 +203,12 @@
                 <ul>
                     <li><a href="">Términos y Condiciones</a></li>
                     <li><a href="">Políticas de Privacidad</a></li>
-                    <li><a href=""><img class="img-libro" src="../assets/LibroReclamaciones.png" alt="Libro de Reclamaciones Logo"></a></li>
+                    <li><a href=""><img class="img-libro" src="../assets/LibroReclamaciones.png"
+                                alt="Libro de Reclamaciones Logo"></a></li>
                 </ul>
             </div>
         </div>
-        
+
     </footer>
 
 
