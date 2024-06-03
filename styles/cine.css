@@ -8,6 +8,13 @@ body{
     --white-style: #FDFDFB;
 }
 
+.title-primary{
+    color: var(--white-style);
+    font-size: 50px;
+    font-weight: 700;
+    padding-left: 20px; 
+}
+
 .cine{
     position: relative;
     border-radius: var(--primary-border-radius);
@@ -70,6 +77,49 @@ body{
     box-sizing: border-box; /* Incluye el padding en el ancho de la columna */
     align-items: center;
 }
+
+
+.container-cine .direccion-cine {
+    flex: 0 0 50%; /* Divide la fila en dos columnas */
+    max-width: 50%; /* Asegura que cada columna tome la mitad del ancho */
+    padding: 40px; /* Ajusta el espaciado entre las columnas */
+    box-sizing: border-box; /* Incluye el padding en el ancho de la columna */
+    align-items: center;
+   
+}
+
+.container-button-cine {
+
+    display: inline-block; 
+    padding: 5px 10px; /* Espaciado interno del botón */
+    background-color: var(--primary-yellow); 
+    color: var(--white-style); /* Color del texto */
+    text-decoration: none; 
+    border-radius: 10px; 
+    border: none; /* Quitar borde */
+    cursor: pointer; 
+}
+
+.container-button-cine:hover {
+    /* Estilos cuando se pasa el cursor sobre el botón */
+    background-color: var(--black-style); /* Cambiar color de fondo al pasar el cursor */
+}
+
+.container-cine img {
+    max-width: 100%; 
+    height: auto;
+    float: right;
+    border-radius: 30px;
+}
+
+.container-cine .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+   
+}
+
 
 
 /* OMITO ESTA PARTE PARA QUE NO CHOQUE CON LOS ESTILOS GENERALES *Styles.css */
