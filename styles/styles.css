@@ -37,7 +37,7 @@ body {
     width: 100%;   
     font-size: 16px;
     font-family: 'Baloo', Helvetica, sans-serif;
-    background: rgb(9,9,9);
+    /* background: rgb(9,9,9); */
     background: linear-gradient(0deg, rgba(9,9,9,1) 0%, rgba(42,42,50,1) 78%);
 }
 
@@ -284,7 +284,70 @@ footer{
 }
 /* END movies */
 
+/* Filters */
+.filters{
+    background-color: #232324;
+    border-radius: 3rem;
+    color: var(--white-style);
+    padding: 4rem 6rem;
+}
+.filters p,
+.filters h3 {
+    margin: 0;
+}
+.filters-content li{
+    list-style-type: none;
+}
+.filter-li{
+    border-bottom: 1px solid #ccc; 
+    margin: 3rem 0;
+}
+.filters-content .filter-body li{
+     margin: 1rem;
+}
 
+.filters-content .filter-body  input[type="radio"] {
+    display: none;
+}
+
+.filters-content .filter-body input[type="radio"]:checked + label {
+    color: var(--primary-yellow); 
+}
+
+.filters-content .filter-body label {
+    cursor: pointer;
+}
+
+/* Toggles */
+.toggle-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
+
+.toggle-content.show {
+    max-height: 1000px; /* Ajusta este valor según el contenido esperado */
+    transition: max-height 0.5s ease-in;
+}
+
+.toggle-title {
+    cursor: pointer;
+}
+
+.toggle-title .fa-minus {
+    display: none;
+}
+
+.toggle-title.open .fa-plus {
+    display: none;
+}
+
+.toggle-title.open .fa-minus {
+    display: inline-block;
+}
+.fa-icon {
+    width: 2rem;
+}
 
 
 
