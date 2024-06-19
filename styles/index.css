@@ -1,4 +1,21 @@
 
+
+
+
+
+
+body{
+    background: rgb(9,9,9);
+    background: linear-gradient(0deg, rgba(9,9,9,1) 0%, rgba(42,42,50,1) 78%);
+}
+
+
+.main-container{
+    height: auto; 
+    padding: 80px 100px;  
+}
+
+
 /* Modificando los botones del carrusel */
 .carousel-indicators button{
     width: 15px !important;
@@ -12,12 +29,8 @@
 }
 
 
-.main-container{
-    height: auto; 
-    padding: 80px 100px;  
-    background: rgb(9,9,9);
-    background: linear-gradient(0deg, rgba(9,9,9,1) 0%, rgba(42,42,50,1) 78%);
-}
+
+/* Estilos generales acoplados */
 
 .movies, .releases {
     margin-bottom: 100px;
@@ -26,9 +39,14 @@
     margin-bottom: 40px;
 }
 
-/* Estilos para celulares (ancho máximo de 480px) */
-@media (max-width: 480px) {
-    .main-container{
-        padding: 20px 10px;  
+@media (max-width: 991.98px) {
+    .movies {
+        margin-bottom: 50px;
     }
+    .main-container {
+        padding: 5rem 2rem 2rem;
+    }
+    
 }
+
+

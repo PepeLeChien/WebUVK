@@ -37,9 +37,129 @@ body {
     width: 100%;   
     font-size: 16px;
     font-family: 'Baloo', Helvetica, sans-serif;
+    /* background: rgb(9,9,9); */
+    background: linear-gradient(0deg, rgba(9,9,9,1) 0%, rgba(42,42,50,1) 78%);
 }
 
-/* sub títulos */
+
+/* HEADER */
+.header{
+    background-color: rgb(0 0 0/40%);
+}
+
+.search-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 50px;
+    gap: 10px;
+}
+
+.navbar-brand{
+    padding-left: 100px;
+}
+.navbar-nav{
+    margin: 0 auto;
+    display: flex;
+    gap: 14px;
+}
+
+
+.login-container2{
+    display: none;
+}
+.login-container1{
+    margin-right: 40px;
+}
+.login-container1 img{
+    width: 30px;
+}
+
+
+.d-flex input{
+    background: none;
+    border: none;
+    color: #141414;
+    font-size: 18px;
+    width: 150px;
+}
+.d-flex input:focus {
+    outline: none;
+    border: none;
+    background: none;
+}
+
+/* END HEADER */
+
+
+
+
+
+
+
+/* FOOTER */
+
+footer{
+    width: 100%;
+    height: auto;
+    background-color: var(--black-style);
+    color: var(--white-style);
+    font-family: 'Baloo', Helvetica, sans-serif;
+    padding: 50px 50px 50px 60px;
+}
+
+.footer-container {
+    padding-left: 4rem;
+}
+
+.footer-container h3{
+    font-size: 2.5rem;
+    font-weight: 900;
+}
+
+.footer-container ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-container a {
+    font-weight: 200;
+    font-size: 14px;
+    color: var(--white-style);
+    height: 35px;
+}
+
+.redes-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.redes-container > img {
+    width: 8rem;
+}
+
+.redes-container div {
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.img-libro {
+    margin-top: 10px;
+    width: 150px;
+}
+
+/* END FOOTER */
+
+
+
+
+
+
+
+/* subtitles */
 .sub-title {
     color: var(--white-style);
     font-size: 30px;
@@ -50,15 +170,20 @@ body {
     background-color: var(--primary-red);
 }
 
+
+
+
+
+
 /* Buttons */
 .button-red,
 .button-yellow {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50%;
     border-radius: var(--primary-border-radius);
     gap: 0.5rem; /* Gap separar objetos */ 
+    color: var(--white-style);
 }
 .button-red span,
 .button-yellow span{
@@ -80,13 +205,26 @@ body {
 .button-icon {
     max-width: 2.5rem;
 }
+
+
+
+
+
 /* hoverButtons */
 .button-red:hover span,
 .button-yellow:hover span {
     color: var(--white-style);
     font-size: 1.6rem;
 }
+
 /* Fin Buttons */
+
+
+
+
+
+
+
 
 /* badge */
 .badge {
@@ -94,6 +232,10 @@ body {
     padding: 0.5rem 1rem;
 }
 /* fin badge */
+
+
+
+
 
 /* Movies */
 .movie{
@@ -129,6 +271,9 @@ body {
     gap: 1.3rem;
     opacity: 0;
 }
+.movie .movie-buttons .btn{
+    width: 50%;
+}
 .movie:hover .movie-buttons{
     opacity: 1;
 
@@ -139,102 +284,74 @@ body {
 }
 /* END movies */
 
-.search-container{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-right: 50px;
-    gap: 10px;
+/* Filters */
+.filters{
+    background-color: #232324;
+    border-radius: 3rem;
+    color: var(--white-style);
+    padding: 4rem 6rem;
+}
+.filters p,
+.filters h3 {
+    margin: 0;
+}
+.filters-content li{
+    list-style-type: none;
+}
+.filter-li{
+    border-bottom: 1px solid #ccc; 
+    margin: 3rem 0;
+}
+.filters-content .filter-body li{
+     margin: 1rem;
 }
 
-.login-container2{
+.filters-content .filter-body  input[type="radio"] {
     display: none;
 }
 
-.login-container1{
-    margin-right: 40px;
-}
-.login-container1 img{
-    width: 30px;
+.filters-content .filter-body input[type="radio"]:checked + label {
+    color: var(--primary-yellow); 
 }
 
-.navbar-brand{
-    padding-left: 100px;
+.filters-content .filter-body label {
+    cursor: pointer;
 }
 
-
-.navbar-nav{
-    margin: 0 auto;
-    display: flex;
-    gap: 14px;
+/* Toggles */
+.toggle-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
 }
 
-.d-flex input{
-    background: none;
-    border: none;
-    color: #141414;
-    font-size: 18px;
-    width: 150px;
+.toggle-content.show {
+    max-height: 1000px; /* Ajusta este valor según el contenido esperado */
+    transition: max-height 0.5s ease-in;
 }
 
-.d-flex input:focus {
-    outline: none;
-    border: none;
-    background: none;
+.toggle-title {
+    cursor: pointer;
 }
 
-footer{
-    width: 100%;
-    height: auto;
-    background-color: var(--black-style);
-    color: var(--white-style);
-    font-family: 'Baloo', Helvetica, sans-serif;
-    padding: 50px 50px 50px 60px;
+.toggle-title .fa-minus {
+    display: none;
 }
 
-.footer-container h3{
-    font-size: 2.5rem;
-    font-weight: 900;
+.toggle-title.open .fa-plus {
+    display: none;
+}
 
+.toggle-title.open .fa-minus {
+    display: inline-block;
+}
+.fa-icon {
+    width: 2rem;
 }
 
 
-.footer-container ul {
-    list-style: none;
-    padding-left: 0;
-}
 
-.footer-container a {
-    font-weight: 200;
-    font-size: 14px;
-    color: var(--white-style);
-    height: 35px;
-
-
-}
-
-.redes-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.redes-container > img {
-    width: 80px;
-}
-
-.redes-container div {
-    height: auto;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.img-libro {
-    margin-top: 10px;
-    width: 150px;
-}
-
+/* ESTILOS PARA PANTALLAS MEDIANAS Y PEQUEÑAS */
 
 @media (max-width: 991.98px) { 
 
@@ -259,6 +376,10 @@ footer{
         margin-bottom: 1rem !important;
     }
 
+    .footer-container {
+        padding-left: 0;
+    }
+
     .footer-container > div{
         margin-bottom: 6rem;
     }
@@ -266,9 +387,9 @@ footer{
 
 /* Estilos para tabletas (ancho máximo de 768px) */
 @media (max-width: 768px) {
-    .redes-container img-redes{
+    /* .redes-container img-redes{
 
-    }
+    } */
 }
 
 /* Estilos para celulares (ancho máximo de 480px) */
@@ -292,7 +413,7 @@ footer{
     }
     .movie .button-red,
     .movie .button-yellow {
-        width: 70%;
+        width: 70% !important;
 }
     .redes-container .img-redes{
         max-width: 2rem;

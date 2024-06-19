@@ -1,6 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
 
+<!DOCTYPE html>
+
+<html>
 <head>
 
     <meta charset="UTF-8">
@@ -67,14 +68,16 @@
                 <div class="row mb-5">
                     <!-- Titulo -->
                     <div class="col-3">
-                        <h1 class="sub-title"><span>&nbsp Peli</span>culas</h1>
+                        <h1 class="sub-title"><span>&nbsp Dul</span>cería</h1>
                     </div>
                     <!-- end Titulo  -->
 
                     <!-- Botones de En cartelera y proximos estrenos -->
                     <div class="col-9 d-flex align-items-center container-buttons-cartelera">
-                        <a class="button-secondary mx-2 active">En cartelera</a>
-                        <a class="button-secondary mx-2">Próximos estrenos</a>
+                        <a class="button-secondary mx-2 active">Combos</a>
+                        <a class="button-secondary mx-2">Bebidas</a>
+                        <a class="button-secondary mx-2">Golosinas</a>
+                        <a class="button-secondary mx-2">Promocional</a>
                     </div>
                     <!-- End Botones -->
 
@@ -85,84 +88,80 @@
                     <div class="filters col-lg-3 col-md-12">
                         <!-- columna -->
 
-                        <div class="filters-header d-flex align-items-center gap-4"> <!--  title filters -->
+                        <div class="filters-header d-flex align-items-center"> <!--  title filters -->
                             <img src="../assets/svg/IconFilter.svg" alt="IconFilter">
                             <h3>Filtrar por:</h3>
                         </div>
 
                         <div class="filters-content"> <!-- contiene todos los filtros -->
-                            <ul class="p-0 my-4"> <!-- contiene la lista filtros -->
+                            <ul> <!-- contiene la lista filtros -->
                                 <!-- filtro 1 -->
-                                <li class="filter-li">
-                                    <div
-                                        class="filter-title toggle-title d-flex align-items-center justify-content-between">
-                                        <!--  nombre del filtro -->
-                                        <div class="d-flex gap-4">
-                                            <img src="../assets/svg/location.svg" alt="icono">
-                                            <p>Ciudad</p>
-                                        </div>
-                                        <img class="fa-icon fa-plus" src="../assets/svg/mas.svg" alt="icono">
-                                        <img class="fa-icon fa-minus" src="../assets/svg/minus.svg" alt="icono">
+                                <li>
+                                    <div class="filter-title"> <!--  nombre del filtro -->
+                                        <img src="../assets/svg/location.svg" alt="icono">
+                                        <p>Ciudad</p>
+                                        <img src="../assets/svg/mas.svg" alt="icono">
                                     </div>
-                                    <div class="filter-body toggle-content ">
-                                        <!-- Contenido del filtro (expandir filtro) -->
+                                    <div class="filter-body"> <!-- Contenido del filtro (expandir filtro) -->
                                         <ul>
                                             <li>
-                                                <input type="radio" name="city" id="city-lima" value="Lima">
-                                                <label for="city-lima">Lima</label>
+                                                <label for="">
+                                                    <input type="radio" name="city" value="Lima">Lima
+                                                </label>
                                             </li>
                                             <li>
-                                                <input type="radio" name="city" id="city-abancay" value="Abancay">
-                                                <label for="city-abancay">Abancay</label>
+                                                <label for="">
+                                                    <input type="radio" name="city" value="Abancay">Abancay
+                                                </label>
                                             </li>
                                         </ul>
                                     </div>
                                 </li>
                                 <!-- END filtro 1 -->
-
-                                <li class="filter-li">
-                                    <div
-                                        class="filter-title toggle-title d-flex align-items-center justify-content-between">
-                                        <!--  nombre del filtro -->
-                                        <div class="d-flex gap-4">
-                                            <img src="../assets/svg/location.svg" alt="icono">
-                                            <p>Cine</p>
-                                        </div>
-                                        <img class="fa-icon fa-plus" src="../assets/svg/mas.svg" alt="icono">
-                                        <img class="fa-icon fa-minus" src="../assets/svg/minus.svg" alt="icono">
+                                <!-- filtro 2 -->
+                                <li>
+                                    <div class="filter-title"> <!--  nombre del filtro -->
+                                        <img src="../assets/svg/location.svg" alt="icono">
+                                        <p>Cine</p>
+                                        <img src="../assets/svg/mas.svg" alt="icono">
                                     </div>
-                                    <div class="filter-body toggle-content ">
-                                        <!-- Contenido del filtro (expandir filtro) -->
+                                    <div class="filter-body"> <!-- Contenido del filtro (expandir filtro) -->
                                         <ul>
                                             <li>
-                                                <input type="radio" name="cine" id="cine-lima" value="CP Lima">
-                                                <label for="cine-lima">CP Lima</label>
+                                                <label for="">
+                                                    <input type="radio" name="cine" value="Agustino">UVK Agustino
+                                                </label>
                                             </li>
                                             <li>
-                                                <input type="radio" name="cine" id="cine-abancay" value="CP Abancay">
-                                                <label for="cine-abancay">CP Abancay</label>
+                                                <label for="">
+                                                    <input type="radio" name="cine" value="Ilo">UVK Ilo
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="">
+                                                    <input type="radio" name="cine" value="Panorama">UVK Platino Panorama
+                                                </label>
                                             </li>
                                         </ul>
                                     </div>
                                 </li>
-                                <!-- END filtro 1 -->
-
+                                <!-- END filtro 2 -->
                             </ul>
 
                         </div>
                     </div>
                     <!-- END filters -->
 
-                    <!-- movies -->
+                    <!-- Combos -->
                     <div class="col-lg-9 col-md-12 p-5">
                         <div class="row">
-                            <!-- Pelicula 1 -->
+                            <!-- Combo 1 -->
                             <div class="col-lg-4 col-6 p-lg-5 p-2">
 
                                 <div class="movie">
-                                    <span class="badge bg-warning text-dark">Estreno</span>
+                                    <span class="badge bg-warning text-dark">Mix</span>
                                     <!-- Bootrap etiqueta Estreno -->
-                                    <img src="../assets/img_cartelera/Pelicula.png" alt="pelicula">
+                                    <img src="../assets/Img_dulceria/combo1.png" alt="pelicula">
 
                                     <div class="movie-buttons"> <!-- Div para botones dentro de la pelicula -->
 
@@ -170,24 +169,33 @@
                                             <img class="button-icon" src="../assets/svg/comprar.svg" alt="">
                                             <span>Comprar</span>
                                         </a>
-
-                                        <a class="btn button-yellow" href="../pages/pelicula-detalle.html">
-                                            <!-- Detalles html -->
-                                            <img class="button-icon" src="../assets/svg/detalles.svg" alt="icon">
-                                            <span>Detalles</span>
-                                        </a>
                                     </div>
-
                                 </div>
+
+                                <br>
+                                    <h1 class="product-price" style="color: #F4B401; text-align: center;"> <!-- precio del producto 1-->
+                                        S/.100
+                                    </h1>
+                                    <h1 class="product-name" style="color: white; text-align: center;"> <!-- nombre del producto 1-->
+                                        Combo Maxi
+                                    </h1> 
+
+                                    <h3 class="product-description" style="color: white; text-align: center;"> <!-- desc del producto 1-->
+                                        Canchita Gigante Mixta + 1 Bebida (32oz) + 1 vaso Garfield.
+                                    </h3>
+                                    <h4 class="product-description" style="color: white; text-align: center;">
+                                        <b> *Sabor bebida y modelo de vaso Garfield sujetos a stock. Canchita sin refill </b>
+                                    </h4>
+                                
                             </div>
 
-                            <!-- Pelicula 2 -->
+                            <!-- Combo 2 -->
                             <div class="col-lg-4 col-6 p-lg-5 p-2">
 
                                 <div class="movie">
-                                    <span class="badge bg-warning text-dark">Estreno</span>
+                                    <span class="badge bg-warning text-dark">Salado</span>
                                     <!-- Bootrap etiqueta Estreno -->
-                                    <img src="../assets/img_cartelera/onepiece.jpg" alt="pelicula">
+                                    <img src="../assets/Img_dulceria/combo2.png" alt="pelicula">
 
                                     <div class="movie-buttons"> <!-- Div para botones dentro de la pelicula -->
 
@@ -195,24 +203,33 @@
                                             <img class="button-icon" src="../assets/svg/comprar.svg" alt="">
                                             <span>Comprar</span>
                                         </a>
-
-                                        <a class="btn button-yellow" href="../pages/pelicula-detalle.html">
-                                            <!-- Detalles html -->
-                                            <img class="button-icon" src="../assets/svg/detalles.svg" alt="">
-                                            <span>Detalles</span>
-                                        </a>
                                     </div>
-
                                 </div>
+
+                                <br>
+                                    <h1 class="product-price" style="color: #F4B401; text-align: center;"> <!-- precio del producto 2-->
+                                        S/.100
+                                    </h1>
+                                    <h1 class="product-name" style="color: white; text-align: center;"> <!-- nombre del producto 2-->
+                                        Combo Nexi
+                                    </h1> 
+
+                                    <h3 class="product-description" style="color: white; text-align: center;"> <!-- desc del producto 2-->
+                                        Canchita Gigante Salada + 1 Bebida (32oz) + 1 vaso Garfield.
+                                    </h3>
+                                    <h4 class="product-description" style="color: white; text-align: center;">
+                                        <b> *Sabor bebida y modelo de vaso Garfield sujetos a stock. Canchita sin refill </b>
+                                    </h4>
+                                
                             </div>
 
-                            <!-- Pelicula 3 -->
+                            <!-- Combo 3 -->
                             <div class="col-lg-4 col-6 p-lg-5 p-2">
 
                                 <div class="movie">
-                                    <span class="badge bg-warning text-dark">Estreno</span>
+                                    <span class="badge bg-warning text-dark">Dulce</span>
                                     <!-- Bootrap etiqueta Estreno -->
-                                    <img src="../assets/img_cartelera/Pelicula.png" alt="pelicula">
+                                    <img src="../assets/Img_dulceria/combo3.png" alt="pelicula">
 
                                     <div class="movie-buttons"> <!-- Div para botones dentro de la pelicula -->
 
@@ -220,24 +237,34 @@
                                             <img class="button-icon" src="../assets/svg/comprar.svg" alt="">
                                             <span>Comprar</span>
                                         </a>
-
-                                        <a class="btn button-yellow" href="../pages/pelicula-detalle.html">
-                                            <!-- Detalles html -->
-                                            <img class="button-icon" src="../assets/svg/detalles.svg" alt="">
-                                            <span>Detalles</span>
-                                        </a>
                                     </div>
-
                                 </div>
+
+                                <br>
+
+                                    <h1 class="product-price" style="color: #F4B401; text-align: center;"> <!-- nombre del producto 3-->
+                                        S/.100
+                                    </h1>
+                                    <h1 class="product-name" style="color: white; text-align: center;"> <!-- nombre del producto 3-->
+                                        Combo Cuxi
+                                    </h1> 
+
+                                    <h3 class="product-description" style="color: white; text-align: center;"> <!-- desc del producto 3-->
+                                        Canchita Gigante Dulce + 2 Bebidas (32oz) + 1 vaso Garfield.
+                                    </h3>
+                                    <h4 class="product-description" style="color: white; text-align: center;">
+                                        <b> *Sabor bebida y modelo de vaso Garfield sujetos a stock. Canchita sin refill </b>
+                                    </h4>
+                                
                             </div>
 
-                            <!-- Pelicula 4 -->
+                            <!-- Combo 4 -->
                             <div class="col-lg-4 col-6 p-lg-5 p-2">
 
                                 <div class="movie">
-                                    <span class="badge bg-warning text-dark">Estreno</span>
+                                    <span class="badge bg-warning text-dark">Salado</span>
                                     <!-- Bootrap etiqueta Estreno -->
-                                    <img src="../assets/img_cartelera/Pelicula.png" alt="pelicula">
+                                    <img src="../assets/Img_dulceria/combo3.png" alt="pelicula">
 
                                     <div class="movie-buttons"> <!-- Div para botones dentro de la pelicula -->
 
@@ -245,24 +272,28 @@
                                             <img class="button-icon" src="../assets/svg/comprar.svg" alt="">
                                             <span>Comprar</span>
                                         </a>
-
-                                        <a class="btn button-yellow" href="../pages/pelicula-detalle.html">
-                                            <!-- Detalles html -->
-                                            <img class="button-icon" src="../assets/svg/detalles.svg" alt="">
-                                            <span>Detalles</span>
-                                        </a>
                                     </div>
-
                                 </div>
+
+                                <br>
+                                    <h1 class="product-price" style="color: #F4B401; text-align: center;"> <!-- nombre del producto 4-->
+                                        S/.100
+                                    </h1>
+                                    <h1 class="product-name" style="color: white; text-align: center;"> <!-- nombre del producto 4-->
+                                        Combo Roxi
+                                    </h1> 
+
+                                    <h3 class="product-description" style="color: white; text-align: center;"> <!-- desc del producto 4-->
+                                        Canchita Gigante Salada + 2 Bebidas (32oz) + 1 vaso Garfield.
+                                    </h3>
+                                    <h4 class="product-description" style="color: white; text-align: center;">
+                                        <b> *Sabor bebida y modelo de vaso Garfield sujetos a stock. Canchita sin refill </b>
+                                    </h4>
+                                
                             </div>
+
+                            
                             <!-- END -->
-
-                        </div>
-                        <button class="btn button-red ms-lg-5 m-0 px-5">
-                            <img class="button-icon" src="../assets/svg/film.svg" alt="icono">
-                            <span>Ver más películas</span>
-                        </button>
-                    </div>
                     <!-- END movies -->
                 </div>
 
@@ -300,15 +331,13 @@
                 <ul>
                     <li><a href="">Términos y Condiciones</a></li>
                     <li><a href="">Políticas de Privacidad</a></li>
-                    <li><a href=""><img class="img-libro" src="../assets/LibroReclamaciones.png"
-                                alt="Libro de Reclamaciones Logo"></a></li>
+                    <li><a href=""><img class="img-libro" src="../assets/LibroReclamaciones.png" alt="Libro de Reclamaciones Logo"></a></li>
                 </ul>
             </div>
         </div>
-
+        
     </footer>
 
-    <script src="../src/index.js"></script>
 </body>
 
 </html>
