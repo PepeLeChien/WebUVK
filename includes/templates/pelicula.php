@@ -20,3 +20,4 @@ function renderMovie($badgeText, $imgSrc, $buyLink, $detailsLink) {
     </div>';
 }
 ?>
+

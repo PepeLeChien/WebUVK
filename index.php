@@ -27,6 +27,7 @@ if ($resultPreVenta === false) {
     die("Error en la consulta: " . $conn->error);
 }
 
+
 ?>
 
 
