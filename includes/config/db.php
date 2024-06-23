@@ -2,7 +2,7 @@
 
 function conectarDb(): mysqli
 {
-    $db = mysqli_connect('viaduct.proxy.rlwy.net', 'root', 'zEgWoIWdoKYgJbLJrBkjJhoxHFbZDDHf', 'DBCINE', 13854);
+    $db = mysqli_connect('monorail.proxy.rlwy.net', 'root', 'gLiViqcicZjbKSsXiJTkXyuhwkHlxNXk', 'DbCine', 58970);
 
     if (!$db) {
         echo "Error: No se pudo conectar a MySQL.";

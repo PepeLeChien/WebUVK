@@ -12,7 +12,7 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-$sqlPeliculas = "SELECT id, nombre, url_imagen, estadoEstreno FROM pelicula p WHERE p.estadoEstreno IN ('Estreno', 'Pelicula') AND p.estado = 1";
+$sqlPeliculas = "SELECT id, nombre, url_imagen, estadoEstreno FROM pelicula p WHERE p.estadoEstreno IN ('Estreno', 'Pelicula') AND p.estado = 1 LIMIT 5";
 $resultPeliculas = $conn->query($sqlPeliculas);
 
 if ($resultPeliculas === false) {
@@ -20,7 +20,7 @@ if ($resultPeliculas === false) {
 }
 
 
-$sqlPreVenta = "SELECT id, nombre, url_imagen, estadoEstreno FROM pelicula p WHERE p.estadoEstreno = 'Pre-venta' AND p.estado = 1";
+$sqlPreVenta = "SELECT id, nombre, url_imagen, estadoEstreno FROM pelicula p WHERE p.estadoEstreno = 'Estreno' AND p.estado = 1 LIMIT 5";
 $resultPreVenta = $conn->query($sqlPreVenta);
 
 if ($resultPreVenta === false) {
@@ -51,22 +51,57 @@ if ($resultPreVenta === false) {
                 <div class="carousel-item active">
                     <img src="https://fastly.picsum.photos/id/862/1500/600.jpg?hmac=oKqTPaADPf31oorI4xub_oOL--_pCHOn4ISvyEACdGU"
                         class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2>First slide label</h2>
+                        <div class="overlay">
+                            <p>Some representative placeholder content for the first slide.</p>
+                            <button class="btn btn-primary">Learn More</button>
+                        </div>
+                    </div>  
                 </div>
                 <div class="carousel-item">
                     <img src="https://fastly.picsum.photos/id/547/1500/600.jpg?hmac=BBoXNK1UiWhbpiSaslbFzL8CxqthxjOQgHR8SmEwjaU"
                         class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2>First slide label</h2>
+                        <div class="overlay">
+                            <p>Some representative placeholder content for the first slide.</p>
+                            <button class="btn btn-primary">Learn More</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="carousel-item">
                     <img src="https://fastly.picsum.photos/id/95/1500/600.jpg?hmac=EkZhCfRZxCGCyL6Y0FtwIT3ghWPWq2lhDrYQ78fZFNU"
                         class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2>First slide label</h2>
+                        <div class="overlay">
+                            <p>Some representative placeholder content for the first slide.</p>
+                            <button class="btn btn-primary">Learn More</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="carousel-item">
                     <img src="https://fastly.picsum.photos/id/116/1500/600.jpg?hmac=y0O43C2lt6NawMn0-lmPSnRCnTM8E8ALFVocrS3FUyo"
                         class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2>First slide label</h2>
+                        <div class="overlay">
+                            <p>Some representative placeholder content for the first slide.</p>
+                            <button class="btn btn-primary">Learn More</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="carousel-item">
                     <img src="https://fastly.picsum.photos/id/392/1500/600.jpg?hmac=huImLqxpXBHzc8iGWLfbDHXphBvmKQdVtURInpi0z18"
                         class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2>First slide label</h2>
+                        <div class="overlay">
+                            <p>Some representative placeholder content for the first slide.</p>
+                            <button class="btn btn-primary">Learn More</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- Botones de control -->
@@ -87,8 +122,14 @@ if ($resultPreVenta === false) {
                 <?php
                     if ($resultPreVenta->num_rows > 0) {
                         // Iterar sobre los resultados y renderizar cada película
+                        $cont = 1;
+                        $var = "col-6";
                         while ($row = $resultPreVenta->fetch_assoc()) {
-                            echo '<div class="col-6 col-lg">';
+                            if($cont > 2) {
+                                $var = "col-4";
+                            }
+                            $cont ++;
+                            echo '<div class="'.$var.' col-lg">';
                             renderMovie($row["estadoEstreno"], $row["url_imagen"], "#", "#");
                             echo '</div>';
                            
@@ -107,8 +148,14 @@ if ($resultPreVenta === false) {
                 <?php
                     if ($resultPeliculas->num_rows > 0) {
                         // Iterar sobre los resultados y renderizar cada película
+                        $cont = 1;
+                        $var = "col-6";
                         while ($row = $resultPeliculas->fetch_assoc()) {
-                            echo '<div class="col-6 col-lg">';
+                            if($cont > 2) {
+                                $var = "col-4";
+                            }
+                            $cont ++;
+                            echo '<div class="'.$var.' col-lg">';
                             renderMovie($row["estadoEstreno"], $row["url_imagen"], "#", "#");
                             echo '</div>';
                         }
