@@ -20,6 +20,17 @@ if ($resultPeliculas === false) {
 }
 
 
+$sqlEstrenos = "SELECT id, nombre, descripcion, url_imagen, estadoEstreno FROM pelicula p WHERE p.estadoEstreno IN ('Estreno', 'Pelicula') AND p.estado = 1 LIMIT 5";
+$resultEstrenos = $conn->query($sqlEstrenos);
+
+$estrenos = array();
+
+if ($resultEstrenos->num_rows > 0) {
+    while ($row = $resultEstrenos->fetch_assoc()) {
+        $estrenos[] = $row;
+    }
+}
+
 $sqlPreVenta = "SELECT id, nombre, url_imagen, estadoEstreno FROM pelicula p WHERE p.estadoEstreno = 'Estreno' AND p.estado = 1 LIMIT 5";
 $resultPreVenta = $conn->query($sqlPreVenta);
 
@@ -51,56 +62,66 @@ if ($resultPreVenta === false) {
                 <div class="carousel-item active">
                     <img src="https://fastly.picsum.photos/id/862/1500/600.jpg?hmac=oKqTPaADPf31oorI4xub_oOL--_pCHOn4ISvyEACdGU"
                         class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h2>First slide label</h2>
-                        <div class="overlay">
-                            <p>Some representative placeholder content for the first slide.</p>
-                            <button class="btn btn-primary">Learn More</button>
-                        </div>
+                    <div class="carousel-caption caption-div d-none d-md-block">
+                        <span class="badge bg-warning text-dark"> <?php echo $estrenos[0]['estadoEstreno']; ?> </span>
+                        <h2> <?php echo $estrenos[0]['nombre']; ?>  </h2>
+                        <p> <?php echo $estrenos[0]['descripcion']; ?> </p>
+                        <a class="btn button-red" href="">
+                            <img class="button-icon" src="./assets/svg/comprar.svg" alt="">
+                            <span>Comprar</span>
+                        </a>
                     </div>  
                 </div>
                 <div class="carousel-item">
                     <img src="https://fastly.picsum.photos/id/547/1500/600.jpg?hmac=BBoXNK1UiWhbpiSaslbFzL8CxqthxjOQgHR8SmEwjaU"
                         class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h2>First slide label</h2>
-                        <div class="overlay">
-                            <p>Some representative placeholder content for the first slide.</p>
-                            <button class="btn btn-primary">Learn More</button>
-                        </div>
+                    <div class="carousel-caption caption-div d-none d-md-block">
+                        <span class="badge bg-warning text-dark"> <?php echo $estrenos[1]['estadoEstreno']; ?> </span>
+                        <h2> <?php echo $estrenos[1]['nombre']; ?> </h2>
+                        <p> <?php echo $estrenos[1]['descripcion']; ?> </p>
+                        <a class="btn button-red" href="">
+                            <img class="button-icon" src="./assets/svg/comprar.svg" alt="">
+                            <span>Comprar</span>
+                        </a>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="https://fastly.picsum.photos/id/95/1500/600.jpg?hmac=EkZhCfRZxCGCyL6Y0FtwIT3ghWPWq2lhDrYQ78fZFNU"
                         class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h2>First slide label</h2>
-                        <div class="overlay">
-                            <p>Some representative placeholder content for the first slide.</p>
-                            <button class="btn btn-primary">Learn More</button>
-                        </div>
+                    <div class="carousel-caption caption-div d-none d-md-block">
+                        <span class="badge bg-warning text-dark"> <?php echo $estrenos[2]['estadoEstreno']; ?> </span>
+                        <h2> <?php echo $estrenos[2]['nombre']; ?> </h2>
+                        <p> <?php echo $estrenos[2]['descripcion']; ?> </p>
+                        <a class="btn button-red" href="">
+                            <img class="button-icon" src="./assets/svg/comprar.svg" alt="">
+                            <span>Comprar</span>
+                        </a>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="https://fastly.picsum.photos/id/116/1500/600.jpg?hmac=y0O43C2lt6NawMn0-lmPSnRCnTM8E8ALFVocrS3FUyo"
                         class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h2>First slide label</h2>
-                        <div class="overlay">
-                            <p>Some representative placeholder content for the first slide.</p>
-                            <button class="btn btn-primary">Learn More</button>
-                        </div>
+                    <div class="carousel-caption caption-div d-none d-md-block">
+                        <span class="badge bg-warning text-dark"> <?php echo $estrenos[3]['estadoEstreno']; ?> </span>
+                        <h2> <?php echo $estrenos[3]['nombre']; ?> </h2>
+                        <p> <?php echo $estrenos[3]['descripcion']; ?> </p>
+                        <a class="btn button-red" href="">
+                            <img class="button-icon" src="./assets/svg/comprar.svg" alt="">
+                            <span>Comprar</span>
+                        </a>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="https://fastly.picsum.photos/id/392/1500/600.jpg?hmac=huImLqxpXBHzc8iGWLfbDHXphBvmKQdVtURInpi0z18"
                         class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h2>First slide label</h2>
-                        <div class="overlay">
-                            <p>Some representative placeholder content for the first slide.</p>
-                            <button class="btn btn-primary">Learn More</button>
-                        </div>
+                    <div class="carousel-caption caption-div d-none d-md-block">
+                        <span class="badge bg-warning text-dark"> <?php echo $estrenos[4]['estadoEstreno']; ?> </span>
+                        <h2> <?php echo $estrenos[4]['nombre']; ?> </h2>
+                        <p> <?php echo $estrenos[4]['descripcion']; ?> </p>
+                        <a class="btn button-red" href="">
+                            <img class="button-icon" src="./assets/svg/comprar.svg" alt="">
+                            <span>Comprar</span>
+                        </a>
                     </div>
                 </div>
             </div>
