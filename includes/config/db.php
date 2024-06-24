@@ -13,3 +13,4 @@ function conectarDb(): mysqli
 
     return $db;
 }
+

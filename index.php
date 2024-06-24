@@ -12,6 +12,13 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
+$sqlPreVenta = "SELECT id, nombre, url_imagen, estadoEstreno FROM pelicula p WHERE p.estadoEstreno = 'Pre-venta' AND p.estado = 1 LIMIT 5";
+$resultPreVenta = $conn->query($sqlPreVenta);
+
+if ($resultPreVenta === false) {
+    die("Error en la consulta: " . $conn->error);
+}
+
 $sqlPeliculas = "SELECT id, nombre, url_imagen, estadoEstreno FROM pelicula p WHERE p.estadoEstreno IN ('Estreno', 'Pelicula') AND p.estado = 1 LIMIT 5";
 $resultPeliculas = $conn->query($sqlPeliculas);
 
@@ -19,8 +26,7 @@ if ($resultPeliculas === false) {
     die("Error en la consulta: " . $conn->error);
 }
 
-
-$sqlEstrenos = "SELECT id, nombre, descripcion, url_imagen, estadoEstreno FROM pelicula p WHERE p.estadoEstreno IN ('Estreno', 'Pelicula') AND p.estado = 1 LIMIT 5";
+$sqlEstrenos = "SELECT id, nombre, descripcion, url_portada, estadoEstreno FROM pelicula p WHERE p.estadoEstreno IN ('Estreno', 'Pelicula') AND p.estado = 1 LIMIT 5";
 $resultEstrenos = $conn->query($sqlEstrenos);
 
 $estrenos = array();
@@ -29,13 +35,6 @@ if ($resultEstrenos->num_rows > 0) {
     while ($row = $resultEstrenos->fetch_assoc()) {
         $estrenos[] = $row;
     }
-}
-
-$sqlPreVenta = "SELECT id, nombre, url_imagen, estadoEstreno FROM pelicula p WHERE p.estadoEstreno = 'Estreno' AND p.estado = 1 LIMIT 5";
-$resultPreVenta = $conn->query($sqlPreVenta);
-
-if ($resultPreVenta === false) {
-    die("Error en la consulta: " . $conn->error);
 }
 
 
