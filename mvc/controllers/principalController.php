@@ -1,17 +1,14 @@
 <?php
 
-class PagesController extends Controller {
+class PrincipalController extends Controller {
 
     function __construct() {
         parent::__construct();
     }
 
     function index() {
-        if (!$this->model) {
-            $this->loadModel('movie');
-        }
         $movies = $this->model->getMovies();
-        $this->view->render('pages/index', ['movies' => $movies]);
+        $this->view->renderWithLayout('principal/index', ['movies' => $movies]);
     }
 }
 ?>

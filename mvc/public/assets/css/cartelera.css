@@ -1,0 +1,48 @@
+body{
+    background: linear-gradient(0deg, rgba(9,9,9,1) 0%, rgba(42,42,50,1) 78%);
+}
+.container-buttons-cartelera{
+    padding: 0 5rem;
+    gap: 2rem;
+}
+
+/* Button secundary */
+.button-secondary {
+    color: var(--white-style);
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.button-secondary::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0.3rem;
+    background-color: var(--primary-red);
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.button-secondary.active::after {
+    width: 60%;
+}
+
+.button-secondary:hover::after {
+    width: 100%;
+}
+/* END Button secundary */
+
+
+
+
+
+
+
+
+
+
+

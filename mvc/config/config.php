@@ -1,5 +1,5 @@
 <?php
-define('URL', 'http://localhost:8080/cine_project/');
+define('URL', 'http://localhost:3000/');
 define('HOST', 'monorail.proxy.rlwy.net');
 define('DB', 'DbCine');
 define('USER', 'root');

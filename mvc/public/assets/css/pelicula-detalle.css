@@ -1,0 +1,271 @@
+/*  */
+.nav-item > a {
+    color: var(--white-style);
+}
+
+.video-container {
+    height: 100vh;
+    width: 100%;  
+    overflow: hidden;  
+    z-index:9;
+}
+
+.video-container iframe{
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+}
+
+.detail-movie {
+    height: 100vh;
+    width: 100%; /* Asegurarte de que ocupe todo el ancho de la ventana */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Para ocultar cualquier contenido adicional */
+    position: relative; /* Para que los elementos hijos se posicionen correctamente */
+}
+
+.detail-movie .cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra toda el área sin deformarse */
+    position: absolute; /* Para que ocupe toda la área de su contenedor */
+    top: 0;
+    left: 0;
+}
+
+.detail-movie::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 90vh; /* Ajusta esto según sea necesario */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0) 70%);
+    z-index: 2;
+} 
+.detail-movie-container{
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
+    left: 0;
+    width: 60%;
+    color: var(--white-style); 
+}
+.detail-movie-content{
+    border-top-right-radius: 10rem;
+    background-color: rgba(20, 20, 20,0.4);
+    padding: 8rem 20rem;
+    width: 100%;
+}
+
+ 
+.cover-title {
+    margin-left: 20rem;
+    font-size: 9rem;
+    font-weight: 700;
+} 
+
+
+.filter-date h3,
+.filter-date .filter-month {
+    color: var(--white-style);
+    font-weight: 700;
+}
+
+.btn-check { /*input */
+    display: none;
+}
+
+.btn-date {
+    background-color: var(--primary-yellow);
+    opacity: 50%;
+    color: var(--black-style);
+    border-color: var(--primary-yellow) !important;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    margin: 5px;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all ease 0.3s;
+}
+
+.btn-date::before{
+    content: "";
+    position: relative;
+    min-width: 1rem;
+    min-height: 1rem;
+    border-radius: 5rem;
+    background-color: var(--black-style); 
+    top: 8px;
+}
+
+.btn-date p {
+    margin: 0;
+    font-size: 3.5rem;
+    font-weight: 700;
+    height: 4rem;
+}
+
+.btn-date span {
+    font-size: 12px;
+    padding-bottom: .5rem;
+    font-weight: 600;
+}
+
+.btn-date.active,
+.btn-date:hover{  
+    background-color: var(--primary-yellow) !important;
+    opacity: 100% !important;
+    color: black !important;
+    scale: 1.1;
+}
+
+/* Ticket */
+.ticket-container .ticket{
+    margin: 0;
+}
+.ticket {
+    position: relative;
+    background-color: #23262B;
+    border-radius: 3rem;
+    border: 2px solid #444343 ;
+    padding: 4rem 6rem;
+    color: #fff;
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+.ticket-content{
+    border-bottom: .2rem dashed  var(--primary-yellow);
+}
+
+.ticket-title{
+    border-bottom: 1px solid var(--white-style);
+    
+}
+.ticket-movie-title {
+    color: #D7BF7E;
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 0 !important;
+}
+
+.ticket-movie-date {
+    font-size: 14px;
+    color: #ddd;
+    margin: 0;
+}
+
+.ticket-details h5 {
+    font-size: 1.7rem;
+    color: #D7BF7E;
+    margin: 0;
+}
+
+.ticket-details-movie {
+    margin-top: 3rem;
+}
+.ticket-details p {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 0;
+}
+.total-section {
+    background-color: white;
+    border-radius: 20px;
+    width: 80%;
+    margin: auto;
+}
+
+
+.total-section h3 {
+    font-size: 20px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.total-section p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+
+}
+
+ 
+.ticket-icon{ 
+    position: absolute;
+    right: 4rem;
+    bottom: 14rem;
+   width: auto;
+}
+.ticket-icon img{
+    width: 6rem  ;
+}
+.comprar-img {
+    width: 50px;
+    height: auto;
+    margin-top: 20px;
+}
+
+/* gdsg */
+
+ 
+.ticket::before,
+.ticket::after {
+    content: '';
+    position: absolute;
+    width: 20px; 
+    height: 40px;
+    background-color: #0E0F10;
+    border-radius: 100px;
+    border: 2px solid #444343 ;
+    top: 75%;
+    transform: translateY(-75%);
+    z-index: 3;
+
+}
+
+.ticket::before {
+    left: -2px;
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    
+}
+
+.ticket::after {
+    right:-2px;
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+
+ 
+
+ 
+
+  /* Estilos para tabletas (ancho máximo de 768px) */
+  @media (max-width: 1000px) {
+    .detail-movie-container{
+        width: 100%  ;
+    }
+    .detail-movie-content{
+        padding: 3.5rem 4rem;
+    }
+
+    .detail-movie-content p{
+        margin-bottom: 2rem;
+    }
+
+    .cover-title {
+        margin-left:  4rem;
+        font-size: 6rem;
+    }
+}
