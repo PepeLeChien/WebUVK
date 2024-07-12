@@ -6,6 +6,7 @@ class Router {
     protected $d;
     public array $getRoutes = [];
     public array $postRoutes = [];
+    public $params = [];
 
     public function get($url, $fn) {
         $this->getRoutes[$url] = $fn;
@@ -23,9 +24,9 @@ class Router {
         error_log("Request Method: " . $method);
 
         if ($method === 'GET') {
-            $fn = $this->getRoutes[$currentUrl] ?? null;
+            $fn = $this->matchRoute($this->getRoutes, $currentUrl);
         } else {
-            $fn = $this->postRoutes[$currentUrl] ?? null;
+            $fn = $this->matchRoute($this->postRoutes, $currentUrl);
         }
 
         if ($fn) {
@@ -41,10 +42,22 @@ class Router {
         }
     }
 
+    private function matchRoute($routes, $currentUrl) {
+        foreach ($routes as $url => $fn) { 
+            $urlPattern = preg_replace('/:\w+/', '(\w+)', $url);
+            if (preg_match("#^$urlPattern$#", $currentUrl, $matches)) {
+                array_shift($matches);
+                $this->params = $matches;
+                return $fn;
+            }
+        }
+        return null;
+    }
+
     public function render($view, $data = []) {
         $this->d = $data;
         foreach ($data as $key => $value) {
-            $$key = $value;   
+            $$key = $value;
         }
 
         ob_start();

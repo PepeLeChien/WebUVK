@@ -13,7 +13,7 @@ require_once 'libs/Model.php';
 require_once 'libs/View.php';
 require_once 'libs/Router.php';
 require_once 'config/config.php';
-require_once 'controllers/PagesController.php';
+require_once 'controllers/PagesController.php';   
 
 use MVC\Router;
 
@@ -22,6 +22,10 @@ $pagesController = new PagesController();
 
 $router->get('/', [$pagesController, 'index']);
 $router->get('/cartelera', [$pagesController, 'cartelera']);
+$router->post('/load-more-movies', [$pagesController, 'loadMoreMovies']);
+$router->post('/get-movie-html', [$pagesController, 'getMovieHTML']);
+ 
+$router->get('/pelicula-detalle/:id', [$pagesController, 'peliculaDetalle']);
 
 $router->comprobarRutas();
 ?>

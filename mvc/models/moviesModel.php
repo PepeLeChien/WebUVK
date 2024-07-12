@@ -58,17 +58,16 @@ class MoviesModel extends Model implements IModel {
 
     public function get($id) {
         try {
-            $query = $this->prepare('SELECT * FROM pelicula WHERE id = :id');
+            $query = $this->prepare('SELECT id, nombre, descripcion, fecha_inicio, fecha_fin, id_genero, id_clasificacion, duracion, url_trailer, url_imagen, estadoEstreno, estado, url_portada FROM DbCine.pelicula WHERE id = :id');
             $query->execute(['id' => $id]);
-            $movie = $query->fetch(PDO::FETCH_ASSOC);
-
-            $this->from($movie);
-
-            return $this;
+            $movie = $query->fetch(PDO::FETCH_OBJ);
+    
+            return $movie;
         } catch (PDOException $e) {
             return false;
         }
     }
+    
 
     public function delete($id) {
         try {

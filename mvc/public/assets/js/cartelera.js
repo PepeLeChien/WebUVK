@@ -1,60 +1,79 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     const enCarteleraBtn = document.getElementById('en-cartelera-btn');
     const proximosEstrenosBtn = document.getElementById('proximos-estrenos-btn');
     const moviesList = document.getElementById('movies-list');
-    const verMasBtn = document.getElementById('ver-mas-peliculas');
-    const carteleraSection = document.getElementById('cartelera');
 
-    let currentList = 'enCartelera';
-    let currentIndex = 6;
-    const moviesData = {
-        enCartelera: JSON.parse(carteleraSection.getAttribute('data-en-cartelera')),
-        proximosEstrenos: JSON.parse(carteleraSection.getAttribute('data-proximos-estrenos'))
-    };
+    if (enCarteleraBtn && proximosEstrenosBtn && moviesList) {
+        let estadoEstreno = ['Pelicula', 'Estreno'];
 
-    function loadMoreMovies() {
-        const movies = moviesData[currentList].slice(currentIndex, currentIndex + 6);
-        movies.forEach(movie => {
-            const movieElement = document.createElement('div');
-            movieElement.classList.add('col-lg-4', 'col-6', 'p-lg-5', 'p-2');
-            movieElement.innerHTML = `
-                <div class="movie-card">
-                    <img src="${movie.url_image}" alt="${movie.title}">
-                    <h3>${movie.title}</h3>
-                </div>
-            `;
-            moviesList.appendChild(movieElement);
-        });
-        currentIndex += 6;
-        if (currentIndex >= moviesData[currentList].length) {
-            verMasBtn.style.display = 'none';
-        }
-    }
-
-    function switchList(newList) {
-        currentList = newList;
-        currentIndex = 6;
-        moviesList.innerHTML = '';
-        loadMoreMovies();
-        verMasBtn.style.display = moviesData[currentList].length > 6 ? 'block' : 'none';
-    }
-
-    if (enCarteleraBtn && proximosEstrenosBtn && moviesList && verMasBtn) {
-        enCarteleraBtn.addEventListener('click', () => {
-            enCarteleraBtn.classList.add('active');
-            proximosEstrenosBtn.classList.remove('active');
-            switchList('enCartelera');
+        enCarteleraBtn.addEventListener('click', function() {
+            estadoEstreno = ['Pelicula', 'Estreno'];
+            setActiveButton(enCarteleraBtn);
+            loadMovies();
         });
 
-        proximosEstrenosBtn.addEventListener('click', () => {
-            proximosEstrenosBtn.classList.add('active');
+        proximosEstrenosBtn.addEventListener('click', function() {
+            estadoEstreno = ['Pre-Venta'];
+            setActiveButton(proximosEstrenosBtn);
+            loadMovies();
+        });
+
+        function setActiveButton(activeButton) {
             enCarteleraBtn.classList.remove('active');
-            switchList('proximosEstrenos');
-        });
+            proximosEstrenosBtn.classList.remove('active');
+            activeButton.classList.add('active');
+        }
 
-        verMasBtn.addEventListener('click', loadMoreMovies);
+        function loadMovies() {
+            const url = `${window.location.origin}/load-more-movies`;
+            const data = {
+                estadoEstreno: estadoEstreno
+            };
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.text().then(text => { throw new Error(text) });
+                }
+                return response.json();
+            })
+            .then(movies => {
+                moviesList.innerHTML = '';
+                movies.forEach(movie => {
+                    fetch(`${window.location.origin}/get-movie-html`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ movie: JSON.stringify(movie) })
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            return response.text().then(text => { throw new Error(text) });
+                        }
+                        return response.text();
+                    })
+                    .then(html => {
+                        const movieElement = document.createElement('div');
+                        movieElement.classList.add('col-lg-4', 'col-6', 'p-lg-5', 'p-2');
+                        movieElement.innerHTML = html;
+                        moviesList.appendChild(movieElement);
+                    })
+                    .catch(error => console.error('Error fetching movie HTML:', error));
+                });
+            })
+            .catch(error => console.error('Error loading movies:', error));
+        }
+
+        // Cargar películas por defecto
+        loadMovies();
+    } else {
+        console.error('One or more elements not found.');
     }
-
-    // Load initial movies
-    loadMoreMovies();
 });

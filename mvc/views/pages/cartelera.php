@@ -12,8 +12,8 @@ ob_start();
                 <h1 class="sub-title"><span>&nbsp Peli</span>culas</h1>
             </div>
             <div class="col-9 d-flex align-items-center container-buttons-cartelera ">
-                <a class="button-secondary mx-2 active">En cartelera</a>
-                <a class="button-secondary mx-2">Próximos estrenos</a>
+                <a class="button-secondary mx-2 active" id="en-cartelera-btn">En cartelera</a>
+                <a class="button-secondary mx-2" id="proximos-estrenos-btn">Próximos estrenos</a>
             </div>
         </div>
         <div class="row">
@@ -73,16 +73,8 @@ ob_start();
             </div>
             <div class="col-lg-9 col-md-12 p-5">
                 <div class="row" id="movies-list">
-                    <?php foreach (array_slice($this->d['enCartelera'], 0, 6) as $movie) : ?>
-                        <div class="col-lg-4 col-6 p-lg-5 p-2">
-                            <?php include 'movie.php'; ?>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-                <button class="btn button-red ms-lg-5 m-0 px-5" id="ver-mas-peliculas">
-                    <img class="button-icon" src="<?php echo constant('URL'); ?>public/assets/images/svg/film.svg" alt="icono">
-                    <span>Ver más películas</span>
-                </button>
+                     
+                </div> 
             </div>
         </div>
     </div>
