@@ -1,7 +1,4 @@
-<?php
-$title = "UVK Cines - Home";
-ob_start();
-?>
+ 
 <div id="carouselExample" class="carousel slide">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -41,22 +38,9 @@ ob_start();
     <section class="releases">
         <h3 class="sub-title"><span>&nbsp Próxim</span>os Estrenos</h3>
         <div class="releases-container row gx-4 gy-4">
-            <?php foreach($this->d['movies'] as $movie): ?>
+            <?php foreach($this->d['preMovies'] as $movie): ?>
                 <div class="col-6 col-lg">
-                    <div class="movie">
-                        <span class="badge bg-warning text-dark"><?php echo htmlspecialchars($movie->estadoEstreno); ?></span>
-                        <img src="<?php echo htmlspecialchars(constant('URL') . 'public/assets/images/' . $movie->url_imagen); ?>" alt="pelicula">
-                        <div class="movie-buttons">
-                            <a class="btn button-red" href="#">
-                                <img class="button-icon" src="<?php echo constant('URL'); ?>public/assets/svg/comprar.svg" alt="">
-                                <span>Comprar</span>
-                            </a>
-                            <a class="btn button-yellow" href="#">
-                                <img class="button-icon" src="<?php echo constant('URL'); ?>public/assets/svg/detalles.svg" alt="">
-                                <span>Detalles</span>
-                            </a>
-                        </div>
-                    </div>
+                    <?php include 'movie.php'; ?>
                 </div>
             <?php endforeach; ?>
         </div>
@@ -66,26 +50,9 @@ ob_start();
         <div class="movies-container row gx-4 gy-4">
             <?php foreach($this->d['movies'] as $movie): ?>
                 <div class="col-6 col-lg">
-                    <div class="movie">
-                        <span class="badge bg-warning text-dark"><?php echo htmlspecialchars($movie->estadoEstreno); ?></span>
-                        <img src="<?php echo htmlspecialchars(constant('URL') . 'public/assets/images/' . $movie->url_imagen); ?>" alt="pelicula">
-                        <div class="movie-buttons">
-                            <a class="btn button-red" href="#">
-                                <img class="button-icon" src="<?php echo constant('URL'); ?>public/assets/svg/comprar.svg" alt="">
-                                <span>Comprar</span>
-                            </a>
-                            <a class="btn button-yellow" href="#">
-                                <img class="button-icon" src="<?php echo constant('URL'); ?>public/assets/svg/detalles.svg" alt="">
-                                <span>Detalles</span>
-                            </a>
-                        </div>
-                    </div>
+                    <?php include 'movie.php'; ?>
                 </div>
             <?php endforeach; ?>
         </div>
     </section>
 </div>
-<?php
-$content = ob_get_clean();
-include realpath(__DIR__ . '/../templates/layout.php');
-?>

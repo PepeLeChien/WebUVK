@@ -17,5 +17,7 @@
     </main>
 
     <?php include __DIR__ . '/footer.php'; ?>
+
+    <script src="<?php echo constant('URL'); ?>public/assets/js/index.js"></script>
 </body>
 </html>

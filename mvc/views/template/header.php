@@ -1,11 +1,11 @@
-<header class="header">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+<header class="header fixed-top">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <div class="login-container2">
-                <img src="<?php echo constant('URL'); ?>public/assets/images/IconUser.png" alt="">
+                <img src="<?php echo constant('URL'); ?>public/assets/images/icons/IconUser.png" alt="">
             </div>
             <a class="navbar-brand" href="<?php echo constant('URL'); ?>">
-                <img src="<?php echo constant('URL'); ?>public/assets/images/Logo.png" alt="LOGO UVK" width="80px" height="60px">
+                <img src="<?php echo constant('URL'); ?>public/assets/images/logos/Logo.png" alt="LOGO UVK" width="80px" height="60px">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -26,12 +26,12 @@
                     </li>
                 </ul>
                 <form class="d-flex search-container" role="search">
-                    <img src="<?php echo constant('URL'); ?>public/assets/images/IconSearch.png" alt="">
+                    <img src="<?php echo constant('URL'); ?>public/assets/images/icons/IconSearch.png" alt="">
                     <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
                 </form>
             </div>
             <div class="login-container1">
-                <img src="<?php echo constant('URL'); ?>public/assets/images/IconUser.png" alt="">
+                <img src="<?php echo constant('URL'); ?>public/assets/images/icons/IconUser.png" alt="">
             </div>
         </div>
     </nav>

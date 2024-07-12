@@ -52,7 +52,8 @@ class App {
             } else {
                 $controller->index();
             }
-        } else { 
+        } else {
+             
             $controller->render();
         }
     }

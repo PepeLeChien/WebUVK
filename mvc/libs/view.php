@@ -11,14 +11,13 @@ class View {
         foreach ($data as $key => $value) {
             $$key = $value;   
         }
-
-        ob_start();  
-
-        // Incluir la vista
-        include __DIR__ . '/../views/' . $nombre . '.php';
-        $contenido = ob_get_clean();  
  
-        include __DIR__ . '/../views/templates/layout.php';
+        ob_start(); // Almacenamiento en memoria durante un momento... 
+
+        // entonces incluimos la vista en el layout
+        include_once "views/$nombre.php";
+        $contenido = ob_get_clean();
+        include_once 'views/template/layout.php';
     }
  
     function render($nombre, $data = []) {
@@ -27,6 +26,6 @@ class View {
             $$key = $value;   
         }
  
-        include __DIR__ . '/../views/' . $nombre . '.php';
+        include  "views/$nombre.php";
     }
 }
