@@ -1,6 +1,6 @@
-body{
-    background: linear-gradient(0deg, rgba(9,9,9,1) 0%, rgba(42,42,50,1) 78%);
-}
+ #cartelera{
+    margin-top:10rem ;
+ }
 .container-buttons-cartelera{
     padding: 0 5rem;
     gap: 2rem;

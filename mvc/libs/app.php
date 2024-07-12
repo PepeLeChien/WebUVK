@@ -11,49 +11,34 @@ class App {
         if (empty($url[0])) {
             $archivoController = 'controllers/PrincipalController.php';
             require_once $archivoController;
-            $controller = new PrincipalController();
+            $controller = new PagesController();
             $controller->loadModel('principal');
             $controller->index();
             return false;
         }
 
-        $archivoController = 'controllers/' . $url[0] . 'Controller.php';
+        $archivoController = 'controllers/' . ucfirst($url[0]) . 'Controller.php';
 
         if (file_exists($archivoController)) {
             require_once $archivoController;
 
             // Inicializar controlador
-            $controllerName = $url[0] . 'Controller';
+            $controllerName = ucfirst($url[0]) . 'Controller';
             $controller = new $controllerName;
             $controller->loadModel($url[0]);
 
             // Si hay un método que se requiere cargar
             if (isset($url[1])) {
                 if (method_exists($controller, $url[1])) {
-                    if (isset($url[2])) {
-                        // El método tiene parámetros
-                        // Sacar el # de parámetros
-                        $nparam = sizeof($url) - 2;
-                        // Crear un arreglo con los parámetros
-                        $params = [];
-                        // Iterar
-                        for ($i = 0; $i < $nparam; $i++) {
-                            array_push($params, $url[$i + 2]);
-                        }
-                        // Pasarlos al método   
-                        $controller->{$url[1]}($params);
-                    } else {
-                        $controller->{$url[1]}();
-                    }
-                } else {
-                    
+                    $params = array_slice($url, 2);
+                    call_user_func_array([$controller, $url[1]], $params);
+                } else { 
                     $controller->render();
                 }
             } else {
                 $controller->index();
             }
-        } else {
-             
+        } else { 
             $controller->render();
         }
     }

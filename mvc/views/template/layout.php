@@ -8,6 +8,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo constant('URL'); ?>public/assets/css/styles.css">
     <link rel="stylesheet" href="<?php echo constant('URL'); ?>public/assets/css/index.css">
+
+    <?php if (isset($extra_css)): ?>
+        <?php echo $extra_css; ?>
+    <?php endif; ?>
+
 </head>
 <body>
     <?php include __DIR__ . '/header.php'; ?>
@@ -19,5 +24,8 @@
     <?php include __DIR__ . '/footer.php'; ?>
 
     <script src="<?php echo constant('URL'); ?>public/assets/js/index.js"></script>
+    <?php if (isset($extra_js)): ?>
+        <?php echo $extra_js; ?>
+    <?php endif; ?>
 </body>
 </html>
