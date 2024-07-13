@@ -1,8 +1,27 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+$auth = $_SESSION['login'] ?? false;
+$email = $_SESSION['email'] ?? '';
+$username = explode('@', $email)[0]; // Obtener la parte antes de '@'
+?>
+
 <header class="header fixed-top">
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <div class="login-container2">
-                <img src="<?php echo constant('URL'); ?>public/assets/images/icons/IconUser.png" alt="">
+                <?php if ($auth): ?>
+                    <span><?php echo htmlspecialchars($username); ?></span>
+                    <a href="<?php echo constant('URL'); ?>logout">
+                        <img src="<?php echo constant('URL'); ?>public/assets/images/icons/IconLogout.png" alt="Cerrar Sesión">
+                    </a>
+                <?php else: ?>
+                    <a href="<?php echo constant('URL'); ?>login">
+                        <img src="<?php echo constant('URL'); ?>public/assets/images/icons/IconUser.png" alt="">
+                    </a>
+                <?php endif; ?>
             </div>
             <a class="navbar-brand" href="<?php echo constant('URL'); ?>">
                 <img src="<?php echo constant('URL'); ?>public/assets/images/logos/Logo.png" alt="LOGO UVK" width="80px" height="60px">
@@ -31,8 +50,18 @@
                 </form>
             </div>
             <div class="login-container1">
-                <img src="<?php echo constant('URL'); ?>public/assets/images/icons/IconUser.png" alt="">
+                <?php if ($auth): ?>
+                    <span class="mx-2"  ><?php echo htmlspecialchars($username); ?></span>
+                    <a href="<?php echo constant('URL'); ?>logout">
+                    <i class="fa-solid fa-right-from-bracket fa"></i>
+                    </a>
+                <?php else: ?>
+                    <a href="<?php echo constant('URL'); ?>login">
+                        <img src="<?php echo constant('URL'); ?>public/assets/images/icons/IconUser.png" alt="">
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
     </nav>
 </header>
+

@@ -47,20 +47,21 @@ body {
     background-color: rgb(0 0 0/40%);
 }
 
-.header .nav-link {
+.header .nav-link,
+.header span,
+.header .fa{
     color: #fff;
 }
-
 .header.scrolled {
     background-color: white;
     transition: background-color 0.3s ease;
-}
-
-.header.scrolled .nav-link {
+} 
+ 
+.header.scrolled  .nav-link,
+.header.scrolled  span,
+.header.scrolled  .fa{
     color: black;
 }
-
- 
 
 .search-container{
     display: flex;

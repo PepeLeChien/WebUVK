@@ -17,6 +17,7 @@ class Controller {
 
             $modelName = $model . 'Model';
             $this->model = new $modelName();
+ 
         }
     }
 }

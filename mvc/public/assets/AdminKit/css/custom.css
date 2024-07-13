@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'Baloo';
+    src: url(../fonts/Baloo2-Regular.ttf);
+}
+@font-face {
+    font-family: 'BalooExtra';
+    src: url(../fonts/Baloo2-ExtraBold.ttf);
+}
+.wrapper{
+    font-size: 150%;    
+    font-family: 'Baloo', Helvetica, sans-serif !important;
+}
+
+.sidebar, .sidebar-content{
+    background-color: #161718 !important;
+}
+
+.sidebar-link, a.sidebar-link{
+    background-color: #161718 !important;
+}
+
+
+.sidebar-item.active .sidebar-link:hover, .sidebar-item.active>.sidebar-link {
+    border-left-color: #E20917;
+    background: linear-gradient(90deg, rgba(221, 59, 59, 0.1), rgba(221, 59, 73, 0.088) 50%, transparent);
+}

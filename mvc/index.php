@@ -6,6 +6,7 @@ ini_set('display_errors', TRUE);
 ini_set('log_errors', TRUE);
 ini_set("error_log", "php-error.log");
 
+ 
 require_once 'libs/Database.php';
 require_once 'libs/Controller.php';
 require_once 'libs/IModel.php';
@@ -14,18 +15,25 @@ require_once 'libs/View.php';
 require_once 'libs/Router.php';
 require_once 'config/config.php';
 require_once 'controllers/PagesController.php';   
+require_once 'controllers/LoginController.php'; 
+require_once 'controllers/AdminController.php' ;
 
 use MVC\Router;
 
 $router = new Router();
 $pagesController = new PagesController();
+$loginController = new LoginController();
+$adminController = new AdminController();
 
 $router->get('/', [$pagesController, 'index']);
 $router->get('/cartelera', [$pagesController, 'cartelera']);
 $router->post('/load-more-movies', [$pagesController, 'loadMoreMovies']);
 $router->post('/get-movie-html', [$pagesController, 'getMovieHTML']);
- 
 $router->get('/pelicula-detalle/:id', [$pagesController, 'peliculaDetalle']);
+$router->get('/login', [$loginController, 'login']);
+$router->post('/login', [$loginController, 'login']);
+$router->get('/logout', [$loginController, 'logout']);
+$router->get('/admin', [$adminController, 'index']);
 
 $router->comprobarRutas();
 ?>

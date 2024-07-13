@@ -54,7 +54,8 @@ class Router {
         return null;
     }
 
-    public function render($view, $data = []) {
+ 
+    public function render($view, $data = [], $template = 'layout') {
         $this->d = $data;
         foreach ($data as $key => $value) {
             $$key = $value;
@@ -63,7 +64,7 @@ class Router {
         ob_start();
         include_once __DIR__ . "/../views/$view.php";
         $contenido = ob_get_clean();
-        include_once __DIR__ . '/../views/template/layout.php';
+        include_once __DIR__ . "/../views/template/{$template}.php";
     }
 }
 ?>

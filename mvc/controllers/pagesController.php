@@ -4,12 +4,12 @@ use MVC\Router;
 class PagesController extends Controller {
     public function __construct() {
         parent::__construct();
-        $this->loadModel('movies');
+        $this->loadModel('Function'); 
     }
 
     public function index(Router $router) {
-        $preMovies = $this->model->getMovies(5, ['estadoEstreno' => 'Pre-Venta', 'estado' => 1]);
-        $movies = $this->model->getMovies(5, ['estadoEstreno' => ['Pelicula', 'Estreno'], 'estado' => 1]);
+        $preMovies = $this->model->getFunctionsByFilters(['estadoEstreno' => 'Pre-Venta'], 5);
+        $movies = $this->model->getFunctionsByFilters(['estadoEstreno' => ['Pelicula', 'Estreno']], 5);
 
         $router->render('pages/index', [
             'preMovies' => $preMovies,
@@ -18,18 +18,17 @@ class PagesController extends Controller {
     }
 
     public function cartelera(Router $router) {
-        $enCartelera = $this->model->getMovies(null, ['estadoEstreno' => ['Pelicula', 'Estreno'], 'estado' => 1]);
-        $proximosEstrenos = $this->model->getMovies(null, ['estadoEstreno' => 'Pre-Venta', 'estado' => 1]);
-
-        error_log("Rendering cartelera view with movies: " . count($enCartelera) . " en cartelera, " . count($proximosEstrenos) . " próximos estrenos");
+        $ciudades = $this->model->getCiudades();
+        $cines = $this->model->getCines();
+        $formatos = $this->model->getFormatos();
 
         $router->render('pages/cartelera', [
-            'enCartelera' => $enCartelera,
-            'proximosEstrenos' => $proximosEstrenos,
+            'ciudades' => $ciudades,
+            'cines' => $cines,
+            'formatos' => $formatos,
             'title' => 'Cartelera'
         ]);
     }
-
 
     public function peliculaDetalle(Router $router) {
         $id = $router->params[0];  
@@ -39,44 +38,69 @@ class PagesController extends Controller {
             header("Location: /cartelera");
             exit;
         }
- 
+
         $movie = $this->model->get($id);
-        // var_dump($movie);
-        if ($movie) { 
+
+        if ($movie) {
+            $ciudades = $this->model->getCiudades();
+            $cines = $this->model->getCines();
+            $formatos = $this->model->getFormatos();
+            
             $router->render('pages/pelicula-detalle', [
-                'movie' => $movie
+                'movie' => $movie,
+                'ciudades' => $ciudades,
+                'cines' => $cines,
+                'formatos' => $formatos
             ]);
-        } else { 
+        } else {
             $router->render('pages/404');
         }
     }
-    
 
     public function loadMoreMovies(Router $router) {
         header('Content-Type: application/json');  
-     
+        
         $input = json_decode(file_get_contents('php://input'), true);
-     
+        
         $estadoEstreno = $input['estadoEstreno'] ?? null;
+        $ciudad = $input['ciudad'] ?? null;
+        $cine = $input['cine'] ?? null;
+        $formato = $input['formato'] ?? null;
+        $fecha = $input['fecha'] ?? null;
+        $limit = $input['limit'] ?? null;
     
         if ($estadoEstreno === null) {
             echo json_encode(['error' => 'Missing parameters']);
             return;
         }
     
-        $movies = $this->model->getMovies(null, ['estadoEstreno' => $estadoEstreno, 'estado' => 1]);
+        $filters = ['pelicula.estadoEstreno' => $estadoEstreno, 'pelicula.estado' => 1];
+        if ($ciudad) {
+            $filters['ciudad.nombre'] = $ciudad;
+        }
+        if ($cine) {
+            $filters['cine.nombre'] = $cine;
+        }
+        if ($formato) {
+            $filters['formato.nombre'] = $formato;
+        }
+        if ($fecha) {
+            $filters['funcion.fecha'] = $fecha;
+        }
     
-        echo json_encode($movies);
+        try {
+            $movies = $this->model->getFunctionsByFilters($filters, $limit);
+            echo json_encode($movies);
+        } catch (Exception $e) {
+            echo json_encode(['error' => $e->getMessage()]);
+        }
     }
-     
+    
 
     public function getMovieHTML(Router $router) {
-        header('Content-Type: text/html'); // Asegurar que la respuesta sea HTML
-    
-        // Leer la entrada JSON y decodificarla
+        header('Content-Type: text/html');  
         $input = json_decode(file_get_contents('php://input'), true);
-    
-        // Verificar si los datos existen en la entrada JSON
+ 
         if (isset($input['movie'])) {
             $movie = json_decode($input['movie']);
             ob_start();
@@ -87,8 +111,5 @@ class PagesController extends Controller {
             echo 'Error: Missing movie data';
         }
     }
-    
-    
 }
-
 ?>

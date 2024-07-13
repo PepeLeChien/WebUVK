@@ -44,6 +44,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 return response.json();
             })
             .then(movies => {
+                console.log('Movies:', movies); // Añadir este log para depuración
+                if (!Array.isArray(movies)) {
+                    throw new Error('Expected an array of movies');
+                }
                 moviesList.innerHTML = '';
                 movies.forEach(movie => {
                     fetch(`${window.location.origin}/get-movie-html`, {
