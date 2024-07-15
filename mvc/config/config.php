@@ -1,4 +1,10 @@
 <?php
+<<<<<<< Updated upstream
+=======
+
+// Rayliwey
+
+>>>>>>> Stashed changes
 define('URL', 'http://localhost:3000/');
 define('HOST', 'monorail.proxy.rlwy.net');
 define('DB', 'DbCine');
@@ -6,6 +12,11 @@ define('USER', 'root');
 define('PASSWORD', 'gLiViqcicZjbKSsXiJTkXyuhwkHlxNXk');
 define('PORT', 58970);
 define('CHARSET', 'utf8mb4');
+<<<<<<< Updated upstream
+=======
+
+//AWS
+>>>>>>> Stashed changes
 
 // define('URL', 'http://localhost:3000/');
 // define('HOST', 'db-projects.cn62022agaif.us-east-2.rds.amazonaws.com');
@@ -15,6 +26,11 @@ define('CHARSET', 'utf8mb4');
 // define('PORT', 3306);
 // define('CHARSET', 'utf8mb4');
 
+<<<<<<< Updated upstream
+=======
+//LocalHost
+
+>>>>>>> Stashed changes
 // define('URL', 'http://localhost:3000/');
 // define('HOST', 'localhost');
 // define('DB', 'DbCine');
