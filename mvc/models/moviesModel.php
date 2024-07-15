@@ -85,7 +85,7 @@ class MoviesModel extends Model implements IModel {
                 'url_portada' => $this->url_portada
             ]);
             $this->id = $this->db->connect()->lastInsertId();
-
+    
             $this->saveFormatos();
             
             $this->db->connect()->commit();
@@ -96,7 +96,7 @@ class MoviesModel extends Model implements IModel {
             return false;
         }
     }
-
+    
     public function update() {
         try {
             $this->db->connect()->beginTransaction();
@@ -117,7 +117,7 @@ class MoviesModel extends Model implements IModel {
                 'url_portada' => $this->url_portada,
                 'id' => $this->id
             ]);
-
+    
             $this->deleteFormatos();
             $this->saveFormatos();
             
@@ -129,6 +129,7 @@ class MoviesModel extends Model implements IModel {
             return false;
         }
     }
+    
 
     private function saveFormatos() {
         try {
