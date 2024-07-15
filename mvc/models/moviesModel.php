@@ -151,11 +151,10 @@ class MoviesModel extends Model implements IModel {
             throw $e;
         }
     }
-
-    // Métodos adicionales para obtener películas con filtros y límites
+ 
     public function getAll() {
         $items = [];
-
+    
         try {
             $query = $this->db->connect()->query('
                 SELECT pelicula.*, genero.nombre AS genero, clasificacion.nombre AS clasificacion
@@ -163,18 +162,19 @@ class MoviesModel extends Model implements IModel {
                 JOIN genero ON pelicula.id_genero = genero.id
                 JOIN clasificacion ON pelicula.id_clasificacion = clasificacion.id
             ');
-
+    
             while ($p = $query->fetch(PDO::FETCH_ASSOC)) {
                 $p['formatos'] = $this->getPeliculaFormatos($p['id']);
-                $item = new MoviesModel();
-                $item->from($p);
-                array_push($items, $item);
+                array_push($items, $p);
             }
             return $items;
         } catch (PDOException $e) {
             echo $e;
+            return [];
         }
     }
+    
+    
 
     public function get($id) {
         try {
@@ -234,6 +234,7 @@ class MoviesModel extends Model implements IModel {
             return [];
         }
     }
+    
 
     public function getAllFormatos() {
         try {

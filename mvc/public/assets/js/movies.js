@@ -20,6 +20,7 @@ $(document).ready(function() {
         tableBody.empty();
 
         movies.forEach(movie => {
+            const formatos = movie.formatos ? movie.formatos.join(', ') : 'N/A';
             const row = `
                 <tr>
                     <td>${movie.id}</td>
@@ -28,7 +29,7 @@ $(document).ready(function() {
                     <td>${movie.genero}</td>
                     <td>${movie.clasificacion}</td>
                     <td>${movie.fecha_inicio}</td>
-                    <td>${movie.formatos.join(', ')}</td>
+                    <td>${formatos}</td>
                     <td>
                         <a href="/admin/peliculas/edit/${movie.id}" class="btn btn-warning">Editar</a>
                         <form action="/admin/peliculas/delete/${movie.id}" method="POST" style="display:inline;">

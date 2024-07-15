@@ -103,9 +103,11 @@ class MoviesController extends Controller {
             header('Location: /');
             exit;
         }
-
+    
         $movies = $this->model->getAll();
         echo json_encode($movies);
     }
+    
+    
 }
 ?>
