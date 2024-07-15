@@ -7,7 +7,7 @@ class FunctionModel extends Model implements IModel {
     }
 
     public function save() {
-        // Implementación de la función save si es necesario
+        
     }
 
     public function getAll() {

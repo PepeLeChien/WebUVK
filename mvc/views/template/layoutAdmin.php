@@ -6,15 +6,17 @@ if (!isset($_SESSION)) {
 $auth = $_SESSION['login'] ?? false;
 $email = $_SESSION['email'] ?? '';
 $rol = $_SESSION['rol'] ?? '';
- 
+
 if (!$auth || $rol !== 'Administrador') {
     header('Location: /login');
     exit;
 }
- 
+
 $username = explode('@', $email)[0];
-?> 
-  
+
+$currentUrl = $_SERVER['REQUEST_URI'];
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -44,6 +46,11 @@ $username = explode('@', $email)[0];
 	<link rel="stylesheet" href="<?php echo constant('URL'); ?>public/assets/AdminKit/css/custom.css">
 
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+	<?php if (isset($extra_css)): ?>
+        <?php echo $extra_css; ?>
+    <?php endif; ?>
+
 </head>
 
 <body>
@@ -59,35 +66,28 @@ $username = explode('@', $email)[0];
 						Crud
 					</li>
 
-					<li class="sidebar-item active">
+					<li class="sidebar-item <?php echo strpos($currentUrl, 'admin') !== false && strpos($currentUrl, 'peliculas') === false ? 'active' : ''; ?>">
 						<a class="sidebar-link"  href="<?php echo constant('URL'); ?>admin">
 							<i class="align-middle" data-feather="sliders"></i> <span
 								class="align-middle">Dashboard</span>
 						</a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link"  href="<?php echo constant('URL'); ?>admin">
+					<li class="sidebar-item <?php echo strpos($currentUrl, 'admin/peliculas') !== false ? 'active' : ''; ?>">
+						<a class="sidebar-link"  href="<?php echo constant('URL'); ?>admin/peliculas">
 							<i class="align-middle" data-feather="film"></i> <span class="align-middle">Peliculas</span>
 						</a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="<?php echo constant('URL'); ?>admin">
+					<li class="sidebar-item <?php echo strpos($currentUrl, 'admin/funciones') !== false ? 'active' : ''; ?>">
+						<a class="sidebar-link" href="<?php echo constant('URL'); ?>admin/funciones">
 							<i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Funciones</span>
 						</a>
 					</li>
 					
-					<li class="sidebar-item">
-						<a class="sidebar-link"  href="<?php echo constant('URL'); ?>admin">
+					<li class="sidebar-item <?php echo strpos($currentUrl, 'admin/usuarios') !== false ? 'active' : ''; ?>">
+						<a class="sidebar-link"  href="<?php echo constant('URL'); ?>admin/usuarios">
 							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Usuarios</span>
-						</a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link"  href="<?php echo constant('URL'); ?>admin">
-							<i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign
-								Up</span>
 						</a>
 					</li>
 
@@ -96,13 +96,7 @@ $username = explode('@', $email)[0];
 							<i class="align-middle" data-feather="monitor"></i> <span class="align-middle">Ver web</span>
 						</a>
 					</li>
-
-					
-
-					 
 				</ul>
-
-				 
 			</div>
 		</nav>
 
@@ -117,6 +111,11 @@ $username = explode('@', $email)[0];
 		</div>
 	</div>
 
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="<?php echo constant('URL'); ?>public/assets/AdminKit/js/app.js"></script>
+	<?php if (isset($extra_js)): ?>
+        <?php echo $extra_js; ?>
+    <?php endif; ?>
 </body>
 </html>
