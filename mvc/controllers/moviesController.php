@@ -56,9 +56,6 @@ class MoviesController extends Controller
         ], 'layoutAdmin');
     }
 
-
-
-
     public function edit(Router $router)
     {
         session_start();
@@ -68,13 +65,22 @@ class MoviesController extends Controller
         }
 
         $id = $router->params[0];
-        $movie = $this->model->get($id);
+        $movieData = $this->model->get($id);
+
+        if (!$movieData) {
+            header('Location: /admin/peliculas');
+            exit;
+        }
+
+        $movie = new MoviesModel();
+        $movie->from((array)$movieData);
         $genres = $this->model->getAllGeneros();
         $classifications = $this->model->getAllClasificaciones();
         $formats = $this->model->getAllFormatos();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $movie->from($_POST);
+            $movie->setId($id); // Asegúrate de establecer el ID aquí
             $movie->setFormatos($_POST['formatos']);
             if ($movie->update()) {
                 header('Location: /admin/peliculas');
@@ -93,7 +99,6 @@ class MoviesController extends Controller
 
 
 
-
     public function delete(Router $router)
     {
         session_start();
@@ -103,11 +108,15 @@ class MoviesController extends Controller
         }
 
         $id = $router->params[0];
-        $this->model->delete($id);
-
-        header('Location: /admin/peliculas');
-        exit;
+        if ($this->model->delete($id)) {
+            header('Location: /admin/peliculas');
+            exit;
+        } else {
+            // Manejar el error si la eliminación falla
+            echo "Error al eliminar la película";
+        }
     }
+
 
     public function getMovies()
     {

@@ -46,6 +46,7 @@ $router->get('/admin/peliculas/edit/:id', [$moviesController, 'edit']);
 $router->post('/admin/peliculas/edit/:id', [$moviesController, 'edit']);
 $router->post('/admin/peliculas/delete/:id', [$moviesController, 'delete']);
 
+
 $router->comprobarRutas();
  
 
