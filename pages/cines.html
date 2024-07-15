@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../styles/cine.css">
 </head>
 
-<body class="cine">
+<body>
     <header class="header">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
@@ -105,30 +105,41 @@
                     </div>
                 </div>
                 <!-- Cuarta sede -->
-<div class="container-cine" style="padding: 20px;">
-    <div class="row">
-     <img src="../assets/img_cines/uvkElAgustino.jpg" alt="UVK San Martin">
-     <div class="direccion-cine col-md-6">
-    <h2 class="cine-title">UVK El Agustino</h2>
-        <p>Dirección: Frente a la Plaza San Martín - Cercado de Lima Jr. Ocoña 110</p>
-          <p>Contacto: <a href="mailto:elagustino@uvkmulticines.com">sanmartin@uvkmulticines.com</a></p>
-       <br> <a href="https://maps.app.goo.gl/FGhTb3TsddsVt8YP8" target="_blank" class="container-button-cine"> Ver Mapa</a></br>      
-         </div>    
-        </div>
-      </div>
-   <!-- Quinta sede -->
-   <div class="container-cine" style="padding: 20px;">
-      <div class="row">
-          <div class="direccion-cine col-md-6">
-          <h2 class="cine-title">UVK Tumbes</h2>
-          <p>Dirección: San Martin, Tumbes 24001 </p>
-          <p>Contacto: <a href="mailto:ilo@uvkmulticines.com">tumbes@uvkmulticines.com</a></p>
-          <br> <a href="https://maps.app.goo.gl/Cp2MNQmkD5FDVREr7" target="_blank" class="container-button-cine"> Ver Mapa</a></br>
-       </div>
-   <img src="../assets/img_cines/uvkILO.jpg" alt="UVK ILO">
-     </div>
-    </div>
-        </div>
+                <div class="container-cine" style="padding: 20px;">
+                    <div class="row">
+                    <img src="../assets/img_cines/sanMartin.jpg" alt="UVK San Martin">
+                    <div class="direccion-cine col-md-6">
+                    <h2 class="cine-title">UVK San Martin</h2>
+                        <p>Dirección: Frente a la Plaza San Martín - Cercado de Lima Jr. Ocoña 110</p>
+                        <p>Contacto: <a href="mailto:elagustino@uvkmulticines.com">sanmartin@uvkmulticines.com</a></p>
+                    <br> <a href="https://maps.app.goo.gl/FGhTb3TsddsVt8YP8" target="_blank" class="container-button-cine"> Ver Mapa</a></br>      
+                        </div>    
+                        </div>
+                    </div>
+                <!-- Quinta sede -->
+                <div class="container-cine" style="padding: 20px;">
+                    <div class="row">
+                        <div class="direccion-cine col-md-6">
+                        <h2 class="cine-title">UVK Tumbes</h2>
+                        <p>Dirección: San Martin, Tumbes 24001 </p>
+                        <p>Contacto: <a href="mailto:ilo@uvkmulticines.com">tumbes@uvkmulticines.com</a></p>
+                        <br> <a href="https://maps.app.goo.gl/Cp2MNQmkD5FDVREr7" target="_blank" class="container-button-cine"> Ver Mapa</a></br>
+                    </div>
+                <img src="../assets/img_cines/tumbes.jpg" alt="UVK Tumbes">
+                    </div>
+                    </div>
+                <!-- Sexta sede -->
+                <div class="container-cine" style="padding: 20px;">
+                    <div class="row">
+                    <img src="../assets/img_cines/Basadre.jpg" alt="UVK Platino Basadre">
+                    <div class="direccion-cine col-md-6">
+                    <h2 class="cine-title">UVK Platino Basadre</h2>
+                        <p>Dirección: C. Las Palmeras 359, San Isidro 15073</p>
+                    <br> <a href="https://maps.app.goo.gl/FGhTb3TsddsVt8YP8" target="_blank" class="container-button-cine"> Ver Mapa</a></br>      
+                        </div>    
+                        </div>
+                </div>
+</div>
         </section>
     </main>
 
@@ -173,6 +184,40 @@
         </div>
         
     </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const prevButton = document.querySelector(".prev-page");
+            const nextButton = document.querySelector(".next-page");
+            const pageNumber = document.querySelector(".page-number");
+            const cines = document.querySelectorAll(".container-cine");
 
+            let currentPage = 1;
+            const perPage = 3;
+            const totalPages = Math.ceil(cines.length / perPage);
+
+            function showPage(page) {
+                cines.forEach((cine, index) => {
+                    cine.style.display = (index >= (page - 1) * perPage && index < page * perPage) ? "block" : "none";
+                });
+                pageNumber.textContent = page;
+            }
+
+            prevButton.addEventListener("click", () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    showPage(currentPage);
+                }
+            });
+
+            nextButton.addEventListener("click", () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    showPage(currentPage);
+                }
+            });
+
+            showPage(currentPage);
+        });
+    </script>
 </body>
 </html>
