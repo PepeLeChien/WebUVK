@@ -1,6 +1,7 @@
 <?php
 
-class MoviesModel extends Model implements IModel {
+class MoviesModel extends Model implements IModel
+{
 
     private $id;
     private $nombre;
@@ -19,7 +20,8 @@ class MoviesModel extends Model implements IModel {
     private $clasificacion;
     private $formatos;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
 
         $this->nombre = '';
@@ -40,36 +42,105 @@ class MoviesModel extends Model implements IModel {
     }
 
     // Métodos setter
-    public function setId($id) { $this->id = $id; }
-    public function setNombre($nombre) { $this->nombre = $nombre; }
-    public function setDescripcion($descripcion) { $this->descripcion = $descripcion; }
-    public function setFechaInicio($fecha_inicio) { $this->fecha_inicio = $fecha_inicio; }
-    public function setFechaFin($fecha_fin) { $this->fecha_fin = $fecha_fin; }
-    public function setIdGenero($id_genero) { $this->id_genero = $id_genero; }
-    public function setIdClasificacion($id_clasificacion) { $this->id_clasificacion = $id_clasificacion; }
-    public function setDuracion($duracion) { $this->duracion = $duracion; }
-    public function setUrlTrailer($url_trailer) { $this->url_trailer = $url_trailer; }
-    public function setUrlImagen($url_imagen) { $this->url_imagen = $url_imagen; }
-    public function setEstadoEstreno($estadoEstreno) { $this->estadoEstreno = $estadoEstreno; }
-    public function setEstado($estado) { $this->estado = $estado; }
-    public function setUrlPortada($url_portada) { $this->url_portada = $url_portada; }
-    public function setFormatos($formatos) { $this->formatos = $formatos; }
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    }
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+    }
+    public function setFechaInicio($fecha_inicio)
+    {
+        $this->fecha_inicio = $fecha_inicio;
+    }
+    public function setFechaFin($fecha_fin)
+    {
+        $this->fecha_fin = $fecha_fin;
+    }
+    public function setIdGenero($id_genero)
+    {
+        $this->id_genero = $id_genero;
+    }
+    public function setIdClasificacion($id_clasificacion)
+    {
+        $this->id_clasificacion = $id_clasificacion;
+    }
+    public function setDuracion($duracion)
+    {
+        $this->duracion = $duracion;
+    }
+    public function setUrlTrailer($url_trailer)
+    {
+        $this->url_trailer = $url_trailer;
+    }
+    public function setUrlImagen($url_imagen)
+    {
+        $this->url_imagen = $url_imagen;
+    }
+    public function setEstadoEstreno($estadoEstreno)
+    {
+        $this->estadoEstreno = $estadoEstreno;
+    }
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+    }
+    public function setUrlPortada($url_portada)
+    {
+        $this->url_portada = $url_portada;
+    }
+    public function setFormatos($formatos)
+    {
+        $this->formatos = $formatos;
+    }
 
     // Métodos get para obtener los valores...
-    public function getId() { return $this->id; }
-    public function getNombre() { return $this->nombre; }
-    public function getDescripcion() { return $this->descripcion; }
-    public function getFechaInicio() { return $this->fecha_inicio; }
-    public function getFechaFin() { return $this->fecha_fin; }
-    public function getGenero() { return $this->genero; }
-    public function getClasificacion() { return $this->clasificacion; }
-    public function getFormatos() { return $this->formatos; }
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+    public function getFechaInicio()
+    {
+        return $this->fecha_inicio;
+    }
+    public function getFechaFin()
+    {
+        return $this->fecha_fin;
+    }
+    public function getGenero()
+    {
+        return $this->genero;
+    }
+    public function getClasificacion()
+    {
+        return $this->clasificacion;
+    }
+    public function getFormatos()
+    {
+        return $this->formatos;
+    }
 
-    public function save() {
+    public function save()
+    {
         try {
-            $this->db->connect()->beginTransaction();
-            
-            $query = $this->prepare('INSERT INTO pelicula (nombre, descripcion, fecha_inicio, fecha_fin, id_genero, id_clasificacion, duracion, url_trailer, url_imagen, estadoEstreno, estado, url_portada) VALUES (:nombre, :descripcion, :fecha_inicio, :fecha_fin, :id_genero, :id_clasificacion, :duracion, :url_trailer, :url_imagen, :estadoEstreno, :estado, :url_portada)');
+            // Obtener una nueva conexión para la transacción
+            $pdo = $this->db->connect();
+            $pdo->beginTransaction();
+
+            $query = $pdo->prepare('INSERT INTO pelicula (nombre, descripcion, fecha_inicio, fecha_fin, id_genero, id_clasificacion, duracion, url_trailer, url_imagen, estadoEstreno, estado, url_portada) VALUES (:nombre, :descripcion, :fecha_inicio, :fecha_fin, :id_genero, :id_clasificacion, :duracion, :url_trailer, :url_imagen, :estadoEstreno, :estado, :url_portada)');
             $query->execute([
                 'nombre' => $this->nombre,
                 'descripcion' => $this->descripcion,
@@ -84,24 +155,40 @@ class MoviesModel extends Model implements IModel {
                 'estado' => $this->estado,
                 'url_portada' => $this->url_portada
             ]);
-            $this->id = $this->db->connect()->lastInsertId();
-    
-            $this->saveFormatos();
-            
-            $this->db->connect()->commit();
+
+            // Obtener el ID de la última película insertada
+            $this->id = $pdo->lastInsertId();
+
+            // Verificar si el ID se obtiene correctamente
+            if ($this->id) {
+                error_log("Último ID insertado: " . $this->id);
+            } else {
+                throw new Exception("No se pudo obtener el último ID insertado.");
+            }
+
+            $this->saveFormatos($pdo);
+
+            $pdo->commit();
             return true;
         } catch (PDOException $e) {
-            $this->db->connect()->rollBack();
-            echo $e;
+            if ($pdo->inTransaction()) {
+                $pdo->rollBack();
+            }
+            error_log($e->getMessage());
             return false;
         }
     }
-    
-    public function update() {
+
+
+
+
+    public function update()
+    {
         try {
-            $this->db->connect()->beginTransaction();
-            
-            $query = $this->prepare('UPDATE pelicula SET nombre = :nombre, descripcion = :descripcion, fecha_inicio = :fecha_inicio, fecha_fin = :fecha_fin, id_genero = :id_genero, id_clasificacion = :id_clasificacion, duracion = :duracion, url_trailer = :url_trailer, url_imagen = :url_imagen, estadoEstreno = :estadoEstreno, estado = :estado, url_portada = :url_portada WHERE id = :id');
+            $pdo = $this->db->connect();
+            $pdo->beginTransaction();
+
+            $query = $pdo->prepare('UPDATE pelicula SET nombre = :nombre, descripcion = :descripcion, fecha_inicio = :fecha_inicio, fecha_fin = :fecha_fin, id_genero = :id_genero, id_clasificacion = :id_clasificacion, duracion = :duracion, url_trailer = :url_trailer, url_imagen = :url_imagen, estadoEstreno = :estadoEstreno, estado = :estado, url_portada = :url_portada WHERE id = :id');
             $query->execute([
                 'nombre' => $this->nombre,
                 'descripcion' => $this->descripcion,
@@ -117,45 +204,56 @@ class MoviesModel extends Model implements IModel {
                 'url_portada' => $this->url_portada,
                 'id' => $this->id
             ]);
-    
-            $this->deleteFormatos();
-            $this->saveFormatos();
-            
-            $this->db->connect()->commit();
+
+            $this->deleteFormatos($pdo);
+            $this->saveFormatos($pdo);
+
+            $pdo->commit();
             return true;
         } catch (PDOException $e) {
-            $this->db->connect()->rollBack();
-            echo $e;
+            if ($pdo->inTransaction()) {
+                $pdo->rollBack();
+            }
+            error_log($e->getMessage());
             return false;
         }
     }
-    
 
-    private function saveFormatos() {
+
+    private function saveFormatos($pdo)
+    {
         try {
             foreach ($this->formatos as $formato) {
-                $query = $this->prepare('INSERT INTO peliculaFormato (id_pelicula, id_formato) VALUES (:id_pelicula, :id_formato)');
-                $query->execute(['id_pelicula' => $this->id, 'id_formato' => $formato]);
+                error_log("Guardando formato: " . $formato);
+                $query = $pdo->prepare('INSERT INTO peliculaFormato (id_pelicula, id_formato) VALUES (:id_pelicula, :id_formato)');
+                $query->execute([
+                    'id_pelicula' => $this->id,
+                    'id_formato' => $formato
+                ]);
             }
         } catch (PDOException $e) {
-            echo $e;
+            error_log($e->getMessage());
             throw $e;
         }
     }
 
-    private function deleteFormatos() {
+
+    private function deleteFormatos($pdo)
+    {
         try {
-            $query = $this->prepare('DELETE FROM peliculaFormato WHERE id_pelicula = :id_pelicula');
+            $query = $pdo->prepare('DELETE FROM peliculaFormato WHERE id_pelicula = :id_pelicula');
             $query->execute(['id_pelicula' => $this->id]);
         } catch (PDOException $e) {
-            echo $e;
+            error_log($e->getMessage());
             throw $e;
         }
     }
- 
-    public function getAll() {
+
+
+    public function getAll()
+    {
         $items = [];
-    
+
         try {
             $query = $this->db->connect()->query('
                 SELECT pelicula.*, genero.nombre AS genero, clasificacion.nombre AS clasificacion
@@ -163,7 +261,7 @@ class MoviesModel extends Model implements IModel {
                 JOIN genero ON pelicula.id_genero = genero.id
                 JOIN clasificacion ON pelicula.id_clasificacion = clasificacion.id
             ');
-    
+
             while ($p = $query->fetch(PDO::FETCH_ASSOC)) {
                 $p['formatos'] = $this->getPeliculaFormatos($p['id']);
                 array_push($items, $p);
@@ -174,10 +272,11 @@ class MoviesModel extends Model implements IModel {
             return [];
         }
     }
-    
-    
 
-    public function get($id) {
+
+
+    public function get($id)
+    {
         try {
             $query = $this->prepare('SELECT * FROM pelicula WHERE id = :id');
             $query->execute(['id' => $id]);
@@ -190,7 +289,8 @@ class MoviesModel extends Model implements IModel {
         }
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         try {
             $query = $this->prepare('DELETE FROM pelicula WHERE id = :id');
             $query->execute(['id' => $id]);
@@ -201,26 +301,30 @@ class MoviesModel extends Model implements IModel {
         }
     }
 
-    public function from($array) {
-        $this->id = $array['id'];
-        $this->nombre = $array['nombre'];
-        $this->descripcion = $array['descripcion'];
-        $this->fecha_inicio = $array['fecha_inicio'];
-        $this->fecha_fin = $array['fecha_fin'];
-        $this->id_genero = $array['id_genero'];
-        $this->id_clasificacion = $array['id_clasificacion'];
-        $this->duracion = $array['duracion'];
-        $this->url_trailer = $array['url_trailer'];
-        $this->url_imagen = $array['url_imagen'];
-        $this->estadoEstreno = $array['estadoEstreno'];
-        $this->estado = $array['estado'];
-        $this->url_portada = $array['url_portada'];
-        $this->genero = $array['genero'];
-        $this->clasificacion = $array['clasificacion'];
-        $this->formatos = $array['formatos'];
+    public function from($array)
+    {
+        $this->id = $array['id'] ?? null;
+        $this->nombre = $array['nombre'] ?? '';
+        $this->descripcion = $array['descripcion'] ?? '';
+        $this->fecha_inicio = $array['fecha_inicio'] ?? '';
+        $this->fecha_fin = $array['fecha_fin'] ?? '';
+        $this->id_genero = $array['id_genero'] ?? 0;
+        $this->id_clasificacion = $array['id_clasificacion'] ?? 0;
+        $this->duracion = $array['duracion'] ?? '';
+        $this->url_trailer = $array['url_trailer'] ?? '';
+        $this->url_imagen = $array['url_imagen'] ?? '';
+        $this->estadoEstreno = $array['estadoEstreno'] ?? '';
+        $this->estado = $array['estado'] ?? 1;
+        $this->url_portada = $array['url_portada'] ?? '';
+        $this->genero = $array['genero'] ?? '';
+        $this->clasificacion = $array['clasificacion'] ?? '';
+        $this->formatos = $array['formatos'] ?? [];
     }
 
-    private function getPeliculaFormatos($id_pelicula) {
+
+
+    private function getPeliculaFormatos($id_pelicula)
+    {
         try {
             $query = $this->db->connect()->prepare('
                 SELECT formato.nombre
@@ -235,9 +339,10 @@ class MoviesModel extends Model implements IModel {
             return [];
         }
     }
-    
 
-    public function getAllFormatos() {
+
+    public function getAllFormatos()
+    {
         try {
             $query = $this->db->connect()->query('SELECT * FROM formato');
             return $query->fetchAll(PDO::FETCH_ASSOC);
@@ -247,7 +352,8 @@ class MoviesModel extends Model implements IModel {
         }
     }
 
-    public function getAllGeneros() {
+    public function getAllGeneros()
+    {
         try {
             $query = $this->db->connect()->query('SELECT * FROM genero');
             return $query->fetchAll(PDO::FETCH_ASSOC);
@@ -257,7 +363,8 @@ class MoviesModel extends Model implements IModel {
         }
     }
 
-    public function getAllClasificaciones() {
+    public function getAllClasificaciones()
+    {
         try {
             $query = $this->db->connect()->query('SELECT * FROM clasificacion');
             return $query->fetchAll(PDO::FETCH_ASSOC);
@@ -267,4 +374,3 @@ class MoviesModel extends Model implements IModel {
         }
     }
 }
-?>

@@ -43,7 +43,7 @@
         </div>
         <div class="form-group">
             <label for="url_imagen">URL de la Imagen</label>
-            <input type="url" class="form-control" id="url_imagen" name="url_imagen" value="<?php echo isset($movie) ? $movie->url_imagen : ''; ?>">
+            <input type="text" class="form-control" id="url_imagen" name="url_imagen" value="<?php echo isset($movie) ? $movie->url_imagen : ''; ?>">
         </div>
         <div class="form-group">
             <label for="estadoEstreno">Estado de Estreno</label>

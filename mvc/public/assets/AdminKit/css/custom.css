@@ -6,9 +6,18 @@
     font-family: 'BalooExtra';
     src: url(../fonts/Baloo2-ExtraBold.ttf);
 }
+
+
 .wrapper{
-    font-size: 150%;    
+    font-size: 160%;    
     font-family: 'Baloo', Helvetica, sans-serif !important;
+}
+
+.form-control{
+    font-size: 1.4rem !important;
+}
+.btn {
+    font-size: 1.4rem !important;
 }
 
 .sidebar, .sidebar-content{

@@ -7,11 +7,19 @@
 // define('PORT', 58970);
 // define('CHARSET', 'utf8mb4');
 
+// define('URL', 'http://localhost:3000/');
+// define('HOST', 'db-projects.cn62022agaif.us-east-2.rds.amazonaws.com');
+// define('DB', 'DbCine');
+// define('USER', 'root');
+// define('PASSWORD', 'bjNCKeZEamuJIGdNAmPrjgwvaYkTkriA');
+// define('PORT', 3306);
+// define('CHARSET', 'utf8mb4');
+
 define('URL', 'http://localhost:3000/');
-define('HOST', 'db-projects.cn62022agaif.us-east-2.rds.amazonaws.com');
+define('HOST', 'localhost');
 define('DB', 'DbCine');
 define('USER', 'root');
-define('PASSWORD', 'bjNCKeZEamuJIGdNAmPrjgwvaYkTkriA');
+define('PASSWORD', '12345');
 define('PORT', 3306);
 define('CHARSET', 'utf8mb4');
 ?>
