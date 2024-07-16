@@ -149,7 +149,7 @@ class FuncionesModel extends Model
                 JOIN cine ON cineSala.id_cine = cine.id
                 JOIN ciudad ON cine.id_ciudad = ciudad.id
                 JOIN formato ON peliculaFormato.id_formato = formato.id
-                WHERE funcion.estado = 1';
+                WHERE funcion.estado = 1 AND pelicula.estado=1';
     
         $params = [];
     
