@@ -220,3 +220,47 @@
 p.text{
     color: var(--white-style);
 }
+
+
+.container-butacas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.screen {
+  background-color: #333;
+  height: 50px;
+  width: 100%;
+  margin: 10px 0;
+}
+
+table {
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+td, th {
+  border: 1px solid #444;
+  padding: 5px;
+  text-align: center;
+}
+
+.seat {
+  background-color: #444;
+  height: 30px;
+  width: 30px;
+  margin: 3px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.seat.selected {
+  background-color: #6feaf6;
+}
+
+.seat.sold {
+  background-color: #fff;
+  cursor: not-allowed;
+}
