@@ -66,7 +66,7 @@ $currentUrl = $_SERVER['REQUEST_URI'];
 						Crud
 					</li>
 
-					<li class="sidebar-item <?php echo strpos($currentUrl, 'admin') !== false && strpos($currentUrl, 'peliculas') === false ? 'active' : ''; ?>">
+					<li class="sidebar-item <?php echo strpos($currentUrl, 'admin') !== false && strpos($currentUrl, 'peliculas') === false && strpos($currentUrl, 'funciones') === false ? 'active' : ''; ?>">
 						<a class="sidebar-link"  href="<?php echo constant('URL'); ?>admin">
 							<i class="align-middle" data-feather="sliders"></i> <span
 								class="align-middle">Dashboard</span>

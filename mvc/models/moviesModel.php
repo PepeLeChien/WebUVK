@@ -221,11 +221,11 @@ class MoviesModel extends Model implements IModel
                 'url_portada' => $this->url_portada,
                 'id' => $this->id
             ]);
- 
- 
+
+
 
             // Comprobar si los formatos han cambiado
-            $currentFormats = $this->getPeliculaFormatosId($this->id); ; 
+            $currentFormats = $this->getPeliculaFormatosId($this->id);;
             if (array_diff($this->formatos, $currentFormats) || array_diff($currentFormats, $this->formatos)) {
                 // Elimina los formatos antiguos y guarda los nuevos
                 $this->deleteFormatos($pdo);
@@ -276,22 +276,43 @@ class MoviesModel extends Model implements IModel
         }
     }
 
+    // public function getAll()
+    // {
+    //     $items = [];
+
+    //     try {
+    //         $query = $this->db->connect()->query('
+    //             SELECT pelicula.*, genero.nombre AS genero, clasificacion.nombre AS clasificacion
+    //             FROM pelicula
+    //             JOIN genero ON pelicula.id_genero = genero.id
+    //             JOIN clasificacion ON pelicula.id_clasificacion = clasificacion.id
+    //         ');
+
+    //         while ($p = $query->fetch(PDO::FETCH_ASSOC)) {
+    //             $p['formatos'] = $this->getPeliculaFormatos($p['id']);
+    //             array_push($items, $p);
+    //         }
+    //         return $items;
+    //     } catch (PDOException $e) {
+    //         echo $e;
+    //         return [];
+    //     }
+    // }
+
     public function getAll()
     {
-        $items = [];
-
         try {
             $query = $this->db->connect()->query('
-                SELECT pelicula.*, genero.nombre AS genero, clasificacion.nombre AS clasificacion
-                FROM pelicula
-                JOIN genero ON pelicula.id_genero = genero.id
-                JOIN clasificacion ON pelicula.id_clasificacion = clasificacion.id
-            ');
+            SELECT pelicula.*, genero.nombre AS genero, clasificacion.nombre AS clasificacion, GROUP_CONCAT(formato.nombre SEPARATOR ", ") AS formatos
+            FROM pelicula
+            JOIN genero ON pelicula.id_genero = genero.id
+            JOIN clasificacion ON pelicula.id_clasificacion = clasificacion.id
+            LEFT JOIN peliculaFormato ON pelicula.id = peliculaFormato.id_pelicula
+            LEFT JOIN formato ON peliculaFormato.id_formato = formato.id
+            GROUP BY pelicula.id
+        ');
 
-            while ($p = $query->fetch(PDO::FETCH_ASSOC)) {
-                $p['formatos'] = $this->getPeliculaFormatos($p['id']);
-                array_push($items, $p);
-            }
+            $items = $query->fetchAll(PDO::FETCH_ASSOC);
             return $items;
         } catch (PDOException $e) {
             echo $e;

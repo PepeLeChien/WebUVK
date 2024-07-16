@@ -1,15 +1,19 @@
-<?php 
+<?php
+
 use MVC\Router;
 
 class PagesController extends Controller {
+    private $funcionesModel;
+
     public function __construct() {
         parent::__construct();
-        $this->loadModel('Function'); 
+        $this->loadModel('Funciones'); // Asegúrate de que 'Funciones' es el nombre correcto
+        $this->funcionesModel = $this->model;
     }
 
     public function index(Router $router) {
-        $preMovies = $this->model->getFunctionsByFilters(['estadoEstreno' => 'Pre-Venta'], 5);
-        $movies = $this->model->getFunctionsByFilters(['estadoEstreno' => ['Pelicula', 'Estreno']], 5);
+        $preMovies = $this->funcionesModel->getFunctionsByFilters(['estadoEstreno' => 'Pre-Venta'], 5);
+        $movies = $this->funcionesModel->getFunctionsByFilters(['estadoEstreno' => ['Pelicula', 'Estreno']], 5);
 
         $router->render('pages/index', [
             'preMovies' => $preMovies,
@@ -18,9 +22,9 @@ class PagesController extends Controller {
     }
 
     public function cartelera(Router $router) {
-        $ciudades = $this->model->getCiudades();
-        $cines = $this->model->getCines();
-        $formatos = $this->model->getFormatos();
+        $ciudades = $this->funcionesModel->getCiudades();
+        $cines = $this->funcionesModel->getCines();
+        $formatos = $this->funcionesModel->getFormatos();
 
         $router->render('pages/cartelera', [
             'ciudades' => $ciudades,
@@ -31,7 +35,7 @@ class PagesController extends Controller {
     }
 
     public function peliculaDetalle(Router $router) {
-        $id = $router->params[0];  
+        $id = $router->params[0];
 
         $id = filter_var($id, FILTER_VALIDATE_INT);
         if (!$id) {
@@ -39,13 +43,13 @@ class PagesController extends Controller {
             exit;
         }
 
-        $movie = $this->model->get($id);
+        $movie = $this->funcionesModel->getMovie($id);
 
         if ($movie) {
-            $ciudades = $this->model->getCiudades();
-            $cines = $this->model->getCines();
-            $formatos = $this->model->getFormatos();
-            
+            $ciudades = $this->funcionesModel->getCiudades();
+            $cines = $this->funcionesModel->getCines();
+            $formatos = $this->funcionesModel->getFormatos();
+
             $router->render('pages/pelicula-detalle', [
                 'movie' => $movie,
                 'ciudades' => $ciudades,
@@ -58,22 +62,22 @@ class PagesController extends Controller {
     }
 
     public function loadMoreMovies(Router $router) {
-        header('Content-Type: application/json');  
-        
+        header('Content-Type: application/json');
+
         $input = json_decode(file_get_contents('php://input'), true);
-        
+
         $estadoEstreno = $input['estadoEstreno'] ?? null;
         $ciudad = $input['ciudad'] ?? null;
         $cine = $input['cine'] ?? null;
         $formato = $input['formato'] ?? null;
         $fecha = $input['fecha'] ?? null;
         $limit = $input['limit'] ?? null;
-    
+
         if ($estadoEstreno === null) {
             echo json_encode(['error' => 'Missing parameters']);
             return;
         }
-    
+
         $filters = ['pelicula.estadoEstreno' => $estadoEstreno, 'pelicula.estado' => 1];
         if ($ciudad) {
             $filters['ciudad.nombre'] = $ciudad;
@@ -87,20 +91,19 @@ class PagesController extends Controller {
         if ($fecha) {
             $filters['funcion.fecha'] = $fecha;
         }
-    
+
         try {
-            $movies = $this->model->getFunctionsByFilters($filters, $limit);
+            $movies = $this->funcionesModel->getFunctionsByFilters($filters, $limit);
             echo json_encode($movies);
         } catch (Exception $e) {
             echo json_encode(['error' => $e->getMessage()]);
         }
     }
-    
 
     public function getMovieHTML(Router $router) {
-        header('Content-Type: text/html');  
+        header('Content-Type: text/html');
         $input = json_decode(file_get_contents('php://input'), true);
- 
+
         if (isset($input['movie'])) {
             $movie = json_decode($input['movie']);
             ob_start();

@@ -5,7 +5,6 @@ ini_set('ignore_repeated_errors', TRUE);
 ini_set('display_errors', TRUE);
 ini_set('log_errors', TRUE);
 ini_set("error_log", "php-error.log");
- 
 
 use MVC\Router;
 
@@ -19,13 +18,15 @@ require_once 'config/config.php';
 require_once 'controllers/PagesController.php';
 require_once 'controllers/LoginController.php';
 require_once 'controllers/AdminController.php';
-require_once 'controllers/MoviesController.php'; // Incluye el controlador de películas
+require_once 'controllers/MoviesController.php';
+require_once 'controllers/FunctionsController.php';
 
 $router = new Router();
 $pagesController = new PagesController();
 $loginController = new LoginController();
 $adminController = new AdminController();
-$moviesController = new MoviesController(); // Instancia el controlador de películas
+$moviesController = new MoviesController();
+$functionsController = new FunctionsController();
 
 $router->get('/', [$pagesController, 'index']);
 $router->get('/cartelera', [$pagesController, 'cartelera']);
@@ -46,8 +47,13 @@ $router->get('/admin/peliculas/edit/:id', [$moviesController, 'edit']);
 $router->post('/admin/peliculas/edit/:id', [$moviesController, 'edit']);
 $router->post('/admin/peliculas/delete/:id', [$moviesController, 'delete']);
 
+$router->get('/admin/funciones', [$functionsController, 'index']);
+$router->get('/admin/funciones/getFunctions', [$functionsController, 'getFunctions']);
+$router->get('/admin/funciones/create', [$functionsController, 'create']);
+$router->post('/admin/funciones/create', [$functionsController, 'create']);
+$router->get('/admin/funciones/edit/:id', [$functionsController, 'edit']);
+$router->post('/admin/funciones/edit/:id', [$functionsController, 'edit']);
+$router->post('/admin/funciones/delete/:id', [$functionsController, 'delete']);
 
 $router->comprobarRutas();
- 
-
 ?>

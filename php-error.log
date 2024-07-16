@@ -1,0 +1,32 @@
+[16-Jul-2024 09:32:49 Europe/Berlin] PHP Fatal error:  Uncaught Error: Class "MVC\Router" not found in C:\Juan\REPOSITORIOS\WebUVK\mvc\test_autoload.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\Juan\REPOSITORIOS\WebUVK\mvc\test_autoload.php on line 26
+[16-Jul-2024 09:33:03 Europe/Berlin] PHP Fatal error:  Uncaught Error: Class "MVC\Router" not found in C:\Juan\REPOSITORIOS\WebUVK\mvc\test_autoload.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\Juan\REPOSITORIOS\WebUVK\mvc\test_autoload.php on line 26
+[16-Jul-2024 09:33:05 Europe/Berlin] PHP Fatal error:  Uncaught Error: Class "MVC\Router" not found in C:\Juan\REPOSITORIOS\WebUVK\mvc\test_autoload.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\Juan\REPOSITORIOS\WebUVK\mvc\test_autoload.php on line 26
+[16-Jul-2024 09:33:05 Europe/Berlin] PHP Fatal error:  Uncaught Error: Class "MVC\Router" not found in C:\Juan\REPOSITORIOS\WebUVK\mvc\test_autoload.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\Juan\REPOSITORIOS\WebUVK\mvc\test_autoload.php on line 26
+[16-Jul-2024 09:33:05 Europe/Berlin] PHP Fatal error:  Uncaught Error: Class "MVC\Router" not found in C:\Juan\REPOSITORIOS\WebUVK\mvc\test_autoload.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\Juan\REPOSITORIOS\WebUVK\mvc\test_autoload.php on line 26
+[16-Jul-2024 09:33:06 Europe/Berlin] PHP Fatal error:  Uncaught Error: Class "MVC\Router" not found in C:\Juan\REPOSITORIOS\WebUVK\mvc\test_autoload.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\Juan\REPOSITORIOS\WebUVK\mvc\test_autoload.php on line 26
+[16-Jul-2024 09:33:23 Europe/Berlin] PHP Fatal error:  Uncaught Error: Class "MVC\Router" not found in C:\Juan\REPOSITORIOS\WebUVK\mvc\test_autoload.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\Juan\REPOSITORIOS\WebUVK\mvc\test_autoload.php on line 26
+[16-Jul-2024 09:40:48 Europe/Berlin] PHP Fatal error:  Uncaught Error: Class "MVC\Router" not found in C:\Juan\REPOSITORIOS\WebUVK\mvc\test_autoload.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\Juan\REPOSITORIOS\WebUVK\mvc\test_autoload.php on line 26

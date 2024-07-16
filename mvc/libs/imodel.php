@@ -1,5 +1,5 @@
 <?php
-
+ 
 interface IModel {
     public function save();
     public function getAll();

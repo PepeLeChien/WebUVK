@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pelicula-Pago</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../public/assets/css/styles.css">
+    <link rel="stylesheet" href="../../public/assets/css/pelicula-detalle.css">
+    <link rel="stylesheet" href="../../public/assets/css/pelicula-pago.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+<body>
+    <main class="container-fluid main-container">
+        <div class="row first-row">
+            <div class="col-12 col-md-4">
+                <button class="btn button-red mt-4 mt-lg-0 " href=""> 
+                    <span>Regresar</span>
+                </button>
+            </div>
+            <div class="col-12 col-md-8">
+                <img src="../../public/assets/images/icons/section-pago.png" alt="">
+            </div>
+        </div>
+
+        <div class="row second-row">
+            <div class="col-12 col-lg-4">
+                    <div class=" d-flex justify-content-center  ticket-container">
+                        <div class="container mt-5 ticket ">
+                            <div class="row pb-5  ticket-content">
+                                <div class="row">
+                                    <div class="col text-left ticket-title">
+                                        <h3><?php echo htmlspecialchars($movie->nombre); ?></h3>
+                                        <p>Hoy <?php echo date('d \d\e F', strtotime($movie->fecha_inicio)); ?></p>
+                                    </div>
+                                </div>
+                                <div class="row ticket-details">
+                                    <div class="col-6 ticket-details-movie">
+                                        <h5>Sala</h5>
+                                        <p>Sala 1</p>
+                                    </div>
+                                    <div class="col-6 ticket-details-movie">
+                                        <h5>Hora</h5>
+                                        <p>22:30 PM</p>
+                                    </div>
+                                    <div class="col-6 ticket-details-movie">
+                                        <h5>Ciudad</h5>
+                                        <p>Lima</p>
+                                    </div>
+                                    <div class="col-6 ticket-details-movie">
+                                        <h5>Cine</h5>
+                                        <p>El Agustino</p>
+                                    </div>
+                                    <div class="col-6 ticket-details-movie">
+                                        <h5>Formato</h5>
+                                        <p>Xtreme</p>
+                                    </div>
+                                    <div class="col-6 ticket-details-movie">
+                                        <h5>Butaca</h5>
+                                        <p>----</p>
+                                    </div>
+                                </div>
+                                <div class="ticket-icon">
+                                    <img src="../assets/svg/canchita.svg" alt="Compra" class="comprar-img">
+                                </div>
+                            </div>
+    
+                            <div class="row total-section mt-5 py-3 ">
+                                <div class="d-flex gap-4 justify-content-center">
+                                    <h3 class="m-0">Total:</h3>
+                                    <p class="m-0">----</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="col-12 col-lg-8">
+                <h1 class="sub-title"><span>&nbsp Reali</span>za tu pago</h1>
+                <section class="pago-container">
+                    <div class="metodo-container">
+                        <div class="metodo-selection">
+                            <h2>Elige tu método de pago</h2>
+                            <div>
+                                <img src="../../public/assets/images/icons/visa.png" alt="Visa">
+                                <img src="../../public/assets/images/icons/mastercard.png" alt="Mastercard">
+                                <img src="../../public/assets/images/icons/diners.png" alt="Diners">
+                                <img src="../../public/assets/images/icons/amex.png" alt="American Express">
+                            </div>    
+                        </div>
+                        <div class="input-metodo">
+                            <input type="text" placeholder="Número de Tarjeta">
+                            <input type="text" placeholder="Fecha de Vencimiento">
+                            <input type="text" placeholder="CVV">
+                            <input type="text" placeholder="Nombre Completo">
+                        </div>
+                    </div>
+                    <div class="datos-container">
+                        <div>
+                            <h2>Datos para el comprobante</h2>   
+                        </div>
+                        <div class="input-datos">
+                            <div class="select-input">
+                                <select>
+                                    <option value="1">DNI</option>
+                                    <option value="2">CE</option>
+                                    <option value="3">RUC</option>
+                                </select>
+                                <input type="text" placeholder="Ingrese número">
+                            </div>
+                            <input type="text" placeholder="Nombre">
+                            <input type="text" placeholder="Apellidos">
+                            <input type="text" placeholder="Correo Electrónico">
+                            <div class="checkbox-div">
+                                <input type="checkbox" id="cbox2" value="second_checkbox" />
+                                <label for="cbox2">Aceptar términos y condiciones</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comprob-container">
+                        <h2>Tipo de Comprobante</h2>
+                        <div class="input-comprob">
+                            <div>
+                                <label>
+                                    <input type="radio" name="option" value="option1"> Boleta
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <input type="radio" name="option" value="option2"> Factura
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="next-div">
+            <button class="btn button-red mt-4 mt-lg-0 " href="">
+                <span>Continuar</span>
+            </button>
+        </div>
+    </main>
+</body>
+</html>

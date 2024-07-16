@@ -1,0 +1,151 @@
+body {
+    height: 100vh;
+    color: #fff;
+}
+
+h1 {
+    font-size: 2.5rem !important;
+}
+
+.main-container{
+    padding: 0 3rem;
+
+}
+
+.first-row{
+    display: flex;
+    align-items: center;
+    height: 10rem;
+}
+
+.first-row :nth-child(2) {
+    display: flex;
+    justify-content: center;
+}
+
+
+.first-row img {
+    height: 4.4rem;
+}
+
+
+.pago-container{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+
+.metodo-selection {
+    display: flex;
+    align-items: center;
+    gap: 7rem;
+}
+h2 {
+    font-size: 1.8rem;
+}
+.metodo-selection div {
+    display: flex;
+    gap: 3rem;
+}
+
+.input-metodo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 2.4rem;
+    padding: 1rem 22rem;
+}
+
+.input-metodo :nth-child(1) {
+    grid-column: span 2; /* Ocupa ambas columnas */
+}
+
+.input-metodo :nth-child(4) {
+    grid-column: span 2; /* Ocupa ambas columnas */
+}
+
+select,
+input {
+    border-radius: 1rem;
+    padding-left: 2rem;
+    height: 3rem;
+}
+
+
+.input-datos {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
+    grid-template-rows: auto auto; /* Dos filas de altura automática */
+    gap: 2.4rem;
+    padding: 1rem 22rem;
+    align-items: center;
+}
+
+.select-input {
+    display: flex;
+    width: 100%;
+}
+
+.select-input select {
+    width: 30%;
+}
+.select-input input {
+    width: 70%;
+}
+
+.checkbox-div {
+    margin-top: -2rem;
+    display: flex;
+    align-items: center;
+}
+
+.input-comprob {
+    display: flex;
+    align-items: center;
+    padding: 1rem 22rem;
+    align-items: center;
+    gap: 20rem;
+}
+.input-comprob label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+.next-div {
+    position: relative;
+    display: flex;
+    justify-content: end;
+    margin-top: -2rem;
+}
+
+.next-div button{
+    height: 4rem;
+    width: 10rem;
+}
+
+.next-div span {
+    font-size: 1.8rem;
+}
+
+
+@media (max-width: 1100.98px) { 
+    .input-datos,
+    .input-comprob,
+    .input-metodo {
+        padding: 1rem 10rem;
+    }
+    
+}
+
+@media (max-width: 650.98px) { 
+    .input-datos,
+    .input-comprob,
+    .input-metodo {
+        padding: 1rem 3rem;
+    }
+    
+}
