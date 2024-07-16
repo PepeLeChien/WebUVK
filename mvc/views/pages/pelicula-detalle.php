@@ -10,7 +10,7 @@ ob_start();
     <!-- trailer video -->
     <section class="detail-movie">
         <div class="detail-movie-cover" id="detailMovieContainer"> <!-- agregar función js -->
-        <img class="cover" src="<?php echo constant('URL') . 'public/assets/images/' . htmlspecialchars($movie->url_portada ?? 'default.jpg'); ?>" alt="Tráiler">
+        <img class="cover" src="<?php echo constant('URL') . htmlspecialchars($movie->url_portada ?? 'default.jpg'); ?>" alt="Tráiler">
               <div class="detail-movie-container">
                 <h1 class="cover-title"><?php echo htmlspecialchars($movie->nombre); ?></h1>
                 <div class="detail-movie-content">
