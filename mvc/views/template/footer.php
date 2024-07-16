@@ -12,7 +12,7 @@
             <h3>Nosotros</h3>
             <ul>
                 <li><a href="<?php echo constant('URL'); ?>peliculas/cartelera">Cartelera</a></li>
-                <li><a href="#">Cines</a></li>
+                <li><a href="<?php echo constant('URL'); ?>cines">Cines</a></li>
             </ul>
         </div>
         <div class="col-6 col-lg">

@@ -339,4 +339,5 @@ class MoviesModel extends Model
         }
     }
 }
+
 ?>

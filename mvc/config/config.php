@@ -20,7 +20,7 @@ define('CHARSET', 'utf8mb4');
 // define('PORT', 3306);
 // define('CHARSET', 'utf8mb4');
 
-//AWS 
+// //AWS 
 
 // define('URL', 'http://localhost:3000/');
 // define('HOST', 'localhost');

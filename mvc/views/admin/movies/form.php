@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <h1><?php echo $title; ?></h1>
-    <form method="POST" action="<?php echo constant('URL'); ?>admin/peliculas/<?php echo isset($movie) ? 'edit/' . $movie->getId() : 'create'; ?>">
+    <form method="POST" action="<?php echo constant('URL'); ?>admin/peliculas/<?php echo isset($movie) ? 'edit/' . $movie->getId() : 'create'; ?>" enctype="multipart/form-data">
         <div class="form-group">
             <label for="nombre">Nombre</label>
             <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo isset($movie) ? $movie->getNombre() : ''; ?>" required>
@@ -42,8 +42,11 @@
             <input type="text" class="form-control" id="url_trailer" name="url_trailer" value="<?php echo isset($movie) ? $movie->getUrlTrailer() : ''; ?>" required>
         </div>
         <div class="form-group">
-            <label for="url_imagen">URL de la Imagen</label>
-            <input type="text" class="form-control" id="url_imagen" name="url_imagen" value="<?php echo isset($movie) ? $movie->getUrlImagen() : ''; ?>" required>
+            <label for="url_imagen">Imagen</label>
+            <input type="file" class="form-control-file" id="url_imagen" name="url_imagen">
+            <?php if (isset($movie) && $movie->getUrlImagen()) : ?>
+                <small class="form-text text-muted">Imagen actual: <?php echo $movie->getUrlImagen(); ?></small>
+            <?php endif; ?>
         </div>
         <div class="form-group">
             <label for="estadoEstreno">Estado de Estreno</label>
@@ -58,8 +61,11 @@
             <input type="number" class="form-control" id="estado" name="estado" value="<?php echo isset($movie) ? $movie->getEstado() : ''; ?>" required>
         </div>
         <div class="form-group">
-            <label for="url_portada">URL de la Portada</label>
-            <input type="text" class="form-control" id="url_portada" name="url_portada" value="<?php echo isset($movie) ? $movie->getUrlPortada() : ''; ?>" required>
+            <label for="url_portada">Portada</label>
+            <input type="file" class="form-control-file" id="url_portada" name="url_portada">
+            <?php if (isset($movie) && $movie->getUrlPortada()) : ?>
+                <small class="form-text text-muted">Portada actual: <?php echo $movie->getUrlPortada(); ?></small>
+            <?php endif; ?>
         </div>
         <div class="form-group">
             <label for="formatos">Formatos</label>
