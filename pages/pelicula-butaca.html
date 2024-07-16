@@ -25,12 +25,6 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <!-- header -->
             <div class="container-fluid">
-                <div class="col-lg-1">
-                    <a class="btn button-red" href=""> <!-- comprar html -->
-                        <img class="button-icon" src="../assets/svg/comprar.svg" alt="">
-                        <span>Retroceder</span>
-                    </a>
-                </div>
 
                 <div class="collapse navbar-collapse col-lg-8" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -55,6 +49,20 @@
     </header>
 
     <main>
+        <div class="container m-5">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6 d-flex justify-content-start align-items-start">
+                    <a class="btn button-red mt-4 mt-lg-0" href="./pelicula-detalle.html">
+                        <span>Regresar</span>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 d-flex justify-content-center">
+                    <img src="../assets/Butacas.png" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+
+
         <section>
             <div class="container-fluid">
                 <div class="row">
@@ -240,11 +248,13 @@
                             <table>
                                 <thead>
                                     <tr>
- 
-                                        <th colspan="14" class="screen"> 
-                                        </th> 
+                                        <th colspan="14">
+                                            <div class="screen"></div>
+                                        </th>
+
                                     </tr>
                                 </thead>
+                                <!-- butacas -->
                                 <tbody>
                                     <tr data-row="A">
                                         <td>
@@ -569,6 +579,7 @@
                                         </td>
                                     </tr>
                                 </tbody>
+                                <!-- butacas -->
                             </table>
 
                         </div>
@@ -592,14 +603,17 @@
                                     <div class="seat sold"></div>
                                     <small>Ocupada</small>
                                 </li>
-                            </ul>
 
-                            <div class="col-12 col-lg-3 d-flex justify-content-center mt-4">
-                                <button class="btn button-red" href=""> <!-- comprar html -->
+                                
+                            </ul>
+                            <div class="col-12 col-lg-3 d-flex justify-content-end">
+                                <a class="btn button-red " href="../mvc/views/pages/pelicula-entradas.html"> <!-- comprar html -->
                                     <img class="button-icon" src="../assets/svg/comprar.svg" alt="">
                                     <span>Siguiente</span>
-                                </button>
+                                </a>
                             </div>
+
+                            
                         </div>
 
 
