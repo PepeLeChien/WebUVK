@@ -59,10 +59,13 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function peliculaDetalle() {
-    viewTrailer();
+    
     selectDate();
     selectHorario();
+    $('#ticket-movie').text($('#movie-name-title').text()); 
+    initTicketDetails();
     loadTicketDetails();
+    viewTrailer();
 }
 
 function selectDate() {
@@ -106,7 +109,8 @@ function selectHorario() {
 }
 
 function updateTicketDetails(data) {
-    $('#ticket-date').text(data.fecha);
+    $('#ticket-movie').text(data.movieName || '----');
+    $('#ticket-date').text(data.fecha); 
     $('#ticket-sala').text(data.sala);
     $('#ticket-hora').text(data.horario);
     $('#ticket-ciudad').text(data.ciudad);
@@ -115,9 +119,23 @@ function updateTicketDetails(data) {
     $('#ticket-butaca').text(data.butaca || '----');
 }
 
+function initTicketDetails() { 
+    $('#ticket-date').text('-'); 
+    $('#ticket-sala').text('-');
+    $('#ticket-hora').text('-');
+    $('#ticket-ciudad').text('-');
+    $('#ticket-cine').text('-');
+    $('#ticket-formato').text('-');
+    $('#ticket-butaca').text('-');
+    const ticketData = {movieName: $('#movie-name-title').text()};
+    localStorage.setItem('ticketData', JSON.stringify(ticketData));
+}
+
+
+
 function saveToLocalStorage(data) {
     const ticketData = {
-        movieName: $('#ticket-movie-name').text(),
+        movieName: $('#movie-name-title').text(),
         date: $('#ticket-date').text(),
         sala: data.sala,
         horario: data.horario,

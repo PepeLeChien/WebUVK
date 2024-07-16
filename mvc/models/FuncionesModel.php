@@ -364,4 +364,6 @@ class FuncionesModel extends Model
             throw new Exception('Error retrieving ciudad: ' . $e->getMessage());
         }
     }
+
+    
 }
