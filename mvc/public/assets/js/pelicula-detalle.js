@@ -142,7 +142,8 @@ function saveToLocalStorage(data) {
         ciudad: data.ciudad,
         cine: data.cine,
         formato: data.formato,
-        butaca: data.butaca || '----'
+        butaca: data.butaca || '----',
+        idFuncion: data.id 
     };
     localStorage.setItem('ticketData', JSON.stringify(ticketData));
 }

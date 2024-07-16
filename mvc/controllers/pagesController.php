@@ -160,6 +160,7 @@ class PagesController
         try {
             $model = new FuncionesModel();
             $funcion = $model->get($id);
+
             if (!$funcion) {
                 throw new Exception('Function not found');
             }
@@ -189,8 +190,13 @@ class PagesController
             $funcion->formato = $peliculaFormato->formato;
             $funcion->ciudad = $ciudad->nombre;
 
-            echo json_encode($funcion);
+            // Agregar un punto de depuración antes de imprimir la respuesta
+            error_log("Datos de función: " . json_encode($funcion));
+
+            echo json_encode($funcion); // Asegurarse de que solo este echo se ejecute
+
         } catch (Exception $e) {
+            // Solo envía una respuesta en caso de error
             echo json_encode(['error' => $e->getMessage()]);
         }
     }

@@ -14,6 +14,7 @@ use Controllers\LoginController;
 use Controllers\AdminController;
 use Controllers\MoviesController;
 use Controllers\FunctionsController;
+use Controllers\CompraController;
 
 // Registrar el autoload
 // Registrar el autoload
@@ -91,7 +92,17 @@ $router->get('/admin/funciones/edit/:id', [FunctionsController::class, 'edit']);
 $router->post('/admin/funciones/edit/:id', [FunctionsController::class, 'edit']);
 $router->post('/admin/funciones/delete/:id', [FunctionsController::class, 'delete']);
 
-$router->get('/api/funciones', [PagesController::class, 'getFuncionesPorPelicula']);
+$router->get('/api/funcionesPorPelicula', [PagesController::class, 'getFuncionesPorPelicula']);
 $router->get('/api/funcion', [PagesController::class, 'getFuncionById']);
 
+
+$router->get('/compra', [CompraController::class, 'index']);
+$router->get('/compra/tickets', [CompraController::class, 'tickets']);
+$router->get('/compra/pago', [CompraController::class, 'pago']);
+$router->post('/compra/agregar', [CompraController::class, 'agregar']);
+
+// Rutas de la API para obtener butacas ocupadas
+$router->get('/api/obtenerButacasOcupadas', [CompraController::class, 'obtenerButacasOcupadas']);
+
 $router->comprobarRutas();
+ 

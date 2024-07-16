@@ -137,10 +137,10 @@ ob_start();
                 </div>
 
                 <div class="col-12 col-lg-4 d-flex justify-content-center">
-                    <button class="btn button-red mt-4 mt-lg-0" id="siguiente-btn">
+                    <a href="/compra" class="btn button-red mt-4 mt-lg-0" id="siguiente-btn">
                         <img class="button-icon" src="../assets/svg/comprar.svg" alt="">
                         <span>Siguiente</span>
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
