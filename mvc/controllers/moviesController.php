@@ -77,11 +77,12 @@ class MoviesController extends Controller
         $genres = $this->model->getAllGeneros();
         $classifications = $this->model->getAllClasificaciones();
         $formats = $this->model->getAllFormatos();
+        $selectedFormats = $movie->getFormatos() ?? [];  // Asegura que siempre es un array
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $movie->from($_POST);
             $movie->setId($id); // Asegúrate de establecer el ID aquí
-            $movie->setFormatos($_POST['formatos']);
+            $movie->setFormatos($_POST['formatos'] ?? []);
             if ($movie->update()) {
                 header('Location: /admin/peliculas');
                 exit;
@@ -93,7 +94,8 @@ class MoviesController extends Controller
             'movie' => $movie,
             'genres' => $genres,
             'classifications' => $classifications,
-            'formats' => $formats
+            'formats' => $formats,
+            'selectedFormats' => $selectedFormats  // Pasar siempre selectedFormats
         ], 'layoutAdmin');
     }
 
