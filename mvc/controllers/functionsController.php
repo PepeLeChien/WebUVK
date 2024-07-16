@@ -1,20 +1,24 @@
 <?php
+
 namespace Controllers;
 
+use Exception;
 use MVC\Router;
 use Models\FuncionesModel;
 
-class FunctionsController {
+class FunctionsController
+{
 
-    public static function index(Router $router) {
+    public static function index(Router $router)
+    {
         session_start();
         if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Administrador') {
             header('Location: /');
             exit;
         }
 
-        $model = new FuncionesModel();  
-        $functions = $model->getAll(); 
+        $model = new FuncionesModel();
+        $functions = $model->getAll();
 
         $router->render('admin/functions/index', [
             'title' => 'Listado de Funciones',
@@ -22,7 +26,8 @@ class FunctionsController {
         ], 'layoutAdmin');
     }
 
-    public static function create(Router $router) {
+    public static function create(Router $router)
+    {
         session_start();
         if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Administrador') {
             header('Location: /');
@@ -49,7 +54,8 @@ class FunctionsController {
         ], 'layoutAdmin');
     }
 
-    public static function edit(Router $router) {
+    public static function edit(Router $router)
+    {
         session_start();
         if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Administrador') {
             header('Location: /');
@@ -87,7 +93,8 @@ class FunctionsController {
         ], 'layoutAdmin');
     }
 
-    public static function delete(Router $router) {
+    public static function delete(Router $router)
+    {
         session_start();
         if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Administrador') {
             header('Location: /');
@@ -105,7 +112,8 @@ class FunctionsController {
         }
     }
 
-    public static function getFunctions() {
+    public static function getFunctions()
+    {
         session_start();
         if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Administrador') {
             header('Location: /');
@@ -116,6 +124,31 @@ class FunctionsController {
         $functions = $model->getAll(); // Llamar al método desde la instancia
         echo json_encode($functions);
     }
-}
 
-?>
+    public static function getFuncionById(Router $router)
+    {
+        $id = $_GET['id'] ?? null;
+
+        if (!$id) {
+            echo json_encode(['error' => 'ID is required']);
+            return;
+        }
+
+        try {
+            $model = new FuncionesModel();
+            $funcion = $model->get($id);
+            $cineSala = $model->getCineSalaById($funcion->id_cineSala);
+            $peliculaFormato = $model->getPeliculaFormatoById($funcion->id_peliculaFormato);
+            $ciudad = $model->getCiudadByCineId($cineSala->id_cine);
+
+            $funcion->cine = $cineSala->cine;
+            $funcion->sala = $cineSala->sala;
+            $funcion->formato = $peliculaFormato->formato;
+            $funcion->ciudad = $ciudad->nombre;
+
+            echo json_encode($funcion);
+        } catch (Exception $e) {
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+}

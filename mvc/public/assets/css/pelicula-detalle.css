@@ -269,3 +269,48 @@
         font-size: 6rem;
     }
 }
+
+
+.horario-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    list-style: none;
+    padding: 0;
+    max-height:300px ;
+    overflow-y: scroll;
+}
+.horario-list  li{
+    margin: 0;
+}
+.horario-item {
+    flex: 1   calc(100% - 5px);
+    max-width: calc(100% - 5px); 
+}
+
+.horario-label {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    background-color: #2c2c2e;
+    border: 1px solid #3e3e3f;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: var(--white-style);
+}
+
+.horario-label:hover, .horario-label.active {
+    background-color: #3e3e3f;
+    border-color: #6c757d;
+}
+
+.horario-label input {
+    display: none;
+}
+
+.horario-label input:checked + .horario-label {
+    background-color: #3e3e3f;
+    border-color: var(--primary-yellow);
+    color: var(--primary-yellow);
+}

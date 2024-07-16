@@ -61,8 +61,8 @@ class Router {
         }
 
         ob_start();
-        include_once __DIR__ . "/../views/$view.php"; // Ajuste de la ruta a views
+        include_once __DIR__ . "/../views/$view.php";  
         $contenido = ob_get_clean();
-        include_once __DIR__ . "/../views/template/{$template}.php"; // Ajuste de la ruta a template
+        include_once __DIR__ . "/../views/template/{$template}.php";  
     }
 }

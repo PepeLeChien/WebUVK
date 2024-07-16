@@ -1,4 +1,5 @@
 <?php
+
 namespace Models;
 
 use Libs\Database;
@@ -25,19 +26,55 @@ class FuncionesModel extends Model
         $this->estado = 1;
     }
 
-    public function setId($id) { $this->id = $id; }
-    public function setIdCineSala($id_cineSala) { $this->id_cineSala = $id_cineSala; }
-    public function setIdPeliculaFormato($id_peliculaFormato) { $this->id_peliculaFormato = $id_peliculaFormato; }
-    public function setFecha($fecha) { $this->fecha = $fecha; }
-    public function setHorario($horario) { $this->horario = $horario; }
-    public function setEstado($estado) { $this->estado = $estado; }
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+    public function setIdCineSala($id_cineSala)
+    {
+        $this->id_cineSala = $id_cineSala;
+    }
+    public function setIdPeliculaFormato($id_peliculaFormato)
+    {
+        $this->id_peliculaFormato = $id_peliculaFormato;
+    }
+    public function setFecha($fecha)
+    {
+        $this->fecha = $fecha;
+    }
+    public function setHorario($horario)
+    {
+        $this->horario = $horario;
+    }
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+    }
 
-    public function getId() { return $this->id; }
-    public function getIdCineSala() { return $this->id_cineSala; }
-    public function getIdPeliculaFormato() { return $this->id_peliculaFormato; }
-    public function getFecha() { return $this->fecha; }
-    public function getHorario() { return $this->horario; }
-    public function getEstado() { return $this->estado; }
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function getIdCineSala()
+    {
+        return $this->id_cineSala;
+    }
+    public function getIdPeliculaFormato()
+    {
+        return $this->id_peliculaFormato;
+    }
+    public function getFecha()
+    {
+        return $this->fecha;
+    }
+    public function getHorario()
+    {
+        return $this->horario;
+    }
+    public function getEstado()
+    {
+        return $this->estado;
+    }
 
     public function save()
     {
@@ -140,7 +177,8 @@ class FuncionesModel extends Model
         $this->estado = $array['estado'] ?? 1;
     }
 
-    public static function getFunctionsByFilters($filters = [], $limit = null) {
+    public static function getFunctionsByFilters($filters = [], $limit = null)
+    {
         $sql = 'SELECT DISTINCT pelicula.*
                 FROM funcion
                 JOIN peliculaFormato ON funcion.id_peliculaFormato = peliculaFormato.id
@@ -150,9 +188,9 @@ class FuncionesModel extends Model
                 JOIN ciudad ON cine.id_ciudad = ciudad.id
                 JOIN formato ON peliculaFormato.id_formato = formato.id
                 WHERE funcion.estado = 1 AND pelicula.estado=1';
-    
+
         $params = [];
-    
+
         if (!empty($filters)) {
             $conditions = [];
             foreach ($filters as $key => $value) {
@@ -168,12 +206,12 @@ class FuncionesModel extends Model
             }
             $sql .= ' AND ' . implode(' AND ', $conditions);
         }
-    
+
         if ($limit !== null) {
             $sql .= ' LIMIT ?';
             $params[] = (int)$limit;
         }
-    
+
         try {
             $db = new Database(); // Crear una nueva instancia de Database
             $query = $db->connect()->prepare($sql); // Usar la instancia para conectarse a la base de datos
@@ -183,7 +221,7 @@ class FuncionesModel extends Model
             throw new Exception('Error retrieving functions by filters: ' . $e->getMessage());
         }
     }
-    
+
 
     public function getCiudades()
     {
@@ -255,5 +293,75 @@ class FuncionesModel extends Model
             throw new Exception('Error retrieving pelicula formatos: ' . $e->getMessage());
         }
     }
+
+    public function getFuncionesPorPelicula($id_pelicula)
+    {
+        try {
+            $query = $this->db->connect()->prepare('
+                SELECT funcion.*, cine.nombre AS cine, ciudad.nombre AS ciudad, sala.numero AS sala, formato.nombre AS formato
+                FROM funcion
+                JOIN cineSala ON funcion.id_cineSala = cineSala.id
+                JOIN cine ON cineSala.id_cine = cine.id
+                JOIN sala ON cineSala.id_sala = sala.id
+                JOIN ciudad ON cine.id_ciudad = ciudad.id
+                JOIN peliculaFormato ON funcion.id_peliculaFormato = peliculaFormato.id
+                JOIN formato ON peliculaFormato.id_formato = formato.id
+                WHERE peliculaFormato.id_pelicula = :id_pelicula AND funcion.estado = 1
+            ');
+            $query->execute(['id_pelicula' => $id_pelicula]);
+            return $query->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            throw new Exception('Error retrieving functions for movie: ' . $e->getMessage());
+        }
+    }
+
+    public function getCineSalaById($id)
+    {
+        try {
+            $query = $this->db->connect()->prepare('
+            SELECT cineSala.id, cine.nombre AS cine, cine.id AS id_cine, sala.numero AS sala
+            FROM cineSala
+            JOIN cine ON cineSala.id_cine = cine.id
+            JOIN sala ON cineSala.id_sala = sala.id
+            WHERE cineSala.id = :id
+        ');
+            $query->execute(['id' => $id]);
+            return $query->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            throw new Exception('Error retrieving cine sala: ' . $e->getMessage());
+        }
+    }
+
+
+    public function getPeliculaFormatoById($id)
+    {
+        try {
+            $query = $this->db->connect()->prepare('
+            SELECT peliculaFormato.id, formato.nombre AS formato
+            FROM peliculaFormato
+            JOIN formato ON peliculaFormato.id_formato = formato.id
+            WHERE peliculaFormato.id = :id
+        ');
+            $query->execute(['id' => $id]);
+            return $query->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            throw new Exception('Error retrieving pelicula formato: ' . $e->getMessage());
+        }
+    }
+
+    public function getCiudadByCineId($id)
+    {
+        try {
+            $query = $this->db->connect()->prepare('
+            SELECT ciudad.nombre
+            FROM cine
+            JOIN ciudad ON cine.id_ciudad = ciudad.id
+            WHERE cine.id = :id
+        ');
+            $query->execute(['id' => $id]);
+            return $query->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            throw new Exception('Error retrieving ciudad: ' . $e->getMessage());
+        }
+    }
 }
-?>

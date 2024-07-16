@@ -91,4 +91,7 @@ $router->get('/admin/funciones/edit/:id', [FunctionsController::class, 'edit']);
 $router->post('/admin/funciones/edit/:id', [FunctionsController::class, 'edit']);
 $router->post('/admin/funciones/delete/:id', [FunctionsController::class, 'delete']);
 
+$router->get('/api/funciones', [PagesController::class, 'getFuncionesPorPelicula']);
+$router->get('/api/funcion', [PagesController::class, 'getFuncionById']);
+
 $router->comprobarRutas();
