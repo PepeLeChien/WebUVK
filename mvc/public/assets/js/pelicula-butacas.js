@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Actualizar localStorage con las butacas seleccionadas
         const ticketData = JSON.parse(localStorage.getItem('ticketData')) || {};
         ticketData.butaca = selectedSeatList.join(', ');
+        ticketData.selectedSeats = selectedSeatList; // Guardar también como array
         localStorage.setItem('ticketData', JSON.stringify(ticketData));
 
         $('#ticket-butaca').text(ticketData.butaca || '----');
@@ -45,6 +46,16 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                     });
                 }
+                // Marcar las butacas seleccionadas previamente
+                const selectedSeats = ticketData.selectedSeats || [];
+                selectedSeats.forEach(seat => {
+                    const [row, column] = seat.split('');
+                    const seatElement = $(`.seat[data-column="${column}"][data-row="${row}"]`);
+                    if (seatElement.length) {
+                        seatElement.addClass("selected");
+                    }
+                });
+                updateSelectedCount(); // Actualizar el contador y ticket
             },
             error: function(error) {
                 console.error('Error:', error);

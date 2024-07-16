@@ -66,6 +66,7 @@ class CompraController {
         if ($id_funcion) {
             $butacas = FuncionButacaModel::obtenerButacasOcupadas($id_funcion);
             echo json_encode(['butacas' => $butacas]);
+            error_log("Datos de función: " . json_encode(['butacas' => $butacas]));
         } else {
             echo json_encode(['error' => 'ID de función no proporcionado']);
         }

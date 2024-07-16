@@ -77,10 +77,11 @@ $currentUrl = $_SERVER['REQUEST_URI'];
 
         <!-- Continue Button -->
         <div class="next-div text-center my-4">
-            <button class="btn button-red mt-4 mt-lg-0">
+            <a id="continue-button" class="btn button-red mt-4 mt-lg-0" href="#">
                 <span>Continuar</span>
-            </button>
+            </a>
         </div>
+
     </main>
 
     <!-- Bootstrap JS Bundle -->

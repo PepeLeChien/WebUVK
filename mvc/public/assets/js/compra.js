@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const continueButton = document.getElementById('continue-button');
+    const currentUrl = window.location.pathname;
+
+    if (currentUrl.includes('/compra/pago')) {
+        continueButton.href = '/';
+    } else if (currentUrl.includes('/compra/tickets')) {
+        continueButton.href = '/compra/pago';
+    } else if (currentUrl.includes('/compra')) {
+        continueButton.href = '/compra/tickets';
+    }
     loadTicketDetails();
 });
 
@@ -15,3 +25,5 @@ function loadTicketDetails() {
         $('#ticket-butaca').text(ticketData.butaca || '----');
     }
 }
+
+ 
