@@ -1,5 +1,10 @@
 <?php
 
+namespace Models;
+
+use PDO;
+use PDOException;
+
 class UserModel extends Model {
     public $email;
     public $password;
@@ -10,7 +15,7 @@ class UserModel extends Model {
         parent::__construct();
         $this->email = $data['email'] ?? '';
         $this->password = $data['password'] ?? '';
-        $this->role = $data['rol'] ?? 'Cliente';
+        $this->role = $data['role'] ?? 'Cliente';
         $this->autenticado = false;
     }
 
@@ -47,7 +52,7 @@ class UserModel extends Model {
         $_SESSION['email'] = $this->email;
         $_SESSION['rol'] = $this->role;
         $_SESSION['login'] = true;
-        error_log('Sesión iniciada para: ' . $this->email . ' con rol: ' . $this->role); // Depuración
+        error_log('Sesión iniciada para: ' . $this->email . ' con rol: ' . $this->role);
     }
 
     public static function getErrores() {

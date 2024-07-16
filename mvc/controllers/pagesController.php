@@ -1,19 +1,15 @@
 <?php
+namespace Controllers;
 
+use Exception;
 use MVC\Router;
+use Models\FuncionesModel;
 
-class PagesController extends Controller {
-    private $funcionesModel;
+class PagesController {
 
-    public function __construct() {
-        parent::__construct();
-        $this->loadModel('Funciones'); // Asegúrate de que 'Funciones' es el nombre correcto
-        $this->funcionesModel = $this->model;
-    }
-
-    public function index(Router $router) {
-        $preMovies = $this->funcionesModel->getFunctionsByFilters(['estadoEstreno' => 'Pre-Venta'], 5);
-        $movies = $this->funcionesModel->getFunctionsByFilters(['estadoEstreno' => ['Pelicula', 'Estreno']], 5);
+    public static function index(Router $router) {
+        $preMovies = FuncionesModel::getFunctionsByFilters(['estadoEstreno' => 'Pre-Venta'], 5);
+        $movies = FuncionesModel::getFunctionsByFilters(['estadoEstreno' => ['Pelicula', 'Estreno']], 5);
 
         $router->render('pages/index', [
             'preMovies' => $preMovies,
@@ -21,10 +17,11 @@ class PagesController extends Controller {
         ]);
     }
 
-    public function cartelera(Router $router) {
-        $ciudades = $this->funcionesModel->getCiudades();
-        $cines = $this->funcionesModel->getCines();
-        $formatos = $this->funcionesModel->getFormatos();
+    public static function cartelera(Router $router) {
+        $model = new FuncionesModel(); // Crear una instancia de FuncionesModel
+        $ciudades = $model->getCiudades();
+        $cines = $model->getCines();
+        $formatos = $model->getFormatos();
 
         $router->render('pages/cartelera', [
             'ciudades' => $ciudades,
@@ -34,7 +31,7 @@ class PagesController extends Controller {
         ]);
     }
 
-    public function peliculaDetalle(Router $router) {
+    public static function peliculaDetalle(Router $router) {
         $id = $router->params[0];
 
         $id = filter_var($id, FILTER_VALIDATE_INT);
@@ -43,12 +40,13 @@ class PagesController extends Controller {
             exit;
         }
 
-        $movie = $this->funcionesModel->getMovie($id);
+        $model = new FuncionesModel(); // Crear una instancia de FuncionesModel
+        $movie = $model->getMovie($id);
 
         if ($movie) {
-            $ciudades = $this->funcionesModel->getCiudades();
-            $cines = $this->funcionesModel->getCines();
-            $formatos = $this->funcionesModel->getFormatos();
+            $ciudades = $model->getCiudades();
+            $cines = $model->getCines();
+            $formatos = $model->getFormatos();
 
             $router->render('pages/pelicula-detalle', [
                 'movie' => $movie,
@@ -61,7 +59,7 @@ class PagesController extends Controller {
         }
     }
 
-    public function loadMoreMovies(Router $router) {
+    public static function loadMoreMovies(Router $router) {
         header('Content-Type: application/json');
 
         $input = json_decode(file_get_contents('php://input'), true);
@@ -93,14 +91,14 @@ class PagesController extends Controller {
         }
 
         try {
-            $movies = $this->funcionesModel->getFunctionsByFilters($filters, $limit);
+            $movies = FuncionesModel::getFunctionsByFilters($filters, $limit);
             echo json_encode($movies);
         } catch (Exception $e) {
             echo json_encode(['error' => $e->getMessage()]);
         }
     }
 
-    public function getMovieHTML(Router $router) {
+    public static function getMovieHTML(Router $router) {
         header('Content-Type: text/html');
         $input = json_decode(file_get_contents('php://input'), true);
 
@@ -115,4 +113,5 @@ class PagesController extends Controller {
         }
     }
 }
+
 ?>

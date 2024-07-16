@@ -1,24 +1,20 @@
 <?php
+namespace Controllers;
 
 use MVC\Router;
+use Models\FuncionesModel;
 
-class FunctionsController extends Controller
-{
-    public function __construct()
-    {
-        parent::__construct();
-        $this->loadModel('Funciones');
-    }
+class FunctionsController {
 
-    public function index(Router $router)
-    {
+    public static function index(Router $router) {
         session_start();
         if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Administrador') {
             header('Location: /');
             exit;
         }
 
-        $functions = $this->model->getAll();
+        $model = new FuncionesModel();  
+        $functions = $model->getAll(); 
 
         $router->render('admin/functions/index', [
             'title' => 'Listado de Funciones',
@@ -26,16 +22,16 @@ class FunctionsController extends Controller
         ], 'layoutAdmin');
     }
 
-    public function create(Router $router)
-    {
+    public static function create(Router $router) {
         session_start();
         if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Administrador') {
             header('Location: /');
             exit;
         }
 
-        $cineSalas = $this->model->getCineSalas();
-        $peliculaFormatos = $this->model->getPeliculaFormatos();
+        $model = new FuncionesModel(); // Crear una instancia de FuncionesModel
+        $cineSalas = $model->getCineSalas();
+        $peliculaFormatos = $model->getPeliculaFormatos();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $function = new FuncionesModel();
@@ -53,8 +49,7 @@ class FunctionsController extends Controller
         ], 'layoutAdmin');
     }
 
-    public function edit(Router $router)
-    {
+    public static function edit(Router $router) {
         session_start();
         if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Administrador') {
             header('Location: /');
@@ -62,7 +57,8 @@ class FunctionsController extends Controller
         }
 
         $id = $router->params[0];
-        $functionData = $this->model->get($id);
+        $model = new FuncionesModel(); // Crear una instancia de FuncionesModel
+        $functionData = $model->get($id); // Llamar al método desde la instancia
 
         if (!$functionData) {
             header('Location: /admin/funciones');
@@ -71,8 +67,8 @@ class FunctionsController extends Controller
 
         $function = new FuncionesModel();
         $function->from((array)$functionData);
-        $cineSalas = $this->model->getCineSalas();
-        $peliculaFormatos = $this->model->getPeliculaFormatos();
+        $cineSalas = $model->getCineSalas(); // Llamar al método desde la instancia
+        $peliculaFormatos = $model->getPeliculaFormatos(); // Llamar al método desde la instancia
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $function->from($_POST);
@@ -91,8 +87,7 @@ class FunctionsController extends Controller
         ], 'layoutAdmin');
     }
 
-    public function delete(Router $router)
-    {
+    public static function delete(Router $router) {
         session_start();
         if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Administrador') {
             header('Location: /');
@@ -100,7 +95,8 @@ class FunctionsController extends Controller
         }
 
         $id = $router->params[0];
-        if ($this->model->delete($id)) {
+        $model = new FuncionesModel(); // Crear una instancia de FuncionesModel
+        if ($model->delete($id)) { // Llamar al método desde la instancia
             header('Location: /admin/funciones');
             exit;
         } else {
@@ -109,15 +105,17 @@ class FunctionsController extends Controller
         }
     }
 
-    public function getFunctions()
-    {
+    public static function getFunctions() {
         session_start();
         if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Administrador') {
             header('Location: /');
             exit;
         }
 
-        $functions = $this->model->getAll();
+        $model = new FuncionesModel(); // Crear una instancia de FuncionesModel
+        $functions = $model->getAll(); // Llamar al método desde la instancia
         echo json_encode($functions);
     }
 }
+
+?>

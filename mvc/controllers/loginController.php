@@ -1,15 +1,13 @@
 <?php
 
+namespace Controllers;
+
 use MVC\Router;
+use Models\UserModel;
 
-class LoginController extends Controller {
-    public function __construct() {
-        parent::__construct();
-    }
+class LoginController {
 
-    public function login(Router $router) {
-        $this->loadModel('User'); 
-
+    public static function login(Router $router) {
         $errores = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -47,7 +45,7 @@ class LoginController extends Controller {
         ]);
     }
 
-    public function logout() {
+    public static function logout() {
         session_start();
         $_SESSION = [];
         session_destroy();

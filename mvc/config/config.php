@@ -19,6 +19,15 @@ define('CHARSET', 'utf8mb4');
 // define('PASSWORD', 'bjNCKeZEamuJIGdNAmPrjgwvaYkTkriA');
 // define('PORT', 3306);
 // define('CHARSET', 'utf8mb4');
- 
+
+//AWS 
+
+// define('URL', 'http://localhost:3000/');
+// define('HOST', 'localhost');
+// define('DB', 'DbCine');
+// define('USER', 'root');
+// define('PASSWORD', '12345');
+// define('PORT', 3306);
+// define('CHARSET', 'utf8mb4');
  
 ?>

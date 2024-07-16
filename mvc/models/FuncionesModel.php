@@ -1,9 +1,13 @@
 <?php
- 
- 
-class FuncionesModel extends Model implements IModel
+namespace Models;
+
+use Libs\Database;
+use Exception;
+use PDO;
+use PDOException;
+
+class FuncionesModel extends Model
 {
-    // Atributos
     private $id;
     private $id_cineSala;
     private $id_peliculaFormato;
@@ -21,59 +25,20 @@ class FuncionesModel extends Model implements IModel
         $this->estado = 1;
     }
 
-    // Métodos setter
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-    public function setIdCineSala($id_cineSala)
-    {
-        $this->id_cineSala = $id_cineSala;
-    }
-    public function setIdPeliculaFormato($id_peliculaFormato)
-    {
-        $this->id_peliculaFormato = $id_peliculaFormato;
-    }
-    public function setFecha($fecha)
-    {
-        $this->fecha = $fecha;
-    }
-    public function setHorario($horario)
-    {
-        $this->horario = $horario;
-    }
-    public function setEstado($estado)
-    {
-        $this->estado = $estado;
-    }
+    public function setId($id) { $this->id = $id; }
+    public function setIdCineSala($id_cineSala) { $this->id_cineSala = $id_cineSala; }
+    public function setIdPeliculaFormato($id_peliculaFormato) { $this->id_peliculaFormato = $id_peliculaFormato; }
+    public function setFecha($fecha) { $this->fecha = $fecha; }
+    public function setHorario($horario) { $this->horario = $horario; }
+    public function setEstado($estado) { $this->estado = $estado; }
 
-    // Métodos getter
-    public function getId()
-    {
-        return $this->id;
-    }
-    public function getIdCineSala()
-    {
-        return $this->id_cineSala;
-    }
-    public function getIdPeliculaFormato()
-    {
-        return $this->id_peliculaFormato;
-    }
-    public function getFecha()
-    {
-        return $this->fecha;
-    }
-    public function getHorario()
-    {
-        return $this->horario;
-    }
-    public function getEstado()
-    {
-        return $this->estado;
-    }
+    public function getId() { return $this->id; }
+    public function getIdCineSala() { return $this->id_cineSala; }
+    public function getIdPeliculaFormato() { return $this->id_peliculaFormato; }
+    public function getFecha() { return $this->fecha; }
+    public function getHorario() { return $this->horario; }
+    public function getEstado() { return $this->estado; }
 
-    // Métodos CRUD
     public function save()
     {
         try {
@@ -123,7 +88,6 @@ class FuncionesModel extends Model implements IModel
             return false;
         }
     }
-
 
     public function getAll()
     {
@@ -176,8 +140,7 @@ class FuncionesModel extends Model implements IModel
         $this->estado = $array['estado'] ?? 1;
     }
 
-    public function getFunctionsByFilters($filters = [], $limit = null)
-    {
+    public static function getFunctionsByFilters($filters = [], $limit = null) {
         $sql = 'SELECT DISTINCT pelicula.*
                 FROM funcion
                 JOIN peliculaFormato ON funcion.id_peliculaFormato = peliculaFormato.id
@@ -187,9 +150,9 @@ class FuncionesModel extends Model implements IModel
                 JOIN ciudad ON cine.id_ciudad = ciudad.id
                 JOIN formato ON peliculaFormato.id_formato = formato.id
                 WHERE funcion.estado = 1';
-
+    
         $params = [];
-
+    
         if (!empty($filters)) {
             $conditions = [];
             foreach ($filters as $key => $value) {
@@ -205,20 +168,22 @@ class FuncionesModel extends Model implements IModel
             }
             $sql .= ' AND ' . implode(' AND ', $conditions);
         }
-
+    
         if ($limit !== null) {
             $sql .= ' LIMIT ?';
             $params[] = (int)$limit;
         }
-
+    
         try {
-            $query = $this->db->connect()->prepare($sql);
+            $db = new Database(); // Crear una nueva instancia de Database
+            $query = $db->connect()->prepare($sql); // Usar la instancia para conectarse a la base de datos
             $query->execute($params);
             return $query->fetchAll(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
             throw new Exception('Error retrieving functions by filters: ' . $e->getMessage());
         }
     }
+    
 
     public function getCiudades()
     {
@@ -291,3 +256,4 @@ class FuncionesModel extends Model implements IModel
         }
     }
 }
+?>

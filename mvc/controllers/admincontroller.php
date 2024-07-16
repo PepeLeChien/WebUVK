@@ -1,13 +1,12 @@
 <?php
 
+namespace Controllers;
+
 use MVC\Router;
 
-class AdminController extends Controller {
-    public function __construct() {
-        parent::__construct();
-    }
+class AdminController {
 
-    public function index(Router $router) {
+    public static function index(Router $router) {
         session_start();
         error_log('Rol en AdminController: ' . ($_SESSION['rol'] ?? 'No definido')); // Depuración
         if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Administrador') {

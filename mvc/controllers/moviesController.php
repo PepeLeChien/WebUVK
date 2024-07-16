@@ -1,24 +1,21 @@
 <?php
 
+ 
+namespace Controllers;
+
 use MVC\Router;
+use Models\MoviesModel;
 
-class MoviesController extends Controller
-{
-    public function __construct()
-    {
-        parent::__construct();
-        $this->loadModel('Movies');
-    }
+class MoviesController {
 
-    public function index(Router $router)
-    {
+    public static function index(Router $router) {
         session_start();
         if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Administrador') {
             header('Location: /');
             exit;
         }
 
-        $movies = $this->model->getAll();
+        $movies = MoviesModel::getAll();  
 
         $router->render('admin/movies/index', [
             'title' => 'Listado de Películas',
@@ -26,17 +23,16 @@ class MoviesController extends Controller
         ], 'layoutAdmin');
     }
 
-    public function create(Router $router)
-    {
+    public static function create(Router $router) {
         session_start();
         if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Administrador') {
             header('Location: /');
             exit;
         }
 
-        $genres = $this->model->getAllGeneros();
-        $classifications = $this->model->getAllClasificaciones();
-        $formats = $this->model->getAllFormatos();
+        $genres = MoviesModel::getAllGeneros();  
+        $classifications = MoviesModel::getAllClasificaciones(); 
+        $formats = MoviesModel::getAllFormatos();  
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $movie = new MoviesModel();
@@ -56,8 +52,7 @@ class MoviesController extends Controller
         ], 'layoutAdmin');
     }
 
-    public function edit(Router $router)
-    {
+    public static function edit(Router $router) {
         session_start();
         if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Administrador') {
             header('Location: /');
@@ -65,7 +60,8 @@ class MoviesController extends Controller
         }
 
         $id = $router->params[0];
-        $movieData = $this->model->get($id);
+        $model = new MoviesModel();  
+        $movieData = $model->get($id);  
 
         if (!$movieData) {
             header('Location: /admin/peliculas');
@@ -74,14 +70,14 @@ class MoviesController extends Controller
 
         $movie = new MoviesModel();
         $movie->from((array)$movieData);
-        $genres = $this->model->getAllGeneros();
-        $classifications = $this->model->getAllClasificaciones();
-        $formats = $this->model->getAllFormatos();
-        $selectedFormats = $movie->getFormatos() ?? [];  // Asegura que siempre es un array
+        $genres = MoviesModel::getAllGeneros(); 
+        $classifications = MoviesModel::getAllClasificaciones(); 
+        $formats = MoviesModel::getAllFormatos(); 
+        $selectedFormats = $movie->getFormatos() ?? [];  
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $movie->from($_POST);
-            $movie->setId($id); // Asegúrate de establecer el ID aquí
+            $movie->setId($id);  
             $movie->setFormatos($_POST['formatos'] ?? []);
             if ($movie->update()) {
                 header('Location: /admin/peliculas');
@@ -95,14 +91,11 @@ class MoviesController extends Controller
             'genres' => $genres,
             'classifications' => $classifications,
             'formats' => $formats,
-            'selectedFormats' => $selectedFormats  // Pasar siempre selectedFormats
+            'selectedFormats' => $selectedFormats   
         ], 'layoutAdmin');
     }
 
-
-
-    public function delete(Router $router)
-    {
+    public static function delete(Router $router) {
         session_start();
         if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Administrador') {
             header('Location: /');
@@ -110,25 +103,26 @@ class MoviesController extends Controller
         }
 
         $id = $router->params[0];
-        if ($this->model->delete($id)) {
+        $model = new MoviesModel(); 
+        if ($model->delete($id)) {  
             header('Location: /admin/peliculas');
             exit;
         } else {
-            // Manejar el error si la eliminación falla
+             
             echo "Error al eliminar la película";
         }
     }
 
-
-    public function getMovies()
-    {
+    public static function getMovies() {
         session_start();
         if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Administrador') {
             header('Location: /');
             exit;
         }
 
-        $movies = $this->model->getAll();
+        $movies = MoviesModel::getAll();  
         echo json_encode($movies);
     }
 }
+
+?>

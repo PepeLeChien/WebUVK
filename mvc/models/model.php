@@ -3,7 +3,7 @@
 
 namespace Models;
 
-use Database;
+use libs\Database;
 
 class Model {
     protected $db;
