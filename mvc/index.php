@@ -65,6 +65,7 @@ $router = new Router();
 
 $router->get('/', [PagesController::class, 'index']);
 $router->get('/cartelera', [PagesController::class, 'cartelera']);
+$router->get('/cines', [PagesController::class, 'cines']);
 $router->post('/load-more-movies', [PagesController::class, 'loadMoreMovies']);
 $router->post('/get-movie-html', [PagesController::class, 'getMovieHTML']);
 $router->get('/pelicula-detalle/:id', [PagesController::class, 'peliculaDetalle']);

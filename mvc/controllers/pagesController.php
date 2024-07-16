@@ -31,6 +31,13 @@ class PagesController {
         ]);
     }
 
+    public static function cines(Router $router) { 
+
+        $router->render('pages/cines', [ 
+            'title' => 'Cines'
+        ]);
+    }
+
     public static function peliculaDetalle(Router $router) {
         $id = $router->params[0];
 
