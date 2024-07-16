@@ -204,6 +204,7 @@ class MoviesModel extends Model implements IModel
             $pdo = $this->db->connect();
             $pdo->beginTransaction();
 
+            // Actualizar campos generales primero
             $query = $pdo->prepare('UPDATE pelicula SET nombre = :nombre, descripcion = :descripcion, fecha_inicio = :fecha_inicio, fecha_fin = :fecha_fin, id_genero = :id_genero, id_clasificacion = :id_clasificacion, duracion = :duracion, url_trailer = :url_trailer, url_imagen = :url_imagen, estadoEstreno = :estadoEstreno, estado = :estado, url_portada = :url_portada WHERE id = :id');
             $query->execute([
                 'nombre' => $this->nombre,
@@ -220,10 +221,16 @@ class MoviesModel extends Model implements IModel
                 'url_portada' => $this->url_portada,
                 'id' => $this->id
             ]);
+ 
+ 
 
-            // Elimina los formatos antiguos y guarda los nuevos
-            $this->deleteFormatos($pdo);
-            $this->saveFormatos($pdo);
+            // Comprobar si los formatos han cambiado
+            $currentFormats = $this->getPeliculaFormatosId($this->id); ; 
+            if (array_diff($this->formatos, $currentFormats) || array_diff($currentFormats, $this->formatos)) {
+                // Elimina los formatos antiguos y guarda los nuevos
+                $this->deleteFormatos($pdo);
+                $this->saveFormatos($pdo);
+            }
 
             $pdo->commit();
             return true;
@@ -232,9 +239,13 @@ class MoviesModel extends Model implements IModel
                 $pdo->rollBack();
             }
             error_log($e->getMessage());
+            if ($e->getCode() == 23000) {
+                throw new Exception("No se puede actualizar los formatos debido a restricciones de integridad.");
+            }
             return false;
         }
     }
+
 
 
     private function saveFormatos($pdo)
@@ -366,6 +377,24 @@ class MoviesModel extends Model implements IModel
             return [];
         }
     }
+
+    private function getPeliculaFormatosId($id_pelicula)
+    {
+        try {
+            $query = $this->db->connect()->prepare('
+                SELECT formato.id
+                FROM peliculaFormato
+                JOIN formato ON peliculaFormato.id_formato = formato.id
+                WHERE peliculaFormato.id_pelicula = :id_pelicula
+            ');
+            $query->execute(['id_pelicula' => $id_pelicula]);
+            return $query->fetchAll(PDO::FETCH_COLUMN);
+        } catch (PDOException $e) {
+            echo $e;
+            return [];
+        }
+    }
+
 
     public function getAllFormatos()
     {
