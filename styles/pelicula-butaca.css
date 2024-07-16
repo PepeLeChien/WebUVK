@@ -128,10 +128,10 @@
 
 
 .showcase {
-  background: rgba(0, 0, 0, 0.1);
+
   padding: 5px 10px;
   border-radius: 5px;
-  color: #777;
+  color: var(--white-style);
   list-style-type: none;
   display: flex;
   justify-content: space-between;
@@ -237,3 +237,4 @@ p.text{
 p.text span{
   color: var(--primary-yellow);
 }
+
