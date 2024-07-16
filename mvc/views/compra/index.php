@@ -5,7 +5,7 @@ ob_start();
 ?>
 
 
-<div class="m-5 title">
+<div class="title">
     <h3 class="sub-title"><span>Selecio</span>na tus butacas</h3>
 
 </div>
@@ -350,12 +350,12 @@ ob_start();
 
 </div>
 
-<div class="text-center my-5">
+<div class="text-center my-1">
     <p class="text">Butacas seleccionadas: <span id="count">0</span></p>
 </div>
 
 <!-- Opciones de disponibilidad -->
-<div class="text-center my-4">
+<div class="text-center my-1">
     <ul class="showcase d-inline-flex justify-content-center align-items-center">
         <li class="mx-5">
             <div class="seat"></div>
@@ -368,8 +368,6 @@ ob_start();
         <li class="mx-5">
             <div class="seat sold"></div>
             <small>Ocupada</small>
-        </li>
-
-
+        </li> 
     </ul>
 </div>

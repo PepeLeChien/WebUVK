@@ -24,6 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const ticketData = JSON.parse(localStorage.getItem('ticketData')) || {};
         ticketData.butaca = selectedSeatList.join(', ');
         localStorage.setItem('ticketData', JSON.stringify(ticketData));
+
+        $('#ticket-butaca').text(ticketData.butaca || '----');
     }
 
     function fetchOccupiedSeats() {

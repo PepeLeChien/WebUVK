@@ -50,7 +50,7 @@ $currentUrl = $_SERVER['REQUEST_URI'];
             </div>
             <div class="col-12 col-md-8">
                 <div class="nav-butaca d-flex justify-content-end">
-                    <a href="/compra/butaca">
+                    <a href="/compra">
                         <img src="../../public/assets/images/icons/butaca.png" alt="Butaca">
                     </a>
                     <a href="/compra/tickets">
@@ -88,7 +88,7 @@ $currentUrl = $_SERVER['REQUEST_URI'];
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Custom JS -->
-    <script src="<?php echo constant('URL'); ?>public/assets/AdminKit/js/app.js"></script>
+    <script src="<?php echo constant('URL'); ?>public/assets/js/compra.js"></script>
     <!-- Extra JS -->
     <?php if (isset($extra_js)) : ?>
         <?php echo $extra_js; ?>
