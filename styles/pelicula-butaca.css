@@ -125,7 +125,7 @@
   border-bottom-right-radius: 0;
 }
 
- 
+
 
 .showcase {
   background: rgba(0, 0, 0, 0.1);
@@ -165,7 +165,7 @@ p.text {
 
 
 
-
+/* Butacas */
 .container-butacas {
   display: flex;
   flex-direction: column;
@@ -175,11 +175,24 @@ p.text {
 
 .screen {
   background-color: #fff;
-  height: 120px;
+  height: 70px;
   width: 100%;
   margin: 15px 0;
-  transform: rotateX(-48deg);
+  position: relative;
+  transform: perspective(1000px) rotateX(-48deg);
   box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
+}
+
+.screen::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 25px solid transparent; 
+  border-right: 25px solid transparent; 
+  border-bottom: 60px solid #fff; 
+  width: calc(100% - 50px); 
 }
 
 table {
@@ -214,5 +227,13 @@ th {
 
 .seat.invisible {
   background-color: transparent;
-  
+
+}
+
+p.text{
+  margin: 5px 0;
+}
+
+p.text span{
+  color: var(--primary-yellow);
 }
